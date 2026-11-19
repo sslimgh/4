@@ -4,11 +4,12 @@
 /* ===== app connect block (GitHub app) =====
    GAME_API: Apps Script web app address (deploy > manage deployments). Change only this line if the address changes. */
 var GAME_API = 'https://script.google.com/macros/s/AKfycbzqoouTfjwKWxpLjmvbFm7Tkk10Vyw0rGIzImp2MVfq1WyvL68fUg2QJCKVyIZC1_Jdew/exec';
-var APP_BUILD = '2';
+var APP_BUILD = '3';
 /* google.script.run stand-in: every call goes to Code.gs doPost as JSON, without Google sign-in cookies */
 (function(){
   function call(fn, args, ok, bad, tries){
     var body = (fn === 'C') ? {rpc:1, c:args[0]||'', f:args[1], a:args[2]||[]} : {rpc:1, c:'', f:fn, a:args};
+    body.app = location.origin + location.pathname;
     fetch(GAME_API, {method:'POST', body:JSON.stringify(body), credentials:'omit', redirect:'follow', cache:'no-store'})
       .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.text(); })
       .then(function(t){ var j; try{ j = JSON.parse(t); }catch(e){ throw new Error('server'); } if(j && j.ok){ ok && ok(j.r === undefined ? null : j.r); } else { throw new Error(j && j.err || 'server'); } })
