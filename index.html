@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>헬로 모모 아일랜드</title>
+<meta name="theme-color" content="#30247a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="헬로 모모">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+  html,body{margin:0;height:100%;background:#30247a;overflow:hidden;font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+  #game{position:fixed;inset:0;width:100%;height:100%;border:0;display:block;background:#30247a}
+  #splash{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:#fff;text-align:center;background:linear-gradient(#30247a,#5c4fd0);transition:opacity .4s;z-index:2;padding:20px}
+  #splash img{width:120px;height:120px;border-radius:28px;box-shadow:0 8px 24px #0006;animation:bob 1.4s ease-in-out infinite}
+  #splash h1{margin:0;font-size:26px;color:#ffd43b;text-shadow:0 3px 0 #5f3dc4}
+  #splash p{margin:0;font-size:16px;opacity:.9;line-height:1.5}
+  #splash button{display:none;border:0;border-radius:16px;padding:12px 22px;font-size:18px;font-weight:800;color:#30247a;background:#ffd43b;box-shadow:0 4px 0 #c99a00;cursor:pointer;font-family:inherit}
+  #splash.err button{display:inline-block}
+  .dots span{display:inline-block;width:10px;height:10px;margin:0 4px;border-radius:50%;background:#fff;animation:blink 1.2s infinite}
+  .dots span:nth-child(2){animation-delay:.2s}.dots span:nth-child(3){animation-delay:.4s}
+  #splash.err .dots{display:none}
+  @keyframes bob{50%{transform:translateY(-8px)}}
+  @keyframes blink{0%,100%{opacity:.25}50%{opacity:1}}
+</style>
+</head>
+<body>
+<div id="splash">
+  <img src="icon-192.png" alt="">
+  <h1>헬로 모모 아일랜드</h1>
+  <p id="msg">섬으로 가고 있어요…<br>처음에는 조금 걸릴 수 있어요.</p>
+  <div class="dots"><span></span><span></span><span></span></div>
+  <button id="retry" type="button">🔄 다시 들어가기</button>
+</div>
+<iframe id="game" title="헬로 모모 아일랜드" allow="microphone; autoplay; fullscreen; clipboard-write" allowfullscreen></iframe>
+<script>
+/* ===== 앱 연결 블록: 게임 주소(Apps Script 웹 앱 주소)는 여기 한 곳만 바꾸면 돼요 ===== */
+var GAME_URL = 'https://script.google.com/macros/s/AKfycbzqoouTfjwKWxpLjmvbFm7Tkk10Vyw0rGIzImp2MVfq1WyvL68fUg2QJCKVyIZC1_Jdew/exec';
+/* ============================================================================== */
+
+(function () {
+  var frame = document.getElementById('game'), splash = document.getElementById('splash'),
+      msg = document.getElementById('msg'), retry = document.getElementById('retry'), done = false, timer = null;
+  // 앱 주소 뒤에 붙은 ?c=반&u=번호 이름 같은 값은 그대로 게임에 넘겨 줘요 (학생별 자동 로그인 주소용)
+  function target() { return GAME_URL + (location.search && location.search.length > 1 ? location.search : ''); }
+  function hide() { done = true; clearTimeout(timer); splash.style.opacity = '0'; setTimeout(function () { splash.style.display = 'none'; }, 450); }
+  function fail(t) { if (done) return; splash.className = 'err'; msg.innerHTML = t; }
+  function load() {
+    done = false; splash.className = ''; splash.style.display = 'flex'; splash.style.opacity = '1';
+    msg.innerHTML = '섬으로 가고 있어요…<br>처음에는 조금 걸릴 수 있어요.';
+    if (!navigator.onLine) { fail('인터넷에 연결되어 있지 않아요.<br>와이파이나 데이터를 켠 뒤 다시 눌러 주세요.'); return; }
+    frame.src = target();
+    clearTimeout(timer);
+    timer = setTimeout(function () { fail('들어가는 데 시간이 오래 걸리고 있어요.<br>인터넷 연결을 확인하고 다시 눌러 주세요.'); }, 45000);
+  }
+  frame.addEventListener('load', function () { if (frame.src) setTimeout(hide, 600); });
+  retry.addEventListener('click', load);
+  window.addEventListener('online', function () { if (!done) load(); });
+  load();
+
+  // 화면을 끄고 오랫동안(30분 넘게) 있다가 다시 열면 새로 불러와서 최신 상태로
+  var hiddenAt = 0;
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) { hiddenAt = Date.now(); return; }
+    if (hiddenAt && Date.now() - hiddenAt > 30 * 60 * 1000) load();
+  });
+
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });
+  }
+})();
+</script>
+</body>
+</html>
