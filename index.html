@@ -4,7 +4,7 @@
 /* ===== app connect block (GitHub app) =====
    GAME_API: Apps Script web app address (deploy > manage deployments). Change only this line if the address changes. */
 var GAME_API = 'https://script.google.com/macros/s/AKfycbzqoouTfjwKWxpLjmvbFm7Tkk10Vyw0rGIzImp2MVfq1WyvL68fUg2QJCKVyIZC1_Jdew/exec';
-var APP_BUILD = '4';
+var APP_BUILD = '5';
 /* google.script.run stand-in: every call goes to Code.gs doPost as JSON, without Google sign-in cookies */
 (function(){
   function call(fn, args, ok, bad, tries){
@@ -6647,14 +6647,18 @@ const css=`
 `;document.head.append(el('style',{},css));
 const SEC=[
  ['\ud83d\udcd8 \uad50\uacfc\uc11c',['\u300e\ucd08\ub4f1\ud559\uad50 \uc601\uc5b4 4\u300f \ucc9c\uc7ac\uad50\uc721 (\ub300\ud45c \uc800\uc790 \ud568\uc21c\uc560)',
-   'Lesson 9 <b>Is This Your Bag?</b> (86~93\ucabd) \u00b7 Lesson 10 <b>What Time Is It?</b> (94~101\ucabd)',
+   'Lesson 7 <b>It\u2019s Wednesday</b> (68~75\ucabd) \u00b7 Lesson 8 <b>How Much Is It?</b> (76~83\ucabd) \u00b7 <b>Special 4</b> (84~85\ucabd)',
+   'Lesson 9 <b>Is This Your Bag?</b> (86~93\ucabd) \u00b7 Lesson 10 <b>What Time Is It?</b> (94~101\ucabd) \u00b7 <b>Special 5</b> (102~103\ucabd)',
    'Lesson 11 <b>I\u2019m Drawing a Picture</b> (104~111\ucabd) \u00b7 Lesson 12 <b>What Do You Do?</b> (112~119\ucabd) \u00b7 <b>Special 6</b> (120~121\ucabd)',
-   '\ub300\ud654, \ucc2c\ud2b8, \ub178\ub798, \uc77d\uae30 \uae00, Story Time \uc774\uc57c\uae30\ub294 \uad50\uacfc\uc11c \ub0b4\uc6a9\uc774\uc5d0\uc694.',
+   '\ub300\ud654, \ucc2c\ud2b8, \ub178\ub798, \uc77d\uae30 \uae00, Story Time \uc774\uc57c\uae30(\uc655\uc790\uc640 \uac70\uc9c0, \ube68\uac04 \ubaa8\uc790, \uc774\uc0c1\ud55c \ub098\ub77c\uc758 \uc568\ub9ac\uc2a4, \ud53c\ub178\ud0a4\uc624, \uc2e0\ub370\ub810\ub77c, \uac78\ub9ac\ubc84 \uc5ec\ud589\uae30)\ub294 \uad50\uacfc\uc11c \ub0b4\uc6a9\uc774\uc5d0\uc694.',
+   'Special 5\uc758 \uc138\uacc4 \ub3c4\uc2dc \uc2dc\uac01\uc740 11\uc6d4(\uaca8\uc6b8 \uc2dc\uac04) \uae30\uc900\uc73c\ub85c \uac8c\uc784\uc5d0\uc11c \uc815\ud55c \uc608\uc2dc\uc608\uc694.',
    '\ubb38\uc81c\uc640 \ub300\ubcf8\uc740 <b>\uad50\uc0ac\uc6a9 \uc9c0\ub3c4\uc11c</b>\ub97c \ubc14\ud0d5\uc73c\ub85c \uc218\uc5c5\uc5d0 \ub9de\uac8c \ub2e4\uc2dc \ub9cc\ub4e4\uc5c8\uc5b4\uc694.']],
- ['\ud83c\udfa7 \uc18c\ub9ac',['\ub300\ud654\u00b7\ucc2c\ud2b8\u00b7\ub178\ub798\u00b7\ub0b1\ub9d0 \ub179\uc74c: <b>\ucc9c\uc7ac\uad50\uc721 \uad50\uacfc\uc11c \uc74c\uc6d0</b> <small>(\ubb38\uc7a5\ubcc4\ub85c \uc798\ub77c \uc4f0\uace0, \ucc2c\ud2b8\u00b7\ub178\ub798\ub294 \ud30c\uc77c \ud06c\uae30\ub97c \uc904\uc774\ub824\uace0 \uc555\ucd95\ud588\uc5b4\uc694)</small>',
+ ['\ud83c\udfa7 \uc18c\ub9ac',['\ub300\ud654\u00b7\ucc2c\ud2b8\u00b7\ub178\ub798\u00b7\ub0b1\ub9d0 \ub179\uc74c: <b>\ucc9c\uc7ac\uad50\uc721 \uad50\uacfc\uc11c \uc74c\uc6d0</b> (7~12\ub2e8\uc6d0, Special 4\u00b75) <small>(\ubb38\uc7a5\ubcc4\ub85c \uc798\ub77c \uc4f0\uace0, \ud30c\uc77c \ud06c\uae30\ub97c \uc904\uc774\ub824\uace0 \uc555\ucd95\ud588\uc5b4\uc694)</small>',
    '\uae30\ucd08 \uc12c\u00b7\ub3d9\ubb3c \uce5c\uad6c\u00b7\ub180\uc774\uc758 \uc601\uc5b4 \uc18c\ub9ac: \ud734\ub300\ud3f0\u00b7\ucef4\ud4e8\ud130\uc5d0 \ub4e4\uc5b4 \uc788\ub294 <b>\ucef4\ud4e8\ud130 \uc74c\uc131(\uc74c\uc131 \ud569\uc131)</b> <small>(\uae30\uae30\uc5d0 \ub530\ub77c \uad6c\uae00, \uc0bc\uc131, \ub9c8\uc774\ud06c\ub85c\uc18c\ud504\ud2b8 \uc74c\uc131\uc774 \ub098\uc640\uc694)</small>',
    '\ub529\ub3d9 \uac19\uc740 \ud6a8\uacfc\uc74c: \uac8c\uc784 \uc548\uc5d0\uc11c \uc9c1\uc811 \ub9cc\ub4e0 \uc18c\ub9ac\uc608\uc694.']],
  ['\ud83d\uddbc \uadf8\ub9bc',['\uc7a5\uc18c\u00b7\uc778\ubb3c\u00b7\uc9c1\uc5c5 \uadf8\ub9bc\uacfc \ubaa8\ubaa8 \uce90\ub9ad\ud130: <b>\ucc9c\uc7ac\uad50\uc721 \uad50\uacfc\uc11c\u00b7\uc9c0\ub3c4\uc11c \uadf8\ub9bc</b>\uacfc <b>\uc218\uc5c5\uc6a9\uc73c\ub85c \uc9c1\uc811 \ub9cc\ub4e4\uac70\ub098 AI\ub85c \ub9cc\ub4e0 \uadf8\ub9bc</b>\uc774 \uc11e\uc5ec \uc788\uc5b4\uc694.',
+   '\uc138\uacc4 \uc5ec\ub7ec \ub098\ub77c \ud654\ud3d0(Special 4)\uc640 \uc138\uacc4 \ub3c4\uc2dc \uc0ac\uc9c4(Special 5): <b>\ucc9c\uc7ac\uad50\uc721 \uad50\uacfc\uc11c\uc5d0 \uc2e4\ub9b0 \uc0ac\uc9c4</b>',
+   '\uc694\uc77c \uce74\ub4dc, \uac00\uaca9\ud45c, \uc2dc\uacc4, \ubb3c\uac74 \uadf8\ub9bc \uc77c\ubd80: \uac8c\uc784 \uc548\uc5d0\uc11c <b>\uc9c1\uc811 \uadf8\ub9b0 \uadf8\ub9bc(SVG)</b>\uc774\uc5d0\uc694.',
    '\uae30\ucd08 \uc12c \ub0b1\ub9d0 \uadf8\ub9bc, \ub3d9\ubb3c \uce5c\uad6c, \ubc84\ud2bc \uc544\uc774\ucf58: \uae30\uae30\uc5d0 \ub4e4\uc5b4 \uc788\ub294 <b>\uc774\ubaa8\uc9c0(\uadf8\ub9bc \ubb38\uc790)</b> <small>(Google Noto Color Emoji, \uc0bc\uc131 \uc774\ubaa8\uc9c0, Microsoft Segoe UI Emoji \ub4f1 \uae30\uae30\ub9c8\ub2e4 \ubaa8\uc591\uc774 \ub2ec\ub77c\uc694)</small>',
    '\uae00\uaf34: \uae30\uae30\uc5d0 \ub4e4\uc5b4 \uc788\ub294 \uae00\uaf34(\ub9d1\uc740 \uace0\ub515 \ub4f1)\uc744 \uc368\uc694.']],
  ['\ud83d\udee0 \uc4f0\ub294 \uae30\uc220',['\uae30\ub85d \uc800\uc7a5\u00b7\ub7ad\ud0b9\u00b7\uac8c\uc2dc\ud310: <b>Google Apps Script</b>, <b>Google \uc2a4\ud504\ub808\ub4dc\uc2dc\ud2b8</b>',
@@ -7025,7 +7029,7 @@ const css=`
 .port .st2{flex-direction:column}
 .port .st2 .scene2{flex:1;min-height:300px}
 .port .st2 .card2{flex:none;border-radius:26px 26px 0 0;margin-top:-22px;box-shadow:0 -6px 20px #0003}
-.port .st2 .logo h1{font-size:40px}.port .st2 .thief{right:4%;top:47%;width:112px}
+.port .st2 .logo h1{font-size:40px}.port .st2 .thief{right:2%;top:70%;width:92px}
 body:not(.port) .st2 .card2{width:min(400px,44%);box-shadow:-6px 0 20px #0003}
 .small:not(.port) .st2 .logo h1{font-size:36px}.small:not(.port) .st2 .momo2{width:90px;height:90px}.small:not(.port) .st2 .thief{width:100px}
 /* \ube44\ubc00\ubc88\ud638 \uc22b\uc790\ud310 */
@@ -7060,7 +7064,7 @@ const THIEF=`<svg viewBox="0 0 160 150" xmlns="http:\/\/www.w3.org/2000/svg"><de
 <path d="M112 64 Q124 54 134 62" stroke="#8d5a2b" stroke-width="5" fill="none"/>
 <text x="110" y="104" font-size="22" font-weight="bold" fill="#fff8e1" font-family="Arial">ABC</text><text x="116" y="122" font-size="16" fill="#fff8e1">\u266a\u266b</text></svg>`;
 window.THIEF_SVG=THIEF;
-function sceneSVG(){const isl=[['\ud83d\udcc5','L7',80,330],['\ud83d\udcb0','L8',210,255],['\ud83c\udf92','L9',350,330],['\u23f0','L10',490,250],['\ud83c\udfa8','L11',630,320],['\ud83e\ude7a','L12',770,245],['\u2b50','S',905,330]];
+function sceneSVG(){const isl=[['\ud83e\udd16','L7',80,330],['\ud83d\udcb0','L8',210,255],['\ud83c\udf92','L9',350,330],['\u23f0','L10',490,250],['\ud83c\udfa8','L11',630,320],['\ud83e\ude7a','L12',770,245],['\u2b50','S',905,330]];
   let s=`<svg class="sky" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice"><defs><radialGradient id="mn" cx=".5" cy=".5" r=".5"><stop offset=".6" stop-color="#fff9db"/><stop offset="1" stop-color="#fff9db" stop-opacity="0"/></radialGradient></defs>`;
   for(let i=0;i<60;i++){const x=(i*97)%1000,y=(i*53)%300,r=(i%3)+1;s+=`<circle cx="${x}" cy="${y}" r="${r}" fill="#fff" opacity=".8"><animate attributeName="opacity" values=".2;1;.2" dur="${2+(i%4)}s" begin="${(i%7)/3}s" repeatCount="indefinite"/></circle>`}
   s+=`<circle cx="830" cy="90" r="70" fill="url(#mn)"/><circle cx="830" cy="90" r="42" fill="#fff3bf"/>`;
@@ -7114,7 +7118,7 @@ const LOGO=`<svg class="logo2" viewBox="0 0 640 270" xmlns="http:\/\/www.w3.org/
 <text x="320" y="222" text-anchor="middle" font-size="80" font-weight="900" stroke="#2b1f6e" stroke-width="16" stroke-linejoin="round" paint-order="stroke fill" letter-spacing="6" fill="url(#lgT)">\uc544\uc77c\ub79c\ub4dc</text></g>
 <text x="58" y="120" font-size="44" fill="#fff" opacity=".9">\u266a</text><text x="566" y="104" font-size="38" fill="#ffe066">\u266b</text><text x="96" y="214" font-size="30" fill="#ffd8a8">\u2726</text><text x="530" y="214" font-size="30" fill="#c5f6fa">\u2726</text>
 <text x="320" y="262" text-anchor="middle" font-size="24" font-weight="800" fill="#f3f0ff" opacity=".95">\ubaa8\ubaa8\uc640 \uc601\uc5b4 \uc12c\uc744 \ud0d0\ud5d8\ud574\uc694! \uc18c\ub9ac \ub3c4\ub451\uc744 \uc870\uc2ec\ud574\uc694</text></svg>`;
-const ISL=[['\ud83c\udf92','9\ub2e8\uc6d0',12,66],['\u23f0','10\ub2e8\uc6d0',31,55],['\ud83c\udfa8','11\ub2e8\uc6d0',50,64],['\ud83e\ude7a','12\ub2e8\uc6d0',69,54],['\u2b50','Special 6',88,64]];
+const ISL=[['\ud83e\udd16','7\ub2e8\uc6d0',9,64],['\ud83d\udcb0','8\ub2e8\uc6d0',22,54],['\ud83c\udf92','9\ub2e8\uc6d0',35,64],['\u23f0','10\ub2e8\uc6d0',48,54],['\ud83c\udfa8','11\ub2e8\uc6d0',61,64],['\ud83e\ude7a','12\ub2e8\uc6d0',74,54],['\u2b50','Special',88,46]];
 function skySVG(){let s=`<svg class="sky" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice"><defs><radialGradient id="mn" cx=".5" cy=".5" r=".5"><stop offset=".55" stop-color="#fff9db"/><stop offset="1" stop-color="#fff9db" stop-opacity="0"/></radialGradient></defs>`;
   for(let i=0;i<70;i++){const x=(i*137)%1000,y=(i*61)%360,r=(i%3)*.7+.8;s+=`<circle cx="${x}" cy="${y}" r="${r}" fill="#fff"><animate attributeName="opacity" values=".15;1;.15" dur="${2+(i%5)}s" begin="${(i%9)/3}s" repeatCount="indefinite"/></circle>`}
   return s+`<circle cx="860" cy="80" r="80" fill="url(#mn)"/><circle cx="860" cy="80" r="44" fill="#fff3bf"/><circle cx="846" cy="70" r="7" fill="#ffe8a1"/><circle cx="872" cy="92" r="5" fill="#ffe8a1"/>
@@ -7122,7 +7126,7 @@ function skySVG(){let s=`<svg class="sky" viewBox="0 0 1000 600" preserveAspectR
 const css2=`
 .st2 .hd{position:absolute;left:0;right:0;top:2.5%;display:flex;flex-direction:column;align-items:center;gap:4px;z-index:3;pointer-events:none}.st2 .logo2{width:min(94%,600px);height:auto;display:block}
 body:not(.port) .st2 .logo2{width:min(82%,500px)}
-.st2 .isl{position:absolute;width:clamp(64px,15%,124px);transform:translate(-50%,-50%);z-index:2;animation:islb 3.4s ease-in-out infinite;text-align:center;pointer-events:none}
+.st2 .isl{position:absolute;width:clamp(50px,12.5%,112px);transform:translate(-50%,-50%);z-index:2;animation:islb 3.4s ease-in-out infinite;text-align:center;pointer-events:none}
 @keyframes islb{0%,100%{translate:0 0}50%{translate:0 -9px}}
 .st2 .isl .itop{font-size:clamp(26px,5.2vw,44px);line-height:1;position:relative;z-index:2;margin-bottom:-10%}
 .st2 .isl .land{height:clamp(30px,6vw,50px);background:linear-gradient(#8ce99a 0 26%,#51cf66 26% 34%,#8d5a2b 34%);clip-path:polygon(0 0,100% 0,72% 100%,28% 100%);border-radius:50% 50% 0 0/30% 30% 0 0;filter:drop-shadow(0 6px 4px #0005)}
@@ -7142,7 +7146,7 @@ body:not(.port) .st2 .logo2{width:min(82%,500px)}
 .st2 .gnote{font-size:14px;color:#6b7a90;background:#f8f9fa;border-radius:12px;padding:8px 10px;line-height:1.5}
 .st2 .card2 input.w100{width:100%;font-family:inherit;font-size:20px;font-weight:800;padding:10px 12px;border-radius:14px;border:3px solid #d0bfff;text-align:center;outline:none}
 .port .st2 .scene2{min-height:340px}
-.st2 .isl{top:var(--y)}body:not(.port) .st2 .isl{top:calc(var(--y) + 9%)}body:not(.port) .st2 .thief{top:50%;right:3%}body:not(.port) .st2 .momo2{width:76px;height:76px;left:3%;top:7%;bottom:auto}
+.st2 .isl{top:var(--y)}body:not(.port) .st2 .isl{top:calc(var(--y) + 9%)}body:not(.port) .st2 .thief{top:20%;right:1%;width:96px}body:not(.port) .st2 .momo2{width:76px;height:76px;left:3%;top:7%;bottom:auto}
 `;document.head.append(el('style',{},css2));
 let STAB='stu';
 window.isGuest=()=>/^\uc190\ub2d8/.test(String(S.name||''));
@@ -7154,7 +7158,7 @@ showStart=function(){RUNID++;Snd.stop();document.querySelectorAll('.overlay,.gpa
   if(GAS&&!KLdone){KLdone=1;const was=JSON.stringify(KL);loadKL().then(L=>{if(!L){const w=document.getElementById('kwarn');if(w)w.textContent='\u26a0\ufe0f \ubc18 \ubaa9\ub85d\uc744 \ubd88\ub7ec\uc624\uc9c0 \ubabb\ud588\uc5b4\uc694. \uc120\uc0dd\ub2d8: Apps Script\uc5d0 \uc0c8 Code.gs\ub97c \ubd99\uc5ec \ub123\uace0 \u300c\uc0c8 \ubc84\uc804\u300d\uc73c\ub85c \ubc30\ud3ec\ud588\ub294\uc9c0 \ud655\uc778\ud574 \uc8fc\uc138\uc694.';return}if(JSON.stringify(L)!==was&&document.querySelector('.st2'))showStart()})}
   const myK=S.klass||mMain(),me=S.name&&!window.isGuest()?S.name:'';
   const W=el('div',{class:'st2'}),sc=el('div',{class:'scene2',html:skySVG()});W.append(sc);
-  sc.append(el('div',{class:'hd',html:LOGO},el('div',{class:'rib2'},el('span',{class:'w'},'\uc601\uc5b4 4 \u00b7 \ucc9c\uc7ac\uad50\uc721'))));
+  sc.append(el('div',{class:'hd',html:LOGO},el('div',{class:'rib2'},el('span',{class:'w'},'\uc601\uc5b4 4 \u00b7 \ucc9c\uc7ac\uad50\uc721 \u00b7 2\ud559\uae30 7~12\ub2e8\uc6d0'))));
   ISL.forEach(([e,l,x,y],k)=>sc.append(el('div',{class:'isl',style:`left:${x}%;--y:${y}%;animation-delay:${-k*.6}s`},el('div',{class:'itop'},e),el('div',{class:'land'}),el('small',{},l))));
   const momo=el('div',{class:'momo2'},el('img',{src:I('momo')}));const thief=el('div',{class:'thief',html:THIEF});sc.append(momo,thief);
   const bub=(t,ref,dx,dy)=>{sc.querySelectorAll('.bub2').forEach(x=>x.remove());const r=ref.getBoundingClientRect(),q=sc.getBoundingClientRect(),z=Z||1;const b=el('div',{class:'bub2'},t);b.style.left=Math.max(4,(r.left-q.left)/z+dx)+'px';b.style.top=((r.top-q.top)/z+dy)+'px';sc.append(b);setTimeout(()=>b.remove(),2200)};
@@ -7264,7 +7268,7 @@ const _tb=topBar;topBar=function(...a){_tb(...a);const t=document.querySelector(
   const h=t.querySelector('.tbtn.home');if(h&&/\uc5f0\uc2b5\u00b7\uac8c\uc784/.test(h.textContent))h.textContent=h.textContent.replace('\uc5f0\uc2b5\u00b7\uac8c\uc784','\ub180\uc774\ud130')};
 
 /* ---------- \ubcf5\uc2b5\uc740 \ubc30\uc6b4 \ub2e8\uc6d0\uc758 \ubb38\uc7a5\uc73c\ub85c\ub9cc ---------- */
-const lessonOf=k=>/^n9_/.test(k)?9:/^n10_/.test(k)?10:/^b/.test(k)?12:11;
+const lessonOf=k=>/^n7_/.test(k)?7:/^n8_/.test(k)?8:/^sp4_/.test(k)?4:/^sp5_/.test(k)?5:/^n9_/.test(k)?9:/^n10_/.test(k)?10:/^b/.test(k)?12:11;
 const touched=n=>{if(!U)return true;const pre=U.PRE[n]??'';return LES===n||!!S['ls'+n]||Object.keys(S.stars||{}).some(k=>n===11?/^\d/.test(k):k.startsWith(pre))};
 window.REVOK=k=>touched(lessonOf(k));
 
@@ -7668,7 +7672,7 @@ function showPuzzle(){BACK=[showPlay,'\ub180\uc774\ud130'];TB_STEP=false;ACTIVE=
   ask()}
 
 /* ---------- \ud83d\ude4b \uc601\uc5b4 \uc190\ub2d8: \uc9c0\ub3c4\uc5d0 \uac00\ub054 \ucc3e\uc544\uc640\uc694 (\ud558\ub8e8 2\ubc88\uae4c\uc9c0) ---------- */
-const GUESTS=['n9_ch_alice','n9_ch_rabbit','n9_ch_hatter','n9_ch_queen','n10_ch_pino','n10_ch_cricket','n10_ch_grandpa','n10_ch_ring'];
+const GUESTS=['n7_ch_prince','n7_ch_pauper','n7_ch_servant','n8_ch_red','n8_ch_clerk1','n8_ch_wolf','n9_ch_alice','n9_ch_rabbit','n9_ch_hatter','n9_ch_queen','n10_ch_pino','n10_ch_cricket','n10_ch_grandpa','n10_ch_ring'];
 const HI=['Hello!','Hi there!','Excuse me!','Knock, knock!'];
 let gTimer=null;
 function guestQ(){const L=[];U.ORDER.filter(touched).forEach(n=>{const D=U.DATA(n);Object.values(D.act||{}).forEach(v=>{if(!v.img||!v.a||!CM[v.a]||!IMG[v.img]||/_(yes|no)$/.test(v.img))return;if(L.some(x=>x.a===v.a||x.img===v.img))return;L.push(v)})});

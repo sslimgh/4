@@ -1,7 +1,7 @@
 /* 헬로 모모 아일랜드 앱
    게임 파일(index.html)은 크기가 커서 한 번 받아 두고 다음부터는 바로 열어요.
    index.html을 새로 올릴 때는 아래 번호를 하나 올려 주세요 (예: v2 → v3). 그래야 학생 휴대폰도 새 버전을 받아요. */
-const CACHE = 'momo-app-v4';
+const CACHE = 'momo-app-v5';
 const SHELL = ['./', 'index.html', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'icon-maskable-512.png', 'apple-touch-icon.png'];
 
 self.addEventListener('install', e => {
