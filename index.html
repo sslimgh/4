@@ -4,7 +4,7 @@
 /* ===== app connect block (GitHub app) =====
    GAME_API: Apps Script web app address (deploy > manage deployments). Change only this line if the address changes. */
 var GAME_API = 'https://script.google.com/macros/s/AKfycbzqoouTfjwKWxpLjmvbFm7Tkk10Vyw0rGIzImp2MVfq1WyvL68fUg2QJCKVyIZC1_Jdew/exec';
-var APP_BUILD = '5';
+var APP_BUILD = '7';
 /* google.script.run stand-in: every call goes to Code.gs doPost as JSON, without Google sign-in cookies */
 (function(){
   function call(fn, args, ok, bad, tries){
@@ -7092,14 +7092,14 @@ function pad(title,sub,check){return new Promise(res=>{const o=el('div',{class:'
   const kd=e=>{if(!document.body.contains(o)){removeEventListener('keydown',kd);return}if(/^\d$/.test(e.key))press(e.key);else if(e.key==='Backspace')press('\u232b')};addEventListener('keydown',kd);document.body.append(o)})}
 
 /* \ub4e4\uc5b4\uac00\uae30: \uc120\uc0dd\ub2d8 \ud655\uc778 \u2192 \ube44\ubc00\ubc88\ud638 \ud655\uc778 \u2192 \uae30\ub85d \ubd88\ub7ec\uc624\uae30 */
-async function enter(nm){if(isTN(nm)){if(GAS&&!TPIN){teacherPin(nm);return}window.PW='';login(nm);return}
+async function enter(nm){window.ENTERING=1;if(isTN(nm)){if(GAS&&!TPIN){teacherPin(nm);return}window.PW='';login(nm);return}
   if(!GAS){window.PW='';HASPW=false;login(nm);return}
   const wait=el('div',{class:'overlay'},el('div',{class:'modal'},el('div',{style:'font-size:40px'},'\ud83d\udd0d'),el('h2',{},'\ud655\uc778\ud558\uace0 \uc788\uc5b4\uc694\u2026')));document.body.append(wait);
   const h=await call('hasPw',nm);wait.remove();HASPW=!!(h&&h.has);
   if(!HASPW){window.PW='';login(nm);return}
   const sp=savedPw(nm);if(sp){const c=await call('pwCheck',nm,sp);if(c&&c.ok){window.PW=sp;login(nm);return}keepPw(nm,'')}
   let tries=0;const p=await pad(nm,'\ube44\ubc00\ubc88\ud638 4\uc790\ub9ac\ub97c \ub20c\ub7ec \uc8fc\uc138\uc694',async v=>{const c=await call('pwCheck',nm,v);if(c&&c.ok)return true;tries++;return tries>=3?'\ube44\ubc00\ubc88\ud638\ub97c \uc78a\uc5c8\uc73c\uba74 \uc120\uc0dd\ub2d8\uaed8 \ub9d0\uc500\ub4dc\ub824\uc694':'\ube44\ubc00\ubc88\ud638\uac00 \ub2ec\ub77c\uc694'});
-  if(!p)return;window.PW=p;keepPw(nm,p);login(nm)}
+  if(!p){window.ENTERING=0;if(window.KLPEND){window.KLPEND=0;showStart()}return}window.PW=p;keepPw(nm,p);login(nm)}
 window.ENTER=enter;
 async function makePw(){if(!GAS||!S.name||isTN(S.name))return;
   const a=await pad(HASPW?'\uc0c8 \ube44\ubc00\ubc88\ud638':'\ube44\ubc00\ubc88\ud638 \ub9cc\ub4e4\uae30','\uc22b\uc790 4\uc790\ub9ac\ub97c \uc815\ud574\uc11c \ub20c\ub7ec\uc694. \uaf2d \uae30\uc5b5\ud574\uc694!');if(!a)return;
@@ -7155,7 +7155,7 @@ async function teacherEnter(name,pin){const nm='0\ubc88 '+name.replace(/\s+/g,''
   const r=await call('teacherCheck',pin);if(!r||!r.ok){SFX.no();toast('\ube44\ubc00\ubc88\ud638\uac00 \ub9de\uc9c0 \uc54a\uc544\uc694');return}TPIN=pin;try{sessionStorage.setItem('momo_tname',name)}catch(e){}window.PW='';login(nm)}
 showStart=function(){RUNID++;Snd.stop();document.querySelectorAll('.overlay,.gpanel,.moresheet,.moreov,.utip,.giftbal,.goldmomo,.toast,.inbsheet').forEach(x=>x.remove());$('#top').style.display='none';const m=$('#main');m.innerHTML='';
   if(!GAS&&!KL)KL=['4\ud559\ub144 2\ubc18'];if(KL&&KL.length===1&&!MCLS)MCLS=KL[0];if(MCLS)loadRoster();
-  if(GAS&&!KLdone){KLdone=1;const was=JSON.stringify(KL);loadKL().then(L=>{if(!L){const w=document.getElementById('kwarn');if(w)w.textContent='\u26a0\ufe0f \ubc18 \ubaa9\ub85d\uc744 \ubd88\ub7ec\uc624\uc9c0 \ubabb\ud588\uc5b4\uc694. \uc120\uc0dd\ub2d8: Apps Script\uc5d0 \uc0c8 Code.gs\ub97c \ubd99\uc5ec \ub123\uace0 \u300c\uc0c8 \ubc84\uc804\u300d\uc73c\ub85c \ubc30\ud3ec\ud588\ub294\uc9c0 \ud655\uc778\ud574 \uc8fc\uc138\uc694.';return}if(JSON.stringify(L)!==was&&document.querySelector('.st2'))showStart()})}
+  if(GAS&&!KLdone){KLdone=1;const was=JSON.stringify(KL);loadKL().then(L=>{if(!L){const w=document.getElementById('kwarn');if(w)w.textContent='\u26a0\ufe0f \ubc18 \ubaa9\ub85d\uc744 \ubd88\ub7ec\uc624\uc9c0 \ubabb\ud588\uc5b4\uc694. \uc120\uc0dd\ub2d8: Apps Script\uc5d0 \uc0c8 Code.gs\ub97c \ubd99\uc5ec \ub123\uace0 \u300c\uc0c8 \ubc84\uc804\u300d\uc73c\ub85c \ubc30\ud3ec\ud588\ub294\uc9c0 \ud655\uc778\ud574 \uc8fc\uc138\uc694.';return}if(JSON.stringify(L)!==was&&document.querySelector('.st2')){if(window.ENTERING)window.KLPEND=1;else showStart()}})}
   const myK=S.klass||mMain(),me=S.name&&!window.isGuest()?S.name:'';
   const W=el('div',{class:'st2'}),sc=el('div',{class:'scene2',html:skySVG()});W.append(sc);
   sc.append(el('div',{class:'hd',html:LOGO},el('div',{class:'rib2'},el('span',{class:'w'},'\uc601\uc5b4 4 \u00b7 \ucc9c\uc7ac\uad50\uc721 \u00b7 2\ud559\uae30 7~12\ub2e8\uc6d0'))));
@@ -7361,6 +7361,15 @@ showSentence=function(){BACK=[showPlay,'\ub180\uc774\ud130'];TB_STEP=false;ACTIV
   ask()};
 Object.assign(window.G||{},{showMap,pullGifts,showSentence});
 })();
+
+/* \uc18c\ub9ac \uc7ac\uc0dd\uae30\ub294 \ucd5c\uadfc \uac83 20\uac1c\ub9cc \ub0a8\uaca8\uc694. \uc624\ub798 \ud558\uba74 \uc7ac\uc0dd\uae30\uac00 \uc313\uc5ec \ud734\ub300\ud3f0\uc5d0\uc11c \uc18c\ub9ac\uac00 \uc548 \ub098\uc624\ub358 \ubb38\uc81c */
+(()=>{const MAX=20,ord=[];
+  Snd.get=function(k){let a=this.cache[k];const i=ord.indexOf(k);if(i>=0)ord.splice(i,1);ord.push(k);if(a)return a;
+    a=new Audio(AUD[k]);a.preload='auto';a.dataset.k=k;this.cache[k]=a;
+    for(let n=0;ord.length>MAX&&n<ord.length;n++){const old=ord[0],b=this.cache[old];if(old===k||b===this.cur){ord.push(ord.shift());continue}
+      ord.shift();delete this.cache[old];if(b){try{b.onended=null;b.onerror=null;b.pause();b.removeAttribute('src');b.load()}catch(e){}}}
+    return a};
+  window.__SNDN=()=>Object.keys(Snd.cache).length})();
 
 /* ===================== \ud83c\udfdd \ud5ec\ub85c \ubaa8\ubaa8 \uc544\uc77c\ub79c\ub4dc: \uc54c\ub9bc\ud568 \u00b7 \ub808\ubca8 \u00b7 \uce6d\ud638 \u00b7 \ud0d0\ud5d8 \uc77c\uc9c0 \u00b7 \uc18c\ub9ac \ub3c4\ub451 \ubcf4\uc2a4 \u00b7 \ub4e3\uae30 \ud0d1 ===================== */
 (function(){
