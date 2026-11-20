@@ -4,7 +4,7 @@
 /* ===== app connect block (GitHub app) =====
    GAME_API: Apps Script web app address (deploy > manage deployments). Change only this line if the address changes. */
 var GAME_API = 'https://script.google.com/macros/s/AKfycbzqoouTfjwKWxpLjmvbFm7Tkk10Vyw0rGIzImp2MVfq1WyvL68fUg2QJCKVyIZC1_Jdew/exec';
-var APP_BUILD = '8';
+var APP_BUILD = '9';
 /* google.script.run stand-in: every call goes to Code.gs doPost as JSON, without Google sign-in cookies */
 (function(){
   function call(fn, args, ok, bad, tries){
@@ -7078,7 +7078,7 @@ function sceneSVG(){const isl=[['\ud83e\udd16','L7',80,330],['\ud83d\udcb0','L8'
 const call=(fn,...a)=>new Promise(res=>{if(!GAS)return res(null);let done=false;setTimeout(()=>{if(!done)res(null)},8000);try{GSR().withSuccessHandler(r=>{done=true;res(r)}).withFailureHandler(()=>{done=true;res(null)})[fn](...a)}catch(e){res(null)}});
 const pwKey=nm=>'momo_pw_'+(MCLS||'')+'_'+nm;
 const savedPw=nm=>{try{return localStorage.getItem(pwKey(nm))||''}catch(e){return ''}};
-const keepPw=(nm,p)=>{try{p?localStorage.setItem(pwKey(nm),p):localStorage.removeItem(pwKey(nm))}catch(e){}};
+const keepPw=(nm,p)=>{try{localStorage.removeItem(pwKey(nm))}catch(e){}};  // \ud559\uc0dd \ube44\ubc00\ubc88\ud638\ub294 \uae30\uae30\uc5d0 \uc800\uc7a5\ud558\uc9c0 \uc54a\uc544\uc694 (\uc608\uc804\uc5d0 \uc800\uc7a5\ub41c \uac83\ub3c4 \uc9c0\uc6c0)
 window.PW='';let HASPW=false;
 const _pl=payload;payload=function(ev){const p=_pl(ev);p.pw=window.PW||'';return p};
 window.PWBAD=()=>{toast('\ud83d\udd12 \ube44\ubc00\ubc88\ud638\uac00 \ubc14\ub00c\uc5c8\uc5b4\uc694. \ub2e4\uc2dc \ub4e4\uc5b4\uc640 \uc8fc\uc138\uc694',3500);window.PW='';keepPw(S.name,'');showStart()};
@@ -7097,7 +7097,7 @@ async function enter(nm){window.ENTERING=1;if(isTN(nm)){if(GAS&&!TPIN){teacherPi
   const wait=el('div',{class:'overlay'},el('div',{class:'modal'},el('div',{style:'font-size:40px'},'\ud83d\udd0d'),el('h2',{},'\ud655\uc778\ud558\uace0 \uc788\uc5b4\uc694\u2026')));document.body.append(wait);
   const h=await call('hasPw',nm);wait.remove();HASPW=!!(h&&h.has);
   if(!HASPW){window.PW='';login(nm);return}
-  const sp=savedPw(nm);if(sp){const c=await call('pwCheck',nm,sp);if(c&&c.ok){window.PW=sp;login(nm);return}keepPw(nm,'')}
+  keepPw(nm,'');  // \ube44\ubc00\ubc88\ud638\ub294 \uae30\uae30\uc5d0 \uae30\uc5b5\ud574 \ub450\uc9c0 \uc54a\uace0, \ub4e4\uc5b4\uc62c \ub54c\ub9c8\ub2e4 \ubb3c\uc5b4\uc694
   let tries=0;const p=await pad(nm,'\ube44\ubc00\ubc88\ud638 4\uc790\ub9ac\ub97c \ub20c\ub7ec \uc8fc\uc138\uc694',async v=>{const c=await call('pwCheck',nm,v);if(c&&c.ok)return true;tries++;return tries>=3?'\ube44\ubc00\ubc88\ud638\ub97c \uc78a\uc5c8\uc73c\uba74 \uc120\uc0dd\ub2d8\uaed8 \ub9d0\uc500\ub4dc\ub824\uc694':'\ube44\ubc00\ubc88\ud638\uac00 \ub2ec\ub77c\uc694'});
   if(!p){window.ENTERING=0;if(window.KLPEND){window.KLPEND=0;showStart()}return}window.PW=p;keepPw(nm,p);login(nm)}
 window.ENTER=enter;
