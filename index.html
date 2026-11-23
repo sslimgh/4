@@ -4,7 +4,7 @@
 /* ===== app connect block (GitHub app) =====
    GAME_API: Apps Script web app address (deploy > manage deployments). Change only this line if the address changes. */
 var GAME_API = 'https://script.google.com/macros/s/AKfycbzqoouTfjwKWxpLjmvbFm7Tkk10Vyw0rGIzImp2MVfq1WyvL68fUg2QJCKVyIZC1_Jdew/exec';
-var APP_BUILD = '9';
+var APP_BUILD = '10';
 /* google.script.run stand-in: every call goes to Code.gs doPost as JSON, without Google sign-in cookies */
 (function(){
   function call(fn, args, ok, bad, tries){
@@ -414,8 +414,8 @@ const OPEN=()=>isTN(S.name)?PLACES.length:Math.min(S.open,(LES===11?CFG.open:(CF
 const ONLINE=()=>GAS||/^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/.test(GURL);
 function payload(ev){const pl=PLACES.map((p,i)=>{const st=p.steps.reduce((a,_,j)=>a+(S.stars[SID(i,j)]||0),0),dn=p.steps.filter((_,j)=>S.stars[SID(i,j)]).length;return dn?`\u2605${st}/${p.steps.length*3} (${dn}/${p.steps.length})`:''});
   return{name:S.name,stars:totalStars(),done:Object.keys(S.stars).length,total:PLACES.reduce((a,p)=>a+p.steps.length,0),places:pl,listen:S.listen,rec:S.rec,min:Math.round(S.sec/60),visits:S.visits,coin:S.coin,cards:CARDS.filter(c=>hasCard(c[0])).length+' / '+CARDS.length,state:JSON.stringify(S),days:S.days,today:(S.D&&S.D.listen)||0,ta:S.taBest,lv:typeof LV!=='undefined'?('Lv.'+(lvOf(totalStars())+1)+' '+LV[lvOf(totalStars())][1]):'',ev:ev||null}}
-let lastSync='';function sync(ev){if(!ONLINE()||!S.name||isTN(S.name))return;const p=payload(ev);const key=p.state.replace(/"ts":\d+,?/,'');if(!ev&&key===lastSync)return;lastSync=key;
-  try{if(GAS)GSR().withSuccessHandler(r=>{if(r==='pw'&&S.name){window.PWBAD&&PWBAD();return}if(r==='reset'&&S.name){toast('\uc120\uc0dd\ub2d8\uc774 \uae30\ub85d\uc744 \uc0c8\ub85c \uc2dc\uc791\ud558\uac8c \ud588\uc5b4\uc694. \ucc98\uc74c\ubd80\ud130 \uc2dc\uc791\ud574\uc694!',3500);login(S.name)}}).withFailureHandler(()=>{lastSync=''}).saveProgress(p);else fetch(GURL,{method:'POST',body:JSON.stringify(Object.assign({cls:MCLS},p))}).catch(()=>{lastSync=''})}catch(e){}}
+let lastSync='';function sync(ev){if(!ONLINE()||!S.name||isTN(S.name)||window.NOSYNC)return;const p=payload(ev);const key=p.state.replace(/"ts":\d+,?/,'');if(!ev&&key===lastSync)return;lastSync=key;
+  try{if(GAS)GSR().withSuccessHandler(r=>{if(r==='pw'&&S.name){window.PWBAD&&PWBAD();return}if(r==='reset'&&S.name){toast('\uc120\uc0dd\ub2d8\uc774 \uae30\ub85d\uc744 \uc0c8\ub85c \uc2dc\uc791\ud558\uac8c \ud588\uc5b4\uc694. \ucc98\uc74c\ubd80\ud130 \uc2dc\uc791\ud574\uc694!',3500);login(S.name)}else if(r&&r.st&&window.GUARD_APPLY)GUARD_APPLY(r.st);else if(r===null||r===undefined){lastSync='';window.GUARD_RETRY&&GUARD_RETRY()}}).withFailureHandler(()=>{lastSync='';window.GUARD_RETRY&&GUARD_RETRY()}).saveProgress(p);else fetch(GURL,{method:'POST',body:JSON.stringify(Object.assign({cls:MCLS},p))}).catch(()=>{lastSync=''})}catch(e){}}
 function getBoard(ok,fail){if(GAS)GSR().withSuccessHandler(ok).withFailureHandler(fail).getBoard();else fetch(GURL+'?api=board'+CQ()).then(r=>r.json()).then(ok).catch(fail)}
 setInterval(()=>{sync();loadCfg()},120000);
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'){save();sync()}});
@@ -429,8 +429,8 @@ function loadRemote(name){return new Promise(res=>{if(!ONLINE())return res(null)
   try{if(GAS)GSR().withSuccessHandler(done).withFailureHandler(()=>done(null)).loadState(name,window.PW||'');else fetch(GURL+'?api=load&u='+encodeURIComponent(name)+'&p='+encodeURIComponent(window.PW||'')+CQ()).then(r=>r.text()).then(done).catch(()=>done(null))}catch(e){done(null)}})}
 async function login(name){RUNID++;Snd.stop();$('#top').style.display='none';const m=$('#main');m.innerHTML='';m.append(el('div',{style:'padding:80px 20px;text-align:center;font-size:24px;font-weight:800'},`\ud83d\udc4b ${name}, \uae30\ub85d\uc744 \ubd88\ub7ec\uc624\uace0 \uc788\uc5b4\uc694\u2026`));
   let loc=null;try{loc=JSON.parse(localStorage.getItem(PKEY(name))||'null')}catch(e){}if(!loc&&S.name===name&&(S.klass||mMain())===(MCLS||mMain()))loc=S;
-  const [rem]=await Promise.all([isTN(name)?null:loadRemote(name),loadCfg()]);let pick=loc;if(rem&&rem.reset){if(!(loc&&(loc.rs||0)>=rem.ts))pick=null}else if(rem&&rem.stars&&(!pick||(rem.ts||0)>(pick.ts||0)))pick=rem;
-  const rate=S.rate||1;S=Object.assign(BLANK(),pick||{});S.name=name;S.klass=MCLS||'';if(!pick)S.rate=rate;if(rem&&rem.reset&&!pick)S.rs=rem.ts;normS();S.visits++;save();
+  const [rem]=await Promise.all([isTN(name)?null:loadRemote(name),loadCfg()]);let pick=loc;const RF=!!(rem&&(rem.__fail||rem.pw));window.NOSYNC=RF&&!isTN(name);const rm=RF?null:rem;if(rm&&rm.reset){if(!(loc&&(loc.rs||0)>=rm.ts))pick=null}else if(rm&&rm.stars){pick=(pick&&!pick.reset)?MOMO_MERGE.merge(rm,pick):rm}if(window.NOSYNC)setTimeout(()=>toast('\u2601\ufe0f \uc11c\ubc84 \uc5f0\uacb0\uc774 \ub290\ub824\uc694. \uc5f0\uacb0\ub418\uba74 \uae30\ub85d\uc744 \ud569\uccd0\uc11c \uc800\uc7a5\ud560\uac8c\uc694',3500),2600);
+  const rate=S.rate||1;S=Object.assign(BLANK(),pick||{});S.name=name;S.klass=MCLS||'';if(!pick)S.rate=rate;if(rm&&rm.reset&&!pick)S.rs=rm.ts;normS();S.visits++;save();
   sync({place:'\uc811\uc18d',step:pick?'\ub2e4\uc2dc \uc811\uc18d':'\ucc98\uc74c \uc2dc\uc791',stars:0,sec:0});SFX.win();$('#top').style.display='';
   if(pick)toast(`${name}, \ub2e4\uc2dc \uc654\uad70\uc694! \uc774\uc5b4\uc11c \ud574\uc694 \u2b50${totalStars()}`,2500);showMap(!pick&&!isTN(name));if(!isTN(name))setTimeout(dailyCheck,pick?900:2500);else toast('\ud83d\udc69\u200d\ud83c\udfeb \uc120\uc0dd\ub2d8\uc73c\ub85c \ub4e4\uc5b4\uc654\uc5b4\uc694'+(MCLS?' ('+MCLS+')':'')+'. \ubaa8\ub4e0 \uc7a5\uc18c\uc640 \ud65c\ub3d9\uc774 \uc5f4\ub824 \uc788\uc5b4\uc694.',3000)}
 
@@ -5073,6 +5073,95 @@ window.__UNITS={
 ]
 }
 };
+/*MERGE-BEGIN*/
+/* \uae30\ub85d \ud569\uce58\uae30: \ub450 \uae30\ub85d(\uc11c\ubc84\uc5d0 \uc788\ub358 \uac83, \uc0c8\ub85c \ub4e4\uc5b4\uc628 \uac83)\uc744 \ud558\ub098\ub85c \ud569\uccd0\uc694. \uc11c\ubc84\uc640 \uac8c\uc784\uc774 \ub611\uac19\uc740 \uaddc\uce59\uc744 \uc368\uc694.
+ * - \ubcc4\u00b7\uce74\ub4dc\u00b7\uc544\uc774\ud15c\u00b7\ucd5c\uace0 \uae30\ub85d\u00b7\ub808\ubca8\ucc98\ub7fc \ub298\uae30\ub9cc \ud558\ub294 \uac83\uc740 \ud070 \ucabd\uc744 \ub0a8\uaca8\uc694 (\uc808\ub300 \uc904\uc9c0 \uc54a\uc544\uc694)
+ * - \ucf54\uc778\u00b7\uc0c1\uc790\ub294 \u300c\ubaa8\uc740 \uc591\u300d\uacfc \u300c\uc4f4 \uc591\u300d\uc744 \ub530\ub85c \uc138\uc5b4 \ud569\uccd0\uc694 (\uc608\uc804 \uae30\uae30\uac00 \ubcf4\ub0b4\ub3c4 \ub418\ub3cc\uc544\uac00\uc9c0 \uc54a\uc544\uc694)
+ * - \uc624\ub298\u00b7\uc774\ubc88 \uc8fc \uae30\ub85d\uc740 \uac19\uc740 \ub0a0\u00b7\uac19\uc740 \uc8fc\uba74 \ud070 \ucabd, \ub2e4\ub974\uba74 \ub354 \ucd5c\uadfc \uac83
+ * - \ub098\uba38\uc9c0(\uc124\uc815, \ub3d9\ubb3c \uce5c\uad6c \ubc30\uace0\ud514 \ub4f1)\ub294 \ub354 \ub098\uc911\uc5d0 \uc800\uc7a5\ub41c \ucabd */
+var MOMO_MERGE = (function () {
+  var UNION = { stk: 1, items: 1, unl: 1, puz: 1, perfect: 1, chars: 1 };
+  var MAXOBJ = { stars: 1, secOf: 1, mgBest: 1, cards: 1, ach: 1, sp: 1, wp: 1, heard: 1, petK: 1, hist: 1, qs: 1, bch: 1 };
+  var MAXNUM = { listen: 1, rec: 1, sec: 1, visits: 1, days: 1, taBest: 1, towerBest: 1, best: 1, xlv: 1, xpx: 1, lv: 1, bossWins: 1, open: 1, story: 1, cg: 1, classGift: 1, tdCnt: 1 };
+  var PERIOD = { D: 1, W: 1, BW: 1, TD: 1, pdy: 1, gst: 1, bxd: 1 };
+  var LONGER = { log: 1, logw: 1 };
+  var LGK = ['coin', 'bx.c', 'bx.s', 'bx.r'];
+  var SKIP = { ts: 1, rs: 1, lg: 1, rv: 1 };
+  function isO(x) { return !!x && typeof x === 'object' && !Array.isArray(x); }
+  function num(x) { return typeof x === 'number' && isFinite(x); }
+  function cp(x) { return x == null ? x : JSON.parse(JSON.stringify(x)); }
+  function union(x, y) { var seen = {}, o = []; x.concat(y).forEach(function (v) { var s = JSON.stringify(v); if (!seen[s]) { seen[s] = 1; o.push(v); } }); return o; }
+  function maxDeep(x, y) {
+    if (num(x) && num(y)) return Math.max(x, y);
+    if (isO(x) && isO(y)) { var o = {}, k; for (k in x) o[k] = cp(x[k]); for (k in y) o[k] = (k in x) ? maxDeep(x[k], y[k]) : cp(y[k]); return o; }
+    if (Array.isArray(x) && Array.isArray(y)) return union(x, y);
+    if (x === true || y === true) return true;
+    return y === undefined || y === null ? cp(x) : cp(y);
+  }
+  function pkey(o) { return o.k != null ? o.k : (o.d != null ? o.d : ''); }
+  function later(a, b) { return (num(a) && num(b)) ? a > b : String(a) > String(b); }
+  function period(x, y) { if (!isO(x)) return cp(y); if (!isO(y)) return cp(x); var a = pkey(x), b = pkey(y); if (String(a) !== String(b)) return cp(later(a, b) ? x : y); return maxDeep(x, y); }
+  function longer(x, y) { var o = {}, k; for (k in x) o[k] = cp(x[k]); for (k in y) { if (!(k in o) || (Array.isArray(y[k]) && Array.isArray(o[k]) && y[k].length > o[k].length)) o[k] = cp(y[k]); } return o; }
+  function pets(x, y, yNewer) { var o = {}, k; for (k in x) o[k] = cp(x[k]); for (k in y) { if (!(k in o)) { o[k] = cp(y[k]); continue; } var a = x[k], b = y[k], m = cp(yNewer ? b : a); if (isO(a) && isO(b) && isO(m)) { ['xp', 'st'].forEach(function (f) { if (num(a[f]) && num(b[f])) m[f] = Math.max(a[f], b[f]); }); } o[k] = m; } return o; }
+  function getP(s, k) { var p = k.split('.'), v = s; for (var i = 0; i < p.length; i++) { if (!isO(v)) return undefined; v = v[p[i]]; } return v; }
+  function setP(s, k, v) { var p = k.split('.'), o = s; for (var i = 0; i < p.length - 1; i++) { if (!isO(o[p[i]])) o[p[i]] = {}; o = o[p[i]]; } o[p[p.length - 1]] = v; }
+  /* \ucf54\uc778\u00b7\uc0c1\uc790 \uc7a5\ubd80: \uc9c0\ub09c\ubc88\ubcf4\ub2e4 \ub298\uc5c8\uc73c\uba74 \u300c\ubaa8\uc740 \uc591\u300d, \uc904\uc5c8\uc73c\uba74 \u300c\uc4f4 \uc591\u300d\uc5d0 \ub354\ud574\uc694 */
+  function tick(s) {
+    if (!isO(s)) return s; if (!isO(s.lg)) s.lg = {};
+    LGK.forEach(function (k) { var v = getP(s, k); if (!num(v)) return; var L = s.lg[k]; if (!isO(L) || !num(L.e) || !num(L.s) || !num(L.p)) { s.lg[k] = { e: v, s: 0, p: v }; return; } var d = v - L.p; if (d > 0) L.e += d; else if (d < 0) L.s -= d; L.p = v; });
+    return s;
+  }
+  function merge(a, b) {
+    if (!isO(a) || a.reset) return cp(b); if (!isO(b) || b.reset) return cp(a);
+    a = tick(cp(a)); b = tick(cp(b));
+    var bN = (b.ts || 0) >= (a.ts || 0), N = bN ? b : a, O = bN ? a : b, m = {}, k;
+    for (k in O) m[k] = cp(O[k]); for (k in N) m[k] = cp(N[k]);
+    for (k in m) {
+      if (SKIP[k]) continue;
+      var x = a[k], y = b[k]; if (x === undefined || y === undefined) continue;
+      if (UNION[k] && Array.isArray(x) && Array.isArray(y)) m[k] = union(x, y);
+      else if (MAXOBJ[k] && isO(x) && isO(y)) m[k] = maxDeep(x, y);
+      else if ((MAXNUM[k] || /^ls\d+$/.test(k)) && num(x) && num(y)) m[k] = Math.max(x, y);
+      else if (PERIOD[k]) m[k] = period(x, y);
+      else if (LONGER[k] && isO(x) && isO(y)) m[k] = longer(x, y);
+      else if (k === 'pets' && isO(x) && isO(y)) m[k] = pets(x, y, bN);
+    }
+    var la = a.lg || {}, lb = b.lg || {}; m.lg = {};
+    LGK.forEach(function (key) {
+      var A = la[key], B = lb[key]; if (!A && !B) return;
+      var e = Math.max(A ? A.e : 0, B ? B.e : 0), s = Math.max(A ? A.s : 0, B ? B.s : 0), v = Math.max(0, e - s);
+      m.lg[key] = { e: e, s: s, p: v }; setP(m, key, v);
+    });
+    m.ts = Math.max(a.ts || 0, b.ts || 0); m.rs = Math.max(a.rs || 0, b.rs || 0);
+    return m;
+  }
+  /* \uae30\ub85d \ud06c\uae30 \uc22b\uc790\ub85c \ubcf4\uae30 (\uc810\uac80\u00b7\ube44\uad50\uc6a9) */
+  var LVT = [0, 5, 10, 18, 26, 35, 45, 55, 63];
+  function sumO(o) { var t = 0; if (isO(o)) for (var k in o) if (num(o[k])) t += o[k]; return t; }
+  function stat(s) {
+    s = isO(s) ? s : {}; var st = sumO(s.stars), lv = 0; LVT.forEach(function (t, i) { if (st >= t) lv = i; });
+    var L = isO(s.lg) && isO(s.lg.coin) ? s.lg.coin : null;
+    return { stars: st, done: isO(s.stars) ? Object.keys(s.stars).length : 0, lv: lv + 1, coin: num(s.coin) ? s.coin : 0, earned: L ? L.e : (num(s.coin) ? s.coin : 0),
+      cards: sumO(s.cards), items: Array.isArray(s.items) ? s.items.length : 0, pets: isO(s.pets) ? Object.keys(s.pets).length : 0, tower: num(s.towerBest) ? s.towerBest : 0,
+      listen: num(s.listen) ? s.listen : 0, mins: Math.round((num(s.sec) ? s.sec : 0) / 60) };
+  }
+  /* b\uac00 a\ubcf4\ub2e4 \uc904\uc5b4\ub4e0 \uac83 (\ub298\uae30\ub9cc \ud574\uc57c \ud558\ub294 \uac83\ub4e4) */
+  var WATCH = [['stars', '\ubcc4'], ['done', '\ub05d\ub0b8 \ud65c\ub3d9'], ['cards', '\uce74\ub4dc'], ['items', '\uc544\uc774\ud15c'], ['pets', '\ub3d9\ubb3c \uce5c\uad6c'], ['earned', '\ubaa8\uc740 \ucf54\uc778'], ['tower', '\ub4e3\uae30 \ud0d1 \ucd5c\uace0 \uce35'], ['listen', '\ub4e4\uc740 \ubb38\uc7a5']];
+  function drops(a, b) { var A = stat(a), B = stat(b), out = []; WATCH.forEach(function (w) { if (B[w[0]] < A[w[0]]) out.push({ k: w[0], what: w[1], had: A[w[0]], got: B[w[0]] }); }); return out; }
+  /* \ud569\uce5c \uacb0\uacfc\uac00 \ub4e4\uc5b4\uc628 \uae30\ub85d\uacfc \uc2e4\uc81c\ub85c \ub2e4\ub978\uac00 (\uc800\uc7a5 \uc2dc\uac01\uc740 \ube7c\uace0) */
+  function differs(m, b) { if (!isO(m) || !isO(b)) return false; var x = cp(m), y = cp(b); [x, y].forEach(function (o) { delete o.ts; delete o.rs; delete o.lg; }); return JSON.stringify(sortK(x)) !== JSON.stringify(sortK(y)); }
+  function sortK(o) { if (Array.isArray(o)) return o.map(sortK); if (!isO(o)) return o; var r = {}; Object.keys(o).sort().forEach(function (k) { r[k] = sortK(o[k]); }); return r; }
+  /* \uae30\ub85d\uc774 \ub108\ubb34 \ucee4\uc9c0\uba74 \uc624\ub798\ub41c \ub0a0\uc758 \ud65c\ub3d9 \uc77c\uc9c0\ubd80\ud130 \uc904\uc5ec\uc694 (\uc800\uc7a5\uc774 \uba48\ucd94\uc9c0 \uc54a\uac8c) */
+  function slim(s, max) {
+    var j = JSON.stringify(s); if (j.length <= max) return j; s = cp(s);
+    ['log', 'logw'].forEach(function (k) { if (!isO(s[k])) return; var ks = Object.keys(s[k]).sort(); while (ks.length > 7 && JSON.stringify(s).length > max) delete s[k][ks.shift()]; });
+    j = JSON.stringify(s); if (j.length > max && isO(s.qs)) { var q = Object.keys(s.qs); while (q.length && JSON.stringify(s).length > max) delete s.qs[q.shift()]; j = JSON.stringify(s); }
+    return j;
+  }
+  return { merge: merge, tick: tick, stat: stat, drops: drops, differs: differs, slim: slim };
+})();
+/*MERGE-END*/
+
 /* ===================== \ud83d\udcd9 Lesson 9 Is This Your Bag? \u00b7 \ud83d\udcd5 Lesson 10 What Time Is It? ===================== */
 (function(){
 const UD=window.__UNITS||{CM:{},LY:{}};Object.assign(CM,UD.CM);
@@ -7775,6 +7864,71 @@ Object.assign(window.G||{},{showMap,showPlay,showRain,showPuzzle,guestVisit});
 
 /* \uac8c\uc784 \ubb38\uad6c \uace0\uce58\uae30(\u270f\ufe0f \ubb38\uad6c)\ub294 \ubaa8\ub4e0 \ubc18\uc774 \uac19\uc774 \uc4f0\ub294 \uae00\uc774\ub77c \uccab \uc904 \ubc18 \ub2f4\uc784\uc5d0\uac8c\ub9cc \ubcf4\uc5ec\uc694 */
 (function w(){if(!window.TXB_ENV)return setTimeout(w,200);if(TXB_ENV.__m)return;TXB_ENV.__m=1;const _t=TXB_ENV.teacher;TXB_ENV.teacher=()=>_t()&&!!window.TMAIN})();
+
+/* ===================== \ud83d\udedf \uae30\ub85d \uc9c0\ud0b4\uc774 (\uac8c\uc784 \ucabd) =====================
+ * - \ub4e4\uc5b4\uc62c \ub54c: \uc774 \uae30\uae30 \uae30\ub85d\uacfc \uc11c\ubc84 \uae30\ub85d\uc744 \ud569\uccd0\uc694 (\uc5b4\ub290 \ucabd\ub3c4 \ubc84\ub9ac\uc9c0 \uc54a\uc544\uc694)
+ * - \uc11c\ubc84 \uae30\ub85d\uc744 \ubabb \ubc1b\uc544 \uc624\uba74, \ubc1b\uc544 \uc62c \ub54c\uae4c\uc9c0 \uc800\uc7a5\ud558\uc9c0 \uc54a\uc544\uc694 (\ube48 \uae30\ub85d\uc774 \ub36e\uc5b4\uc4f0\uc9c0 \uc54a\uac8c)
+ * - \uc800\uc7a5\ud560 \ub54c \uc11c\ubc84\uac00 \ud569\uce5c \uae30\ub85d\uc744 \ub3cc\ub824\uc8fc\uba74 \uadf8\ub300\ub85c \ubc1b\uc544\ub4e4\uc5ec\uc694
+ * - \ud654\uba74\uc744 \ub2eb\uac70\ub098 \ub2e4\ub978 \uc571\uc73c\ub85c \uac08 \ub54c \ubc14\ub85c \uc800\uc7a5\ud558\uace0, \uc800\uc7a5\uc774 \uc2e4\ud328\ud558\uba74 20\ucd08 \ub4a4 \ub2e4\uc2dc \ud574\uc694 */
+(()=>{
+  /* \uc11c\ubc84 \uae30\ub85d \ubd88\ub7ec\uc624\uae30: \ubabb \ubc1b\uc544 \uc624\uba74 {__fail:1} (\uc0c8 \ud559\uc0dd\uc774\ub77c \uae30\ub85d\uc774 \uc5c6\uc73c\uba74 null) */
+  loadRemote=function(name){return new Promise(res=>{if(!ONLINE())return res(null);let fin=false;const done=(v,f)=>{if(fin)return;fin=true;if(f)return res({__fail:1});try{res(v?JSON.parse(v):null)}catch(e){res({__fail:1})}};
+    setTimeout(()=>done(null,1),25000);
+    try{if(GAS)GSR().withSuccessHandler(v=>done(v)).withFailureHandler(()=>done(null,1)).loadState(name,window.PW||'');
+      else fetch(GURL+'?api=load&u='+encodeURIComponent(name)+'&p='+encodeURIComponent(window.PW||'')+CQ()).then(r=>r.text()).then(v=>done(v)).catch(()=>done(null,1))}catch(e){done(null,1)}})};
+
+  /* \uc11c\ubc84\uac00 \ud569\uce5c \uae30\ub85d\uc744 \ubc1b\uc544\ub4e4\uc774\uae30 */
+  window.GUARD_APPLY=function(st){let R=null;try{R=typeof st==='string'?JSON.parse(st):st}catch(e){return false}
+    if(!R||R.reset||!S.name||(R.name&&R.name!==S.name))return false;
+    MOMO_MERGE.tick(S);const keep={name:S.name,klass:S.klass};const m=MOMO_MERGE.merge(R,S);Object.assign(S,m,keep);
+    try{normS()}catch(e){}save();lastSync='';clearTimeout(window.__gsyT);window.__gsyT=setTimeout(()=>sync(),1500);return true};
+
+  /* \uc800\uc7a5 \uc2e4\ud328 \u2192 20\ucd08 \ub4a4 \ub2e4\uc2dc */
+  window.GUARD_RETRY=function(){clearTimeout(window.__grT);window.__grT=setTimeout(()=>{if(S.name&&!isTN(S.name))sync()},20000)};
+
+  /* \uc11c\ubc84 \uae30\ub85d\uc744 \ubabb \ubc1b\uc544 \uc628 \ucc44\ub85c \ub4e4\uc5b4\uc654\uc73c\uba74, \ubc1b\uc544 \uc62c \ub54c\uae4c\uc9c0 \uacc4\uc18d \ub2e4\uc2dc \ud574 \ubd10\uc694 */
+  let busy=false;
+  setInterval(async()=>{if(!window.NOSYNC||busy||!S.name||isTN(S.name))return;busy=true;
+    try{const r=await loadRemote(S.name);if(r&&r.__fail)return;if(r&&r.pw)return;
+      if(r&&r.stars&&!r.reset)GUARD_APPLY(r);window.NOSYNC=0;toast('\u2601\ufe0f \uc11c\ubc84\uc640 \uc5f0\uacb0\ub410\uc5b4\uc694. \uae30\ub85d\uc744 \ud569\uccd0\uc11c \uc800\uc7a5\ud588\uc5b4\uc694',2500);sync()}finally{busy=false}},20000);
+
+  /* \uc800\uc7a5\ud560 \ub54c \ucf54\uc778\u00b7\uc0c1\uc790 \uc7a5\ubd80\ub3c4 \uac19\uc774 */
+  const _plG=payload;payload=function(ev){MOMO_MERGE.tick(S);return _plG(ev)};
+
+  /* \ud654\uba74\uc744 \ub2eb\uac70\ub098 \ub2e4\ub978 \uc571\uc73c\ub85c \uac08 \ub54c \ubc14\ub85c \uc800\uc7a5 */
+  const now=()=>{try{if(S.name&&!isTN(S.name)){save();sync()}}catch(e){}};
+  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')now()});
+  addEventListener('pagehide',now);
+  /* 1\ubd84\ub9c8\ub2e4 \ubc14\ub010 \uac83\uc774 \uc788\uc73c\uba74 \uc800\uc7a5 (\ubc14\ub010 \uac8c \uc5c6\uc73c\uba74 \uc11c\ubc84\uc5d0 \ubcf4\ub0b4\uc9c0 \uc54a\uc544\uc694) */
+  setInterval(()=>{if(document.visibilityState!=='hidden'&&S.name&&!isTN(S.name)&&!window.NOSYNC)sync()},60000);
+})();
+
+/* ---------- \ud83d\udc69\u200d\ud83c\udfeb \uc120\uc0dd\ub2d8 \ud654\uba74: \ud83d\udedf \uae30\ub85d \uc9c0\ud0b4\uc774 ---------- */
+(()=>{const _dTG=drawT;drawT=function(s,my){_dTG(s,my);const tabs=s.querySelector('.tabs'),box=s.querySelector('.card');if(!tabs||!box||!TPIN)return;
+  tabs.insertBefore(el('button',{class:'tab'+(TTAB==='guard'?' on':''),onclick:()=>{TTAB='guard';SFX.click();drawT(s,my)}},'\ud83d\udedf \uae30\ub85d \uc9c0\ud0b4\uc774'),tabs.children[1]||null);
+  if(TTAB!=='guard')return;box.innerHTML='';
+  const head=el('div',{class:'achi',style:'border-color:#74c0fc;background:#e7f5ff;margin-bottom:10px'},el('div',{class:'achic'},'\ud83d\udedf'),el('div',{style:'flex:1'},
+    el('div',{style:'font-weight:900'},'\uae30\ub85d \uc9c0\ud0b4\uc774'),
+    el('div',{style:'font-size:14px;color:#495057;line-height:1.5'},'\ud559\uc0dd \uae30\ub85d\uc740 \uc800\uc7a5\ud560 \ub54c\ub9c8\ub2e4 \uc11c\ubc84 \uae30\ub85d\uacfc \ud569\uccd0\uc838\uc11c \ubcc4\u00b7\uce74\ub4dc\u00b7\ucf54\uc778 \ub4f1\uc774 \uc904\uc9c0 \uc54a\uc544\uc694. \ub0a0\ub9c8\ub2e4 \ubc31\uc5c5\ub3c4 \ub0a8\uaca8\uc694(21\uc77c). \uc5ec\uae30\uc11c\ub294 \uc9c0\uae08 \uae30\ub85d\uc744 \ubc31\uc5c5\uacfc \ube44\uad50\ud574, \uc904\uc5b4\ub4e0 \ud559\uc0dd\uc774 \uc788\uc73c\uba74 \ucc3e\uc544\uc11c \ub418\ub3cc\ub9b4 \uc218 \uc788\uc5b4\uc694.')));
+  const area=el('div',{},el('p',{style:'font-size:17px'},'\ud83d\udd0d \uc810\uac80\ud558\uace0 \uc788\uc5b4\uc694\u2026'));box.append(head,area);
+  const run=async()=>{area.innerHTML='';area.append(el('p',{style:'font-size:17px'},'\ud83d\udd0d \uc810\uac80\ud558\uace0 \uc788\uc5b4\uc694\u2026'));const r=await tCall('adminGuard',TPIN);if(ACTIVE!==my)return;area.innerHTML='';
+    if(!r||!r.ok){area.append(el('p',{style:'font-size:17px;color:#c92a2a'},'\uc810\uac80\ud558\uc9c0 \ubabb\ud588\uc5b4\uc694. Code.gs\ub97c \uc0c8 \ubc84\uc804\uc73c\ub85c \ubc14\uafe8\ub294\uc9c0 \ud655\uc778\ud558\uace0 \ub2e4\uc2dc \ub20c\ub7ec \uc8fc\uc138\uc694.'),el('button',{class:'big',onclick:run},'\ud83d\udd04 \ub2e4\uc2dc \uc810\uac80'));return}
+    const bad=r.list.filter(x=>!x.ok);
+    area.append(el('div',{style:`font-size:19px;font-weight:900;margin:4px 0 8px;color:${bad.length?'#c92a2a':'#2b8a3e'}`},bad.length?`\u26a0 \uae30\ub85d\uc774 \uc904\uc5b4\ub4e0 \ud559\uc0dd ${bad.length}\uba85`:`\u2705 \ud559\uc0dd ${r.list.length}\uba85 \ubaa8\ub450 \uc815\uc0c1\uc774\uc5d0\uc694`));
+    const btns=el('div',{class:'btnrow',style:'margin-bottom:8px'},el('button',{class:'big blue',onclick:run},'\ud83d\udd04 \ub2e4\uc2dc \uc810\uac80'));
+    if(bad.length)btns.append(el('button',{class:'big orange',onclick:async()=>{if(!await modal(`<h2>\ud83d\udedf \ubaa8\ub450 \ub418\ub3cc\ub9b4\uae4c\uc694?</h2><p style="font-size:17px">${bad.map(x=>x.name).join(', ')}<br>\ubc31\uc5c5\uacfc \ud569\uccd0\uc11c \uc904\uc5b4\ub4e0 \uae30\ub85d\uc744 \ub418\ub3cc\ub824\uc694. \ub298\uc5b4\ub09c \uae30\ub85d\uc740 \uadf8\ub300\ub85c \ub0a8\uc544\uc694.</p>`,[['\ucde8\uc18c','gray',0],['\ub418\ub3cc\ub9ac\uae30','',1]]))return;
+      const q=await tCall('adminRestore',TPIN,'all');if(q&&q.ok){SFX.win();toast(q.done.length+'\uba85\uc758 \uae30\ub85d\uc744 \ub418\ub3cc\ub838\uc5b4\uc694');run()}else toast('\ub418\ub3cc\ub9ac\uc9c0 \ubabb\ud588\uc5b4\uc694. \ub2e4\uc2dc \ub20c\ub7ec \uc8fc\uc138\uc694')}},'\ud83d\udedf \ubaa8\ub450 \ub418\ub3cc\ub9ac\uae30'));
+    area.append(btns);
+    const t=el('table',{class:'ttab',style:'width:100%;font-size:15px'});t.append(el('tr',{},...['\ubc88\ud638\u00b7\uc774\ub984','\uc0c1\ud0dc','\uc9c0\uae08 \u2b50 / \ud83e\ude99 / \ud83c\udccf','\uac00\uc7a5 \uc88b\uc558\ub358 \u2b50 / \ud83e\ude99 / \ud83c\udccf','\ubc31\uc5c5',''].map(h=>el('th',{},h))));
+    t.querySelector('tr').lastChild.remove();
+    r.list.forEach(x=>{const st=el('td',{style:'white-space:normal;min-width:150px'},x.ok?'\u2705 \uc815\uc0c1':'\u26a0 '+x.lost.join(', '));
+      if(!x.ok)st.append(el('div',{},el('button',{class:'tab',style:'font-size:14px;padding:4px 10px;margin-top:4px',onclick:async()=>{const q=await tCall('adminRestore',TPIN,[x.name]);if(q&&q.ok&&q.done.length){SFX.win();toast(x.name+' \uae30\ub85d\uc744 \ub418\ub3cc\ub838\uc5b4\uc694');run()}else toast('\ub418\ub3cc\ub9ac\uc9c0 \ubabb\ud588\uc5b4\uc694')}},'\ud83d\udedf \ub418\ub3cc\ub9ac\uae30')));
+      t.append(el('tr',{style:x.ok?'':'background:#fff5f5'},el('td',{},x.name),st,el('td',{},`${x.now.stars||0} / ${x.now.coin||0} / ${x.now.cards||0}`),el('td',{},`${x.best.stars} / ${x.best.coin} / ${x.best.cards}`),el('td',{},x.backups+'\uc77c')))});
+    area.append(el('div',{style:'overflow-x:auto'},t));
+    if(r.log&&r.log.length){area.append(el('div',{style:'font-weight:900;margin:14px 0 4px'},'\ud83d\udccb \ucd5c\uadfc\uc5d0 \ub9c9\uac70\ub098 \ub418\ub3cc\ub9b0 \uc77c'));
+      const L=el('table',{class:'ttab',style:'width:100%;font-size:14px'});L.append(el('tr',{},...['\ub54c','\ubc88\ud638\u00b7\uc774\ub984','\ubb34\uc5c7','\uc11c\ubc84 \uae30\ub85d','\ub4e4\uc5b4\uc628 \uae30\ub85d','\ucc98\ub9ac'].map(h=>el('th',{},h))));
+      r.log.forEach(g=>L.append(el('tr',{},...g.map(v=>el('td',{style:'white-space:normal'},v)))));area.append(el('div',{style:'overflow-x:auto'},L),el('div',{style:'font-size:13px;color:#6b7a90;margin-top:4px'},'\uc608\uc804 \uae30\uae30\ub098 \uc624\ub798 \ucf1c \ub454 \ud654\uba74\uc5d0\uc11c \uc608\uc804 \uae30\ub85d\uc774 \ub4e4\uc5b4\uc624\uba74 \uc5ec\uae30\uc5d0 \ub0a8\uc544\uc694. \uae30\ub85d\uc740 \uc904\uc9c0 \uc54a\uace0 \ud070 \ucabd\uc73c\ub85c \ud569\uccd0\uc838\uc694.'))}};
+  run()}})();
 
 /* ===================== \u26a1 \ube60\ub974\uac8c \uc5f4\uae30: \ud55c \ubc88 \ubc1b\uc740 \uadf8\ub9bc\u00b7\uc18c\ub9ac\ub294 \uae30\uae30\uc5d0 \uc800\uc7a5 ===================== */
 (function(){
