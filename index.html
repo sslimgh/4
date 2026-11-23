@@ -4,7 +4,7 @@
 /* ===== app connect block (GitHub app) =====
    GAME_API: Apps Script web app address (deploy > manage deployments). Change only this line if the address changes. */
 var GAME_API = 'https://script.google.com/macros/s/AKfycbzqoouTfjwKWxpLjmvbFm7Tkk10Vyw0rGIzImp2MVfq1WyvL68fUg2QJCKVyIZC1_Jdew/exec';
-var APP_BUILD = '12';
+var APP_BUILD = '13';
 /* google.script.run stand-in: every call goes to Code.gs doPost as JSON, without Google sign-in cookies */
 (function(){
   function call(fn, args, ok, bad, tries){
@@ -5081,7 +5081,7 @@ window.__UNITS={
  * - \ub098\uba38\uc9c0(\uc124\uc815, \ub3d9\ubb3c \uce5c\uad6c \ubc30\uace0\ud514 \ub4f1)\ub294 \ub354 \ub098\uc911\uc5d0 \uc800\uc7a5\ub41c \ucabd */
 var MOMO_MERGE = (function () {
   var UNION = { stk: 1, items: 1, unl: 1, puz: 1, perfect: 1, chars: 1 };
-  var MAXOBJ = { stars: 1, secOf: 1, mgBest: 1, cards: 1, ach: 1, sp: 1, wp: 1, heard: 1, petK: 1, hist: 1, qs: 1, bch: 1, vac: 1, bs: 1 };
+  var MAXOBJ = { stars: 1, secOf: 1, mgBest: 1, cards: 1, ach: 1, sp: 1, wp: 1, heard: 1, petK: 1, hist: 1, qs: 1, bch: 1, vac: 1, bs: 1, ex: 1 };
   var MAXNUM = { listen: 1, rec: 1, sec: 1, visits: 1, days: 1, taBest: 1, towerBest: 1, best: 1, xlv: 1, xpx: 1, lv: 1, bossWins: 1, open: 1, story: 1, cg: 1, classGift: 1, tdCnt: 1 };
   var PERIOD = { D: 1, W: 1, BW: 1, TD: 1, pdy: 1, gst: 1, bxd: 1 };
   var LONGER = { log: 1, logw: 1 };
@@ -5971,7 +5971,7 @@ const _dT=drawT;drawT=function(s,my){_dT(s,my);const box=s.querySelector('.card'
   if(TTAB==='prog'){const t=s.querySelector('.ttab');if(!t)return;const rows=[...t.querySelectorAll('tr')];if(!rows.length)return;rows[0].append(el('th',{},'7\uacfc'),el('th',{},'8\uacfc'),el('th',{},'S4'),el('th',{},'9\uacfc'),el('th',{},'10\uacfc'),el('th',{},'S5'),el('th',{},'S6'));
     const sum=(a,N=6)=>{a=(a||[]).filter(Boolean);if(!a.length)return '-';let st=0;a.forEach(x=>{const m=String(x).match(/\u2605(\d+)/);if(m)st+=+m[1]});return `\u2605${st} (${a.length}/${N}\uacf3)`};
     const L=TDATA.students.slice().sort((a,b)=>(parseInt(a.name)||0)-(parseInt(b.name)||0));L.forEach((r,i)=>{const tr=rows[i+1];if(tr)tr.append(el('td',{style:'font-size:13px'},sum(r.places7)),el('td',{style:'font-size:13px'},sum(r.places8)),el('td',{style:'font-size:13px'},sum(r.places4,3)),el('td',{style:'font-size:13px'},sum(r.places9)),el('td',{style:'font-size:13px'},sum(r.places10)),el('td',{style:'font-size:13px'},sum(r.places5,3)),el('td',{style:'font-size:13px'},sum(r.places6,3)))})}};
-window.UNITS_UI={ORDER,TITLE,DATA,PRE:LPF,SPN};
+window.UNITS_UI={ORDER,TITLE,DATA,PRE:LPF,SPN,cur:()=>LES};
 Object.assign(window.G||{},{showMap,setLesson,itemSVG,lessonPicker});
 })();
 
@@ -6790,7 +6790,7 @@ Object.assign(window.G||{},{showCredits});
 
 /* ===================== \ud83e\udded \ud654\uba74 \ubc30\uce58 \uc815\ub9ac: \ub2e8\uc6d0 \ud0ed \u00b7 \uacb9\uce68 \uc5c6\ub294 \uc9c0\ub3c4 \u00b7 \uc544\ub798 \uba54\ub274 ===================== */
 (function(){
-const APPV='2026.11.24';window.APPV=APPV;
+const APPV='2026.11.25';window.APPV=APPV;
 const U=window.UNITS_UI;if(!U)return;
 const LCOL={7:'#12b886',8:'#fab005',9:'#f76707',10:'#d6336c',11:'#1c7ed6',12:'#2f9e44',4:'#7950f2',5:'#7950f2',6:'#7950f2'};
 const css=`
@@ -7276,7 +7276,7 @@ window.isGuest=()=>/^\uc190\ub2d8/.test(String(S.name||''));
 const _sync=sync;sync=function(ev){if(window.isGuest())return;return _sync(ev)};
 async function teacherEnter(name,pin){const nm='0\ubc88 '+name.replace(/\s+/g,'');if(!GAS){window.PW='';login(nm);return}
   const r=await call('teacherCheck',pin);if(!r||!r.ok){SFX.no();toast('\ube44\ubc00\ubc88\ud638\uac00 \ub9de\uc9c0 \uc54a\uc544\uc694');return}TPIN=pin;try{sessionStorage.setItem('momo_tname',name)}catch(e){}window.PW='';login(nm)}
-window.APPN='12';
+window.APPN='13';
 window.VERTXT=()=>'v'+(window.APPV||'')+(/^\d+$/.test(APPN)?' \u00b7 \uc571 '+APPN:'');
 document.head.append(el('style',{},'.verpill{position:fixed;top:6px;right:8px;z-index:30;font-size:12px;font-weight:800;color:#fff;background:#0005;border-radius:12px;padding:3px 9px;pointer-events:none;letter-spacing:.2px}.gpanel .gver{font-size:12px;color:#8592a6;text-align:center;margin-top:6px}'));
 showStart=function(){RUNID++;TPIN='';window.TMAIN=false;Snd.stop();document.querySelectorAll('.overlay,.gpanel,.moresheet,.moreov,.utip,.giftbal,.goldmomo,.toast,.inbsheet').forEach(x=>x.remove());$('#top').style.display='none';const m=$('#main');m.innerHTML='';
@@ -7961,8 +7961,9 @@ Object.assign(window.G||{},{showMap,showPlay,showRain,showPuzzle,guestVisit});
 /* ===== \ud83d\udcca \uc8fc\uac04 \ub9ac\ud3ec\ud2b8 \u00b7 \ud83d\udcbe \uae30\ub85d \ud30c\uc77c \u00b7 \u26c4 \uaca8\uc6b8\ubc29\ud559 \ubcf5\uc2b5 ===== */
 (function(){
 const z2=n=>String(n).padStart(2,'0'),ymd=d=>d.getFullYear()+'-'+z2(d.getMonth()+1)+'-'+z2(d.getDate()),today=()=>ymd(new Date());
-const VAC_FROM='2026-12-24',VAC_TO='2027-02-28';
-const inVac=()=>{const t=today();return t>=VAC_FROM&&t<=VAC_TO};
+const CF=()=>(typeof CFG!=='undefined'&&CFG)||{},VF=()=>CF().vacFrom||'2027-01-06',VT=()=>CF().vacTo||'2027-03-01',VON=()=>CF().vac!==false;
+const inVac=()=>{const t=today();return VON()&&t>=VF()&&t<=VT()};
+const kd=k=>{const [y,m,d]=k.split('-');return `${+m}\uc6d4 ${+d}\uc77c`};
 const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function saveFile(name,text,type){try{const b=new Blob([text],{type:type||'text/html;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;document.body.append(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500);return true}catch(e){toast('\uc774 \ud654\uba74\uc5d0\uc11c\ub294 \ud30c\uc77c\uc744 \ub0b4\ub824\ubc1b\uc744 \uc218 \uc5c6\uc5b4\uc694. \uc571(sslimgh.github.io/4)\uc5d0\uc11c \ud574 \uc8fc\uc138\uc694',3500);return false}}
 function printHtml(html){const f=document.createElement('iframe');f.style.cssText='position:fixed;right:0;bottom:0;width:0;height:0;border:0';document.body.append(f);const d=f.contentWindow.document;d.open();d.write(html);d.close();setTimeout(()=>{try{f.contentWindow.focus();f.contentWindow.print()}catch(e){toast('\uc778\uc1c4\ud558\uc9c0 \ubabb\ud588\uc5b4\uc694. \u300c\ud55c\uae00 \ud30c\uc77c\u300d\ub85c \ub0b4\ub824\ubc1b\uc544 \uc778\uc1c4\ud574 \uc8fc\uc138\uc694',3000)}setTimeout(()=>f.remove(),60000)},400)}
@@ -8022,22 +8023,22 @@ function vacPool(){const U=window.UNITS_UI,L=[];if(!U)return L;[7,8,9,10,11,12].
 function stamps(){S.vac=S.vac||{};return S.vac}
 function showVacCal(){BACK=[showPlay,'\ub180\uc774\ud130'];TB_STEP=false;ACTIVE=++RUNID;Snd.stop();topBar('\u26c4 \uaca8\uc6b8\ubc29\ud559 \ubcf5\uc2b5',el('span',{class:'chip'},'\ub3c4\uc7a5 '+Object.keys(stamps()).length+'\uac1c'));const s=stageNew();
   const V=stamps(),done=!!V[today()];
-  help(s,done?'\uc624\ub298 \ub3c4\uc7a5\uc744 \ubc1b\uc558\uc5b4\uc694! \ud55c \ubc88 \ub354 \ud574\ub3c4 \uc88b\uc544\uc694.':'\ud558\ub8e8 10\ubb38\uc81c(\uc57d 10\ubd84)! 7~12\ub2e8\uc6d0\uc744 \uc11e\uc5b4\uc11c \ubcf5\uc2b5\ud574\uc694.');
+  help(s,!inVac()?`\uc9c0\uae08\uc740 \uc5f0\uc2b5\ub9cc \ub3fc\uc694. \ub3c4\uc7a5\uc740 \ubc29\ud559(${kd(VF())}~${kd(VT())})\uc5d0 \ucc0d\uc5b4\uc694.`:done?'\uc624\ub298 \ub3c4\uc7a5\uc744 \ubc1b\uc558\uc5b4\uc694! \ud55c \ubc88 \ub354 \ud574\ub3c4 \uc88b\uc544\uc694.':'\ud558\ub8e8 10\ubb38\uc81c(\uc57d 10\ubd84)! 7~12\ub2e8\uc6d0\uc744 \uc11e\uc5b4\uc11c \ubcf5\uc2b5\ud574\uc694.');
   const w=el('div',{style:'width:100%;max-width:640px;margin:0 auto'});s.append(w);
   w.append(el('div',{class:'btnrow',style:'justify-content:center;margin:6px 0 12px'},el('button',{class:'big orange',style:'font-size:22px',onclick:()=>{SFX.click();vacRun()}},done?'\ud83d\udd01 \ud55c \ubc88 \ub354 \ud558\uae30':'\u25b6 \uc624\ub298\uc758 10\ubb38\uc81c')));
-  const months=[[2026,11],[2027,0],[2027,1]];
+  const months=[];{let y=+VF().slice(0,4),m=+VF().slice(5,7)-1;const ey=+VT().slice(0,4),em=+VT().slice(5,7)-1;while((y<ey||(y===ey&&m<=em))&&months.length<4){months.push([y,m]);m++;if(m>11){m=0;y++}}}
   months.forEach(([y,m])=>{const first=new Date(y,m,1),days=new Date(y,m+1,0).getDate(),g=el('div',{style:'display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:12px'});
     w.append(el('div',{style:'font-weight:900;font-size:18px;margin:4px 0'},`${y}\ub144 ${m+1}\uc6d4`));
     '\uc77c\uc6d4\ud654\uc218\ubaa9\uae08\ud1a0'.split('').forEach((d,i)=>g.append(el('div',{style:`text-align:center;font-size:13px;font-weight:800;color:${i===0?'#e03131':i===6?'#1971c2':'#6b7a90'}`},d)));
     for(let i=0;i<first.getDay();i++)g.append(el('div',{}));
-    for(let d=1;d<=days;d++){const k=y+'-'+z2(m+1)+'-'+z2(d),v=V[k],isT=k===today(),off=k<VAC_FROM||k>VAC_TO;
+    for(let d=1;d<=days;d++){const k=y+'-'+z2(m+1)+'-'+z2(d),v=V[k],isT=k===today(),off=k<VF()||k>VT();
       g.append(el('div',{style:`aspect-ratio:1;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:12px;background:${v!=null?'#fff3bf':off?'#f1f3f5':'#fff'};border:${isT?'3px solid #f76707':'1px solid #dee2e6'};color:${off?'#adb5bd':'#343a40'}`},el('span',{},String(d)),v!=null?el('span',{style:'font-size:20px;line-height:1'},v>=10?'\ud83c\udf1f':'\u26c4'):''))}
     w.append(g)});
-  w.append(el('div',{style:'font-size:14px;color:#6b7a90;text-align:center'},'\u26c4 \ubcf5\uc2b5\ud55c \ub0a0 \u00b7 \ud83c\udf1f 10\ubb38\uc81c \ubaa8\ub450 \ub9de\ud78c \ub0a0 \u00b7 \ubc29\ud559 \uae30\uac04 12/24 ~ 2/28'))}
+  w.append(el('div',{style:'font-size:14px;color:#6b7a90;text-align:center'},`\u26c4 \ubcf5\uc2b5\ud55c \ub0a0 \u00b7 \ud83c\udf1f 10\ubb38\uc81c \ubaa8\ub450 \ub9de\ud78c \ub0a0 \u00b7 \ubc29\ud559 ${kd(VF())} ~ ${kd(VT())}`))}
 function vacRun(){BACK=[showVacCal,'\ubc29\ud559 \ubcf5\uc2b5'];TB_STEP=false;ACTIVE=++RUNID;const my=ACTIVE;Snd.stop();const P=vacPool();
   if(P.length<4){toast('\ubcf5\uc2b5 \ubb38\uc81c\ub97c \uc900\ube44\ud558\uc9c0 \ubabb\ud588\uc5b4\uc694');showPlay();return}
   const Q=shuffle(P).slice(0,10);let i=0,ok=0;
-  const ask=()=>{if(ACTIVE!==my)return;if(i>=Q.length)return end();const x=Q[i],txt=i>=6;topBar('\u26c4 \ubc29\ud559 \ubcf5\uc2b5',el('span',{class:'chip'},`${i+1} / ${Q.length}`));const s=stageNew();
+  const ask=()=>{if(ACTIVE!==my)return;if(i>=Q.length)return end();const x=Q[i],txt=i>=6;BACK=[showVacCal,'\ubc29\ud559 \ubcf5\uc2b5'];TB_STEP=false;topBar('\u26c4 \ubc29\ud559 \ubcf5\uc2b5',el('span',{class:'chip'},`${i+1} / ${Q.length}`));const s=stageNew();
     help(s,txt?'\uc798 \ub4e3\uace0 \uc54c\ub9de\uc740 \ubb38\uc7a5\uc744 \uace8\ub77c\uc694.':'\uc798 \ub4e3\uace0 \uc54c\ub9de\uc740 \uadf8\ub9bc\uc744 \uace8\ub77c\uc694.');
     const q=el('div',{class:'twq card',style:'width:100%;max-width:640px;margin:0 auto'});s.append(q);const play=()=>Snd.play(x.c);q.append(earBtn(play));
     q.append(el('div',{style:'font-size:14px;color:#6b7a90;margin:4px 0'},`Lesson ${x.n}`));
@@ -8047,17 +8048,214 @@ function vacRun(){BACK=[showVacCal,'\ubc29\ud559 \ubcf5\uc2b5'];TB_STEP=false;AC
     if(txt){const g=el('div',{class:'tdtxt'});q.append(g);opts.forEach(o=>{const b=el('button',{class:'opt txtopt en',style:'font-size:20px'},o.t);b.onclick=e=>{if(lock)return;o===x?right(b,e):wrong(b)};g.append(b)})}
     else{const g=el('div',{class:'opts',style:`grid-template-columns:repeat(${PORT?2:3},1fr);width:100%;flex:none`});q.append(g);opts.forEach(o=>{const b=el('button',{class:'opt'},el('img',{src:I(o.img),style:'height:'+(PORT?'15vh':'min(18vh,110px)')+';object-fit:contain'}));b.onclick=e=>{if(lock)return;o===x?right(b,e):wrong(b)};g.append(b)})}
     setTimeout(()=>{if(ACTIVE===my)play()},350)};
-  const end=async()=>{if(ACTIVE!==my)return;const V=stamps(),k=today(),first=V[k]==null;let c=0;
+  const end=async()=>{if(ACTIVE!==my)return;const V=stamps(),k=today(),iv=inVac(),first=iv&&V[k]==null;let c=0;
     if(first){c=10+(ok>=10?5:0);S.coin+=c;if(window.addXP)addXP(20)}
-    V[k]=Math.max(V[k]||0,ok);save();sync();if(window.LOGD)LOGD('game',`\u26c4 \ubc29\ud559 \ubcf5\uc2b5 ${ok}/10${first?' (\ub3c4\uc7a5!)':''}`);SFX.win();if(ok>=10&&typeof confettiE==='function')confettiE(25);
-    await modal(`<div style="font-size:64px">${ok>=10?'\ud83c\udf1f':'\u26c4'}</div><h2>${ok} / 10 \ud55c \ubc88\uc5d0 \ub9de\ud614\uc5b4\uc694!</h2><p style="font-size:18px">${first?`\uc624\ub298\uc758 \ub3c4\uc7a5\uc744 \ucc0d\uc5c8\uc5b4\uc694!<br>\ud83e\ude99 +${c} \u00b7 \uacbd\ud5d8\uce58 +20`:'\uc624\ub298 \ub3c4\uc7a5\uc740 \uc774\ubbf8 \ubc1b\uc558\uc5b4\uc694. \ubcf5\uc2b5\uc740 \uc5b8\uc81c\ub098 \uc88b\uc544\uc694!'}</p>`,[['\ub2ec\ub825 \ubcf4\uae30','',1]]);if(ACTIVE===my)showVacCal()};
+    if(iv)V[k]=Math.max(V[k]||0,ok);save();sync();if(window.LOGD)LOGD('game',`\u26c4 \ubc29\ud559 \ubcf5\uc2b5 ${ok}/10${first?' (\ub3c4\uc7a5!)':''}`);SFX.win();if(ok>=10&&typeof confettiE==='function')confettiE(25);
+    await modal(`<div style="font-size:64px">${ok>=10?'\ud83c\udf1f':'\u26c4'}</div><h2>${ok} / 10 \ud55c \ubc88\uc5d0 \ub9de\ud614\uc5b4\uc694!</h2><p style="font-size:18px">${first?`\uc624\ub298\uc758 \ub3c4\uc7a5\uc744 \ucc0d\uc5c8\uc5b4\uc694!<br>\ud83e\ude99 +${c} \u00b7 \uacbd\ud5d8\uce58 +20`:iv?'\uc624\ub298 \ub3c4\uc7a5\uc740 \uc774\ubbf8 \ubc1b\uc558\uc5b4\uc694. \ubcf5\uc2b5\uc740 \uc5b8\uc81c\ub098 \uc88b\uc544\uc694!':`\uc5f0\uc2b5\ud588\uc5b4\uc694! \ub3c4\uc7a5\uc740 \ubc29\ud559(${kd(VF())}~${kd(VT())})\uc5d0 \ucc0d\uc744 \uc218 \uc788\uc5b4\uc694.`}</p>`,[['\ub2ec\ub825 \ubcf4\uae30','',1]]);if(ACTIVE===my)showVacCal()};
   ask()}
-const _spV=showPlay;showPlay=function(){_spV();const g=document.querySelector('.playgrid');if(!g||!S.name)return;
+const _spV=showPlay;showPlay=function(){_spV();const g=document.querySelector('.playgrid');if(!g||!S.name||!VON())return;
   const n=Object.keys(stamps()).length,dn=!!stamps()[today()];
   g.prepend(el('button',{class:'playi new',onclick:()=>{SFX.click();showVacCal()}},el('div',{style:'font-size:64px'},'\u26c4'),el('div',{style:'font-size:24px;font-weight:900'},'\uaca8\uc6b8\ubc29\ud559 \ubcf5\uc2b5'),el('div',{style:'font-size:15px;color:#6b7a90'},'\ud558\ub8e8 10\ubb38\uc81c\ub85c 7~12\ub2e8\uc6d0\uc744 \ub2e4\uc2dc \ub9cc\ub098\uc694.'),el('div',{class:'chip',style:'margin-top:6px'},dn?'\u2705 \uc624\ub298 \ub3c4\uc7a5':'\ub3c4\uc7a5 '+n+'\uac1c')))};
-const _smV=showMap;showMap=function(first){_smV(first);if(!inVac()||!S.name||(typeof isT==='function'&&isT()))return;const strip=document.querySelector('.ustrip');if(!strip)return;const dn=!!stamps()[today()];
-  strip.prepend(el('button',{class:'utab today'+(dn?' done':''),onclick:()=>{SFX.click();showVacCal()}},el('div',{class:'uc'},el('b',{},dn?'\u2705 \ubc29\ud559':'\u26c4 \ubc29\ud559'),el('small',{},dn?'\ub3c4\uc7a5 \ubc1b\uc558\uc5b4\uc694':'10\ubb38\uc81c \ubcf5\uc2b5'))))};
+const _smV=showMap;showMap=function(first){_smV(first);if(!inVac()||!S.name||(typeof isT==='function'&&isT()))return;const strip=document.querySelector('.ustrip');if(!strip)return;const dn=!!stamps()[today()],cur=strip.querySelector('.utab.on')||strip.querySelector('.lcur');
+  (cur?(x=>cur.before(x)):(x=>strip.prepend(x)))(el('button',{class:'utab today'+(dn?' done':''),onclick:()=>{SFX.click();showVacCal()}},el('div',{class:'uc'},el('b',{},dn?'\u2705 \ubc29\ud559':'\u26c4 \ubc29\ud559'),el('small',{},dn?'\ub3c4\uc7a5 \ubc1b\uc558\uc5b4\uc694':'10\ubb38\uc81c \ubcf5\uc2b5'))))};
+/* ---------- \u2699 \uc124\uc815 \ud0ed: \ubc29\ud559 \u00b7 \ub2e8\uc6d0\ud3c9\uac00 (\ub2f4\uc784 \uc120\uc0dd\ub2d8\uc774 \uc5b8\uc81c\ub4e0 \uace0\uccd0\uc694) ---------- */
+const _dTS=drawT;drawT=function(s,my){_dTS(s,my);const box=s.querySelector('.card');if(!box||!TPIN||TTAB!=='set'||typeof TDATA==='undefined'||!TDATA||!TDATA.cfg)return;const c=TDATA.cfg;
+  const save=async x=>{const r=await tCall('adminSet',TPIN,x);if(r&&r.ok){TDATA.cfg=r.cfg;CFG=r.cfg;SFX.win();toast('\uc800\uc7a5\ud588\uc5b4\uc694. \ud559\uc0dd \ud654\uba74\uc5d0\ub294 \ub2e4\uc2dc \ub4e4\uc5b4\uc624\uba74 \ubc14\ub00c\uc5b4\uc694',3000);drawT(s,my)}else toast('\uc800\uc7a5\ud558\uc9c0 \ubabb\ud588\uc5b4\uc694. Code.gs\ub97c \uc0c8 \ubc84\uc804\uc73c\ub85c \ubc30\ud3ec\ud588\ub294\uc9c0 \ud655\uc778\ud574 \uc8fc\uc138\uc694',3500)};
+  const sec=el('div',{class:'achi',style:'display:block;border-color:#a5d8ff;background:#e7f5ff;margin-top:14px'},el('div',{style:'font-weight:900;font-size:18px;margin-bottom:6px'},'\u26c4 \uaca8\uc6b8\ubc29\ud559 \u00b7 \ud83d\udcdd \ub2e8\uc6d0\ud3c9\uac00'));
+  const f=el('input',{type:'date',value:c.vacFrom||'2027-01-06',style:'font-size:17px;padding:6px'}),t=el('input',{type:'date',value:c.vacTo||'2027-03-01',style:'font-size:17px;padding:6px'});
+  sec.append(el('div',{class:'trow',style:'flex-wrap:wrap;gap:6px'},el('div',{class:'tl'},'\ubc29\ud559 \uae30\uac04'),f,el('span',{},'~'),t,el('button',{class:'tab on',style:'font-size:16px',onclick:()=>{if(!f.value||!t.value||f.value>t.value){toast('\ub0a0\uc9dc\ub97c \ub2e4\uc2dc \ud655\uc778\ud574 \uc8fc\uc138\uc694');return}save({vacFrom:f.value,vacTo:t.value})}},'\uc800\uc7a5')),
+    el('small',{style:'display:block;margin:2px 0 8px'},'\ubc29\ud559 \ubcf5\uc2b5 \ub3c4\uc7a5\uc744 \ucc0d\ub294 \uae30\uac04\uc774\uc5d0\uc694. \ub9c8\uc9c0\ub9c9 \ub0a0\uc740 \uac1c\ud559 \uc804\ub0a0\ub85c \ud574 \uc8fc\uc138\uc694.'),
+    el('div',{class:'trow'},el('div',{class:'tl'},'\ubc29\ud559 \ubcf5\uc2b5'),el('button',{class:'tab'+(c.vac!==false?' on':''),style:'font-size:16px',onclick:()=>save({vac:true})},'\ucf1c\uae30'),el('button',{class:'tab'+(c.vac===false?' on':''),style:'font-size:16px',onclick:()=>save({vac:false})},'\ub044\uae30')));
+  const ex=Array.isArray(c.exam)?c.exam:[];
+  sec.append(el('div',{class:'trow',style:'flex-wrap:wrap;gap:6px;margin-top:8px'},el('div',{class:'tl'},'\ub2e8\uc6d0\ud3c9\uac00 \uc5f4\uae30'),...[7,8,9,10,11,12].map(u=>el('button',{class:'tab'+(ex.includes(u)?' on':''),style:'font-size:16px',onclick:()=>save({exam:ex.includes(u)?ex.filter(x=>x!==u):ex.concat(u)})},(ex.includes(u)?'\ud83d\udfe2 ':'')+'L'+u))),
+    el('small',{style:'display:block;margin:2px 0 8px'},'\ub204\ub978 \ub2e8\uc6d0\ub9cc \ud559\uc0dd \uc9c0\ub3c4\uc5d0 \u300c\ud83d\udcdd \ud3c9\uac00\u300d\uac00 \ubcf4\uc5ec\uc694. \ud55c \ubc88 \ub354 \ub204\ub974\uba74 \ub2eb\ud600\uc694.'),
+    el('div',{class:'trow'},el('div',{class:'tl'},'\ub2e4\uc2dc \ubcf4\uae30'),el('button',{class:'tab'+(c.examRe!==false?' on':''),style:'font-size:16px',onclick:()=>save({examRe:true})},'\ud5c8\uc6a9'),el('button',{class:'tab'+(c.examRe===false?' on':''),style:'font-size:16px',onclick:()=>save({examRe:false})},'\ud55c \ubc88\ub9cc')),
+    el('small',{style:'display:block;margin-top:2px'},'\ubcfc \ub54c\ub9c8\ub2e4 \uc810\uc218\uc640 \uac78\ub9b0 \uc2dc\uac04\uc774 \ubaa8\ub450 \uae30\ub85d\ub418\uace0, \ucd5c\uace0 \uc810\uc218\ub294 \ub530\ub85c \ub0a8\uc544\uc694.'));
+  box.prepend(sec)};
 Object.assign(window.G||{},{showVacCal,vacRun,showPlay,showMap});
+})();
+
+/* ===== \ud83d\udcdd \ub2e8\uc6d0\ud3c9\uac00 (7~12\ub2e8\uc6d0, 10\ubb38\ud56d, \ubcfc \ub54c\ub9c8\ub2e4 \uae30\ub85d \u00b7 \ucd5c\uace0 \uc810\uc218 \u00b7 \uac78\ub9b0 \uc2dc\uac04) ===== */
+(function(){
+const NUM=['\u2460','\u2461','\u2462','\u2463'];
+/* k: pic=\ub4e3\uace0 \uadf8\ub9bc / txt=\ub4e3\uace0 \ubb38\uc7a5\u00b7\ub73b / one=\uadf8\ub9bc \ubcf4\uace0 \ub0b1\ub9d0 / pair=\uc9dd / dlg=\ub300\ud654 \ube48\uce78 / w1=\ube48\uce78 \ub0b1\ub9d0 / ord=\ub298\uc5b4\ub193\uae30 / w2=\ube48\uce78 \ub450 \uac1c */
+const EX={
+7:{t:"It's Wednesday",q:[
+ {k:'pic',q:'\uc798 \ub4e3\uace0, \uc54c\ub9de\uc740 \uadf8\ub9bc\uc744 \uace0\ub974\uc138\uc694.',say:"It's Wednesday.",p:['n7_d_mon','n7_d_wed','n7_d_fri','n7_d_sun'],a:2},
+ {k:'pic',q:'\uc798 \ub4e3\uace0, \uc54c\ub9de\uc740 \uadf8\ub9bc\uc744 \uace0\ub974\uc138\uc694.',say:'I have a cooking class.',p:['n7_o_robot','n7_o_violin','n7_o_cooking','n7_o_art'],a:3},
+ {k:'txt',q:'\uc798 \ub4e3\uace0, \ub4e4\uc740 \ubb38\uc7a5\uc744 \uace0\ub974\uc138\uc694.',say:"It's Thursday.",o:["It's Monday.","It's Tuesday.","It's Thursday.","It's Saturday."],a:3},
+ {k:'txt',q:'\uc798 \ub4e3\uace0, \ubb34\uc2a8 \uc218\uc5c5\uc774 \uc788\ub294\uc9c0 \uace0\ub974\uc138\uc694.',say:'I have a dance class.',o:['\ucda4 \uc218\uc5c5','\ubbf8\uc220 \uc218\uc5c5','\ucef4\ud4e8\ud130 \uc218\uc5c5','\ubc14\uc774\uc62c\ub9b0 \uc218\uc5c5'],a:1},
+ {k:'one',q:'\uadf8\ub9bc\uc744 \ubcf4\uace0, \uc54c\ub9de\uc740 \ub0b1\ub9d0\uc744 \uace0\ub974\uc138\uc694.',p:'n7_o_computer',o:['cooking','computer','dance','robot'],a:2},
+ {k:'pair',q:'\ub0b1\ub9d0\uacfc \ub73b\uc774 \ubc14\ub974\uac8c \uc9dd \uc9c0\uc5b4\uc9c0\uc9c0 \uc54a\uc740 \uac83\uc744 \uace0\ub974\uc138\uc694.',o:['Monday - \uc6d4\uc694\uc77c','Friday - \uae08\uc694\uc77c','Sunday - \ud1a0\uc694\uc77c','Tuesday - \ud654\uc694\uc77c'],a:3},
+ {k:'dlg',q:'\ub300\ud654\uc758 \ube48\uce78\uc5d0 \uc54c\ub9de\uc740 \ub9d0\uc744 \uace0\ub974\uc138\uc694.',d:['A: (    ) day is it?',"B: It's Friday."],o:['What','How','Who','Where'],a:1},
+ {k:'w1',q:'\uadf8\ub9bc\uc744 \ubcf4\uace0, \ube48\uce78\uc5d0 \uc54c\ub9de\uc740 \ub0b1\ub9d0\uc744 \uace8\ub77c \ub123\uc73c\uc138\uc694.',p:'n7_o_art',b:['art','dance','robot'],line:'I have an (    ) class.',a:['art']},
+ {k:'ord',q:'\uc6b0\ub9ac\ub9d0\uc5d0 \ub9de\uac8c \ub0b1\ub9d0\uc744 \ucc28\ub840\ub300\ub85c \ub20c\ub7ec \ubb38\uc7a5\uc744 \ub9cc\ub4dc\uc138\uc694.',ko:'\ub098\ub294 \ub85c\ubd07 \uc218\uc5c5\uc774 \uc788\uc5b4.',w:['have','robot','I','a','class.'],a:['I','have','a','robot','class.']},
+ {k:'w2',q:'\uadf8\ub9bc\uc744 \ubcf4\uace0, \ube48\uce78 \u3260, \u3261\uc5d0 \uc54c\ub9de\uc740 \ub0b1\ub9d0\uc744 \ucc28\ub840\ub300\ub85c \ub123\uc73c\uc138\uc694.',p:'n7_d_tue',b:['day','Tuesday','time','Monday'],d:['A: What ( \u3260 ) is it?',"B: It's ( \u3261 )."],a:['day','Tuesday']}]},
+8:{t:'How Much Is It?',q:[
+ {k:'pic',q:'\uc798 \ub4e3\uace0, \uc54c\ub9de\uc740 \uadf8\ub9bc\uc744 \uace0\ub974\uc138\uc694.',say:'I like this toy car. How much is it?',p:['n8_o_soccerball','n8_o_comic','n8_o_pencilcase','n8_o_toycar'],a:4},
+ {k:'pic',q:'\uc798 \ub4e3\uace0, \uc54c\ub9de\uc740 \uadf8\ub9bc\uc744 \uace0\ub974\uc138\uc694.',say:'I like this fan. How much is it?',p:['n8_o_skirt','n8_o_fan','n8_o_doll','n8_o_comic'],a:2},
+ {k:'txt',q:'\uc798 \ub4e3\uace0, \ub4e4\uc740 \ubb38\uc7a5\uc744 \uace0\ub974\uc138\uc694.',say:"It's four thousand won.",o:["It's five hundred won.","It's four thousand won.","It's five thousand won.","It's one thousand won."],a:2},
+ {k:'txt',q:'\uc798 \ub4e3\uace0, \ubb3c\uac74\uac12\uc744 \uace0\ub974\uc138\uc694.',say:"It's five hundred won.",o:['500\uc6d0','1,000\uc6d0','4,000\uc6d0','5,000\uc6d0'],a:1},
+ {k:'one',q:'\uadf8\ub9bc\uc744 \ubcf4\uace0, \uc54c\ub9de\uc740 \ub0b1\ub9d0\uc744 \uace0\ub974\uc138\uc694.',p:'n8_o_comic',o:['soccer ball','comic book','toy car','skirt'],a:2},
+ {k:'pair',q:'\ub0b1\ub9d0\uacfc \ub73b\uc774 \ubc14\ub974\uac8c \uc9dd \uc9c0\uc5b4\uc9c0\uc9c0 \uc54a\uc740 \uac83\uc744 \uace0\ub974\uc138\uc694.',o:['skirt - \uce58\ub9c8','fan - \ubd80\ucc44','doll - \uc778\ud615','pencil case - \uacf5\ucc45'],a:4},
+ {k:'dlg',q:'\ub300\ud654\uc758 \ube48\uce78\uc5d0 \uc54c\ub9de\uc740 \ub9d0\uc744 \uace0\ub974\uc138\uc694.',d:['A: How (    ) is it?',"B: It's five hundred won."],o:['many','much','old','time'],a:2},
+ {k:'w1',q:'\uadf8\ub9bc\uc744 \ubcf4\uace0, \ube48\uce78\uc5d0 \uc54c\ub9de\uc740 \ub0b1\ub9d0\uc744 \uace8\ub77c \ub123\uc73c\uc138\uc694.',p:'n8_o_soccerball',b:['soccer ball','skirt','fan'],line:'I like this (    ).',a:['soccer ball']},
+ {k:'ord',q:'\uc6b0\ub9ac\ub9d0\uc5d0 \ub9de\uac8c \ub0b1\ub9d0\uc744 \ucc28\ub840\ub300\ub85c \ub20c\ub7ec \ubb38\uc7a5\uc744 \ub9cc\ub4dc\uc138\uc694.',ko:'\uadf8\uac83\uc740 \uc5bc\ub9c8\ub2c8?',w:['is','How','it?','much'],a:['How','much','is','it?']},
+ {k:'w2',q:'\uadf8\ub9bc\uc744 \ubcf4\uace0, \ube48\uce78 \u3260, \u3261\uc5d0 \uc54c\ub9de\uc740 \ub0b1\ub9d0\uc744 \ucc28\ub840\ub300\ub85c \ub123\uc73c\uc138\uc694.',p:'n8_o_doll',b:['like','hundred','have','time'],d:['A: I ( \u3260 ) this doll. How much is it?',"B: It's five ( \u3261 ) won."],a:['like','hundred']}]},
+9:{t:'Is This Your Bag?',q:[
+ {k:'pic',q:'\uc798 \ub4e3\uace0, \uc54c\ub9de\uc740 \uadf8\ub9bc\uc744 \uace0\ub974\uc138\uc694.',say:'Is this your cap?',p:['n9_o_watch','n9_o_bag','n9_o_cap','n9_o_umbrella'],a:3},
+ {k:'pic',q:'\uc798 \ub4e3\uace0, \uc54c\ub9de\uc740 \uadf8\ub9bc\uc744 \uace0\ub974\uc138\uc694.',say:'Is this your notebook?',p:['n9_o_notebook','n9_o_shoe','n9_o_watch','n9_o_bag'],a:1},
+ {k:'txt',q:'\uc798 \ub4e3\uace0, \ub4e4\uc740 \ubb38\uc7a5\uc744 \uace0\ub974\uc138\uc694.',say:'Is this your shoe?',o:['Is this your bag?','Is this your hat?','Is this your shoe?','Is this your watch?'],a:3},
+ {k:'txt',q:'\uc798 \ub4e3\uace0, \uc54c\ub9de\uc740 \ub73b\uc744 \uace0\ub974\uc138\uc694.',say:"No, it isn't.",o:['\uc751, \ub9de\uc544.','\uc544\ub2c8, \uadf8\ub807\uc9c0 \uc54a\uc544.','\uc774\uac83\uc740 \ub124 \uac00\ubc29\uc774\ub2c8?','\uace0\ub9c8\uc6cc.'],a:2},
+ {k:'one',q:'\uadf8\ub9bc\uc744 \ubcf4\uace0, \uc54c\ub9de\uc740 \ub0b1\ub9d0\uc744 \uace0\ub974\uc138\uc694.',p:'n9_o_watch',o:['bag','cap','watch','shoe'],a:3},
+ {k:'pair',q:'\ub0b1\ub9d0\uacfc \ub73b\uc774 \ubc14\ub974\uac8c \uc9dd \uc9c0\uc5b4\uc9c0\uc9c0 \uc54a\uc740 \uac83\uc744 \uace0\ub974\uc138\uc694.',o:['bag - \uac00\ubc29','shoe - \uc2e0\ubc1c','notebook - \uacf5\ucc45','umbrella - \uc2dc\uacc4'],a:4},
+ {k:'dlg',q:'\ub300\ud654\uc758 \ube48\uce78\uc5d0 \uc54c\ub9de\uc740 \ub9d0\uc744 \uace0\ub974\uc138\uc694.',d:['A: Is this your bag?',"B: (    ) It's my bag."],o:['Yes, it is.',"No, it isn't.","It's Monday.","I'm a nurse."],a:1},
+ {k:'w1',q:'\uadf8\ub9bc\uc744 \ubcf4\uace0, \ube48\uce78\uc5d0 \uc54c\ub9de\uc740 \ub0b1\ub9d0\uc744 \uace8\ub77c \ub123\uc73c\uc138\uc694.',p:'n9_o_umbrella',b:['umbrella','cap','bag'],line:'Is this your (    )?',a:['umbrella']},
+ {k:'ord',q:'\uc6b0\ub9ac\ub9d0\uc5d0 \ub9de\uac8c \ub0b1\ub9d0\uc744 \ucc28\ub840\ub300\ub85c \ub20c\ub7ec \ubb38\uc7a5\uc744 \ub9cc\ub4dc\uc138\uc694.',ko:'\uc774\uac83\uc740 \ub124 \uacf5\ucc45\uc774\ub2c8?',w:['your','Is','notebook?','this'],a:['Is','this','your','notebook?']},
+ {k:'w2',q:'\uadf8\ub9bc\uc744 \ubcf4\uace0, \ube48\uce78 \u3260, \u3261\uc5d0 \uc54c\ub9de\uc740 \ub0b1\ub9d0\uc744 \ucc28\ub840\ub300\ub85c \ub123\uc73c\uc138\uc694.',p:'n9_o_bag',b:['bag',"isn't",'is','cap'],d:['A: Is this your ( \u3260 )?','B: No, it ( \u3261 ).'],a:['bag',"isn't"]}]},
+10:{t:'What Time Is It?',q:[
+ {k:'pic',q:'\uc798 \ub4e3\uace0, \uc54c\ub9de\uc740 \uadf8\ub9bc\uc744 \uace0\ub974\uc138\uc694.',say:"It's eleven twenty.",p:['n10_c1100','n10_c1110','n10_c1120','n10_c1230'],a:3},
+ {k:'pic',q:'\uc798 \ub4e3\uace0, \uc54c\ub9de\uc740 \uadf8\ub9bc\uc744 \uace0\ub974\uc138\uc694.',say:"It's time for bed.",p:['n10_d_breakfast','n10_d_school','n10_d_lunch','n10_d_bed'],a:4},
+ {k:'txt',q:'\uc798 \ub4e3\uace0, \ub4e4\uc740 \ubb38\uc7a5\uc744 \uace0\ub974\uc138\uc694.',say:"It's twelve forty.",o:["It's twelve thirty.","It's twelve forty.","It's twelve fifty.","It's eleven ten."],a:2},
+ {k:'txt',q:'\uc798 \ub4e3\uace0, \ubb34\uc5c7\uc744 \ud560 \uc2dc\uac04\uc778\uc9c0 \uace0\ub974\uc138\uc694.',say:"It's time for dinner.",o:['\uc544\uce68 \uc2dd\uc0ac','\ud559\uad50 \uac00\uae30','\uc810\uc2ec \uc2dd\uc0ac','\uc800\ub141 \uc2dd\uc0ac'],a:4},
+ {k:'one',q:'\uadf8\ub9bc\uc744 \ubcf4\uace0, \uc54c\ub9de\uc740 \ub0b1\ub9d0\uc744 \uace0\ub974\uc138\uc694.',p:'n10_d_school',o:['school','lunch','bed','dinner'],a:1},
+ {k:'pair',q:'\ub0b1\ub9d0\uacfc \ub73b\uc774 \ubc14\ub974\uac8c \uc9dd \uc9c0\uc5b4\uc9c0\uc9c0 \uc54a\uc740 \uac83\uc744 \uace0\ub974\uc138\uc694.',o:['breakfast - \uc544\uce68 \uc2dd\uc0ac','dinner - \uc800\ub141 \uc2dd\uc0ac','class - \uc218\uc5c5','bed - \ud559\uad50'],a:4},
+ {k:'dlg',q:'\ub300\ud654\uc758 \ube48\uce78\uc5d0 \uc54c\ub9de\uc740 \ub9d0\uc744 \uace0\ub974\uc138\uc694.',d:['A: What (    ) is it?',"B: It's eleven."],o:['day','time','much','color'],a:2},
+ {k:'w1',q:'\uadf8\ub9bc\uc744 \ubcf4\uace0, \ube48\uce78\uc5d0 \uc54c\ub9de\uc740 \ub0b1\ub9d0\uc744 \uace8\ub77c \ub123\uc73c\uc138\uc694.',p:'n10_d_lunch',b:['lunch','bed','school'],line:"It's time for (    ).",a:['lunch']},
+ {k:'ord',q:'\uc6b0\ub9ac\ub9d0\uc5d0 \ub9de\uac8c \ub0b1\ub9d0\uc744 \ucc28\ub840\ub300\ub85c \ub20c\ub7ec \ubb38\uc7a5\uc744 \ub9cc\ub4dc\uc138\uc694.',ko:'\ud559\uad50 \uac08 \uc2dc\uac04\uc774\uc57c.',w:['for',"It's",'school.','time'],a:["It's",'time','for','school.']},
+ {k:'w2',q:'\uadf8\ub9bc\uc744 \ubcf4\uace0, \ube48\uce78 \u3260, \u3261\uc5d0 \uc54c\ub9de\uc740 \ub0b1\ub9d0\uc744 \ucc28\ub840\ub300\ub85c \ub123\uc73c\uc138\uc694.',p:'n10_c1230',b:['twelve','thirty','eleven','forty'],d:['A: What time is it?',"B: It's ( \u3260 ) ( \u3261 )."],a:['twelve','thirty']}]},
+11:{t:"I'm Drawing a Picture",q:[
+ {k:'pic',q:'\uc798 \ub4e3\uace0, \uc54c\ub9de\uc740 \uadf8\ub9bc\uc744 \uace0\ub974\uc138\uc694.',say:"I'm reading a book.",p:['a_hw','a_game','a_draw','a_read'],a:4},
+ {k:'pic',q:'\uc798 \ub4e3\uace0, \uc54c\ub9de\uc740 \uadf8\ub9bc\uc744 \uace0\ub974\uc138\uc694.',say:"I'm making cookies.",p:['a_cook','a_clean','a_hw','a_draw'],a:1},
+ {k:'txt',q:'\uc798 \ub4e3\uace0, \ub4e4\uc740 \ubb38\uc7a5\uc744 \uace0\ub974\uc138\uc694.',say:"I'm playing a game.",o:["I'm doing homework.","I'm playing a game.","I'm drawing a picture.","I'm cleaning the table."],a:2},
+ {k:'txt',q:'\uc798 \ub4e3\uace0, \ud558\uace0 \uc788\ub294 \uc77c\uc744 \uace0\ub974\uc138\uc694.',say:"I'm cleaning the table.",o:['\uc219\uc81c\ud558\uae30','\ucc45 \uc77d\uae30','\uc2dd\ud0c1 \ub2e6\uae30','\ucfe0\ud0a4 \ub9cc\ub4e4\uae30'],a:3},
+ {k:'one',q:'\uadf8\ub9bc\uc744 \ubcf4\uace0, \uc54c\ub9de\uc740 \ub9d0\uc744 \uace0\ub974\uc138\uc694.',p:'a_draw',o:['reading a book','drawing a picture','making cookies','doing homework'],a:2},
+ {k:'pair',q:'\ub9d0\uacfc \ub73b\uc774 \ubc14\ub974\uac8c \uc9dd \uc9c0\uc5b4\uc9c0\uc9c0 \uc54a\uc740 \uac83\uc744 \uace0\ub974\uc138\uc694.',o:['doing homework - \uc219\uc81c\ud558\uae30','reading a book - \ucc45 \uc77d\uae30','playing a game - \uac8c\uc784\ud558\uae30','making cookies - \uc2dd\ud0c1 \ub2e6\uae30'],a:4},
+ {k:'dlg',q:'\ub300\ud654\uc758 \ube48\uce78\uc5d0 \uc54c\ub9de\uc740 \ub9d0\uc744 \uace0\ub974\uc138\uc694.',d:['A: What are you (    )?',"B: I'm drawing a picture."],o:['do','doing','have','like'],a:2},
+ {k:'w1',q:'\uadf8\ub9bc\uc744 \ubcf4\uace0, \ube48\uce78\uc5d0 \uc54c\ub9de\uc740 \ub0b1\ub9d0\uc744 \uace8\ub77c \ub123\uc73c\uc138\uc694.',p:'a_hw',b:['homework','a book','cookies'],line:"I'm doing (    ).",a:['homework']},
+ {k:'ord',q:'\uc6b0\ub9ac\ub9d0\uc5d0 \ub9de\uac8c \ub0b1\ub9d0\uc744 \ucc28\ub840\ub300\ub85c \ub20c\ub7ec \ubb38\uc7a5\uc744 \ub9cc\ub4dc\uc138\uc694.',ko:'\ub098\ub294 \ucc45\uc744 \uc77d\uace0 \uc788\uc5b4.',w:['a',"I'm",'book.','reading'],a:["I'm",'reading','a','book.']},
+ {k:'w2',q:'\uadf8\ub9bc\uc744 \ubcf4\uace0, \ube48\uce78 \u3260, \u3261\uc5d0 \uc54c\ub9de\uc740 \ub0b1\ub9d0\uc744 \ucc28\ub840\ub300\ub85c \ub123\uc73c\uc138\uc694.',p:'a_game',b:['doing','playing','reading','making'],d:['A: What are you ( \u3260 )?',"B: I'm ( \u3261 ) a game."],a:['doing','playing']}]},
+12:{t:'What Do You Do?',q:[
+ {k:'pic',q:'\uc798 \ub4e3\uace0, \uc54c\ub9de\uc740 \uadf8\ub9bc\uc744 \uace0\ub974\uc138\uc694.',say:"I'm a pilot.",p:['j_doctor','j_nurse','j_pilot','j_teacher'],a:3},
+ {k:'pic',q:'\uc798 \ub4e3\uace0, \uc54c\ub9de\uc740 \uadf8\ub9bc\uc744 \uace0\ub974\uc138\uc694.',say:"I'm a dancer.",p:['j_painter','j_writer','j_dancer','j_model'],a:3},
+ {k:'txt',q:'\uc798 \ub4e3\uace0, \ub4e4\uc740 \ubb38\uc7a5\uc744 \uace0\ub974\uc138\uc694.',say:"I'm a writer.",o:["I'm a doctor.","I'm a writer.","I'm a nurse.","I'm a model."],a:2},
+ {k:'txt',q:'\uc798 \ub4e3\uace0, \ud558\ub294 \uc77c(\uc9c1\uc5c5)\uc744 \uace0\ub974\uc138\uc694.',say:"I'm a teacher.",o:['\uc758\uc0ac','\uac04\ud638\uc0ac','\uc120\uc0dd\ub2d8','\ud654\uac00'],a:3},
+ {k:'one',q:'\uadf8\ub9bc\uc744 \ubcf4\uace0, \uc54c\ub9de\uc740 \ub0b1\ub9d0\uc744 \uace0\ub974\uc138\uc694.',p:'j_painter',o:['painter','pilot','teacher','dancer'],a:1},
+ {k:'pair',q:'\ub0b1\ub9d0\uacfc \ub73b\uc774 \ubc14\ub974\uac8c \uc9dd \uc9c0\uc5b4\uc9c0\uc9c0 \uc54a\uc740 \uac83\uc744 \uace0\ub974\uc138\uc694.',o:['doctor - \uc758\uc0ac','writer - \uc791\uac00','pilot - \ube44\ud589\uae30 \uc870\uc885\uc0ac','nurse - \ubaa8\ub378'],a:4},
+ {k:'dlg',q:'\ub300\ud654\uc758 \ube48\uce78\uc5d0 \uc54c\ub9de\uc740 \ub9d0\uc744 \uace0\ub974\uc138\uc694.',d:['A: What do you (    )?',"B: I'm a doctor."],o:['do','like','have','is'],a:1},
+ {k:'w1',q:'\uadf8\ub9bc\uc744 \ubcf4\uace0, \ube48\uce78\uc5d0 \uc54c\ub9de\uc740 \ub0b1\ub9d0\uc744 \uace8\ub77c \ub123\uc73c\uc138\uc694.',p:'j_nurse',b:['nurse','doctor','model'],line:"I'm a (    ).",a:['nurse']},
+ {k:'ord',q:'\uc6b0\ub9ac\ub9d0\uc5d0 \ub9de\uac8c \ub0b1\ub9d0\uc744 \ucc28\ub840\ub300\ub85c \ub20c\ub7ec \ubb38\uc7a5\uc744 \ub9cc\ub4dc\uc138\uc694.',ko:'\ub108\ub294 \ubb34\uc2a8 \uc77c\uc744 \ud558\ub2c8?',w:['you','What','do?','do'],a:['What','do','you','do?']},
+ {k:'w2',q:'\uadf8\ub9bc\uc744 \ubcf4\uace0, \ube48\uce78 \u3260, \u3261\uc5d0 \uc54c\ub9de\uc740 \ub0b1\ub9d0\uc744 \ucc28\ub840\ub300\ub85c \ub123\uc73c\uc138\uc694.',p:'j_model',b:['do','model','have','writer'],d:['A: What do you ( \u3260 )?',"B: I'm a ( \u3261 )."],a:['do','model']}]}};
+const AREA=['\ub4e3\uae30','\ub4e3\uae30','\ub4e3\uae30','\ub4e3\uae30','\uc77d\uae30','\uc77d\uae30','\uc77d\uae30','\uc4f0\uae30','\uc4f0\uae30','\uc4f0\uae30'];
+/* \uc18c\ub9ac: \uac8c\uc784\uc758 \uc6d0\uc5b4\ubbfc \ub179\uc74c(CM)\uc5d0\uc11c \uac19\uc740 \ubb38\uc7a5\uc744 \ucc3e\uc544\uc694. \uc5c6\uc73c\uba74 \uae30\uacc4 \uc74c\uc131 */
+let CIX=null;const norm=t=>String(t||'').replace(/[\u2019\u2018]/g,"'").replace(/\s+/g,' ').trim().toLowerCase();
+function clipOf(t){if(!CIX){CIX={};Object.keys(CM).forEach(k=>{const n=norm(CM[k].t);if(n&&!(n in CIX))CIX[n]=k})}return CIX[norm(t)]||''}
+function sayIt(t){const c=clipOf(t);if(c){Snd.play(c);return}try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=.85;speechSynthesis.speak(u)}catch(e){}}
+const cfg=()=>(typeof CFG!=='undefined'&&CFG)||{};
+const openList=()=>Array.isArray(cfg().exam)?cfg().exam:[];
+const isOpen=n=>openList().includes(n);
+function exRec(n){S.ex=S.ex||{};return S.ex[n]||(S.ex[n]={best:0,t:{}})}
+const tries=n=>Object.keys(exRec(n).t||{}).length;
+const z2=x=>String(x).padStart(2,'0'),stamp=d=>`${d.getFullYear()}-${z2(d.getMonth()+1)}-${z2(d.getDate())} ${z2(d.getHours())}:${z2(d.getMinutes())}`;
+const mmss=s=>`${Math.floor(s/60)}\ubd84 ${z2(s%60)}\ucd08`;
+
+/* ---------- \ud559\uc0dd: \uc2dc\uc791 \ud654\uba74 ---------- */
+function showExamHome(n){n=n||(window.UNITS_UI&&UNITS_UI.cur());BACK=[showMap,'\uc9c0\ub3c4'];TB_STEP=false;ACTIVE=++RUNID;Snd.stop();
+  const E=EX[n];if(!E){toast('\uc774 \ub2e8\uc6d0\uc740 \ud3c9\uac00\uac00 \uc5c6\uc5b4\uc694');showMap();return}
+  topBar('\ud83d\udcdd \ub2e8\uc6d0\ud3c9\uac00',el('span',{class:'chip'},'Lesson '+n));const s=stageNew();const r=exRec(n),k=tries(n);
+  const w=el('div',{class:'card',style:'width:100%;max-width:640px;margin:0 auto;text-align:center'});s.append(w);
+  w.append(el('div',{style:'font-size:56px'},'\ud83d\udcdd'),el('h2',{style:'margin:4px 0'},`Lesson ${n}. `,el('span',{class:'en'},E.t)),
+    el('div',{style:'font-size:17px;line-height:1.7;margin:8px 0'},'\ubaa8\ub450 10\ubb38\uc81c\uc608\uc694. (\ub4e3\uae30 4 \u00b7 \uc77d\uae30 3 \u00b7 \uc4f0\uae30 3)',el('br'),'\ud83d\udd0a \ub4e3\uae30 \ubb38\uc81c\ub294 \uc18c\ub9ac\ub97c \uc5ec\ub7ec \ubc88 \ub4e4\uc5b4\ub3c4 \ub3fc\uc694.',el('br'),'\ud55c \ubb38\uc81c\uc5d0 10\uc810, \ub2e4 \ub9de\ud788\uba74 100\uc810!'));
+  if(k)w.append(el('div',{style:'font-size:17px;margin:6px 0;color:#1971c2;font-weight:800'},`\uc9c0\uae08\uae4c\uc9c0 ${k}\ubc88 \ubd24\uc5b4\uc694 \u00b7 \ucd5c\uace0 \uc810\uc218 ${r.best}\uc810`));
+  const can=!k||cfg().examRe!==false;
+  w.append(el('div',{class:'btnrow',style:'justify-content:center;margin-top:10px'},can?el('button',{class:'big orange',style:'font-size:22px',onclick:()=>{SFX.click();runExam(n)}},k?'\ud83d\udd01 \ub2e4\uc2dc \ubcf4\uae30':'\u25b6 \uc2dc\uc791\ud558\uae30'):el('div',{style:'font-size:17px;color:#868e96'},'\uc120\uc0dd\ub2d8\uc774 \ub2e4\uc2dc \ubcf4\uae30\ub97c \ub2eb\uc544 \ub450\uc5c8\uc5b4\uc694.')))}
+
+/* ---------- \ud559\uc0dd: \ubb38\uc81c \ud480\uae30 ---------- */
+function runExam(n){const E=EX[n];const QUIT=()=>{BACK=[async()=>{const my0=ACTIVE;if(await modal('<h2>\ud3c9\uac00\ub97c \uadf8\ub9cc\ub458\uae4c\uc694?</h2><p style="font-size:17px">\uc9c0\uae08\uae4c\uc9c0 \ud47c \uac83\uc740 \uae30\ub85d\ub418\uc9c0 \uc54a\uc544\uc694.</p>',[['\uacc4\uc18d \ud480\uae30','gray',0],['\uadf8\ub9cc\ub450\uae30','',1]]))showExamHome(n);else if(ACTIVE===my0){}},'\uadf8\ub9cc\ub450\uae30'];};QUIT();TB_STEP=false;ACTIVE=++RUNID;const my=ACTIVE;Snd.stop();
+  const t0=Date.now(),ans=Array(10).fill(null);let i=0;
+  const next=()=>{if(ACTIVE!==my)return;i++;if(i>=10)finish();else ask()};
+  const ask=()=>{if(ACTIVE!==my)return;const q=E.q[i];QUIT();TB_STEP=false;topBar('\ud83d\udcdd Lesson '+n,el('span',{class:'chip'},`${i+1} / 10`));const s=stageNew();
+    const w=el('div',{class:'card exq',style:'width:100%;max-width:'+(PORT?'680px':'860px')+';margin:0 auto;display:flex;flex-direction:column;gap:8px'});s.append(w);
+    w.append(el('div',{style:'font-size:14px;font-weight:800;color:#1971c2'},i<4?'\u2160. \ub4e3\uae30':`\u2161. \uc77d\uae30\uc640 \uc4f0\uae30 \u00b7 ${AREA[i]}`),el('div',{style:'font-size:19px;font-weight:900;line-height:1.45'},`${i+1}. ${q.q}`));
+    if(q.say){const play=()=>sayIt(q.say);w.append(el('div',{style:'display:flex;justify-content:center'},earBtn(play)));setTimeout(()=>{if(ACTIVE===my)play()},400)}
+    const pick=k=>{if(ACTIVE!==my||ans[i]!=null)return;ans[i]=k;SFX.click();w.querySelectorAll('.opt').forEach((b,j)=>b.classList.toggle('on',j===k));setTimeout(next,350)};
+    const textOpts=o=>{const g=el('div',{style:'display:grid;grid-template-columns:1fr;gap:8px'});o.forEach((x,k)=>g.append(el('button',{class:'opt txtopt',style:'font-size:19px;justify-content:flex-start;text-align:left;padding:12px 14px;min-height:54px',onclick:()=>pick(k)},el('b',{style:'margin-right:10px'},NUM[k]),el('span',{class:/[\uac00-\ud7a3]/.test(x)&&!/ - /.test(x)?'':'en'},x))));return g};
+    if(q.k==='pic'){const g=el('div',{style:`display:grid;grid-template-columns:repeat(${PORT?2:4},1fr);gap:8px`});q.p.forEach((im,k)=>g.append(el('button',{class:'opt',style:'flex-direction:column;padding:6px;min-height:0',onclick:()=>pick(k)},el('img',{src:I(im),style:`width:100%;height:${PORT?'17vh':'min(20vh,140px)'};object-fit:contain`}),el('b',{style:'font-size:18px'},NUM[k]))));w.append(g)}
+    else if(q.k==='txt'||q.k==='pair'){w.append(textOpts(q.o))}
+    else if(q.k==='one'){w.append(el('div',{style:'display:flex;justify-content:center'},el('img',{src:I(q.p),style:`height:${PORT?'20vh':'min(24vh,170px)'};max-width:90%;object-fit:contain`})),textOpts(q.o))}
+    else if(q.k==='dlg'){w.append(el('div',{class:'en',style:'border:2px solid #ced4da;border-radius:12px;padding:10px 14px;font-size:19px;line-height:1.7;background:#f8f9fa'},...q.d.map(l=>{const d=el('div',{});d.innerHTML=esc(l).replace('(    )','<span style="display:inline-block;min-width:4.5em;border-bottom:3px solid #495057;margin:0 4px">&nbsp;</span>');return d})),textOpts(q.o))}
+    else{/* \uc4f0\uae30: \uce74\ub4dc\ub97c \ub20c\ub7ec \ucc44\uc6cc\uc694 */
+      const need=q.a.length,fill=[];const area=el('div',{class:'en',style:'border:2px solid #ced4da;border-radius:12px;padding:10px 14px;font-size:20px;line-height:1.8;background:#f8f9fa;min-height:48px'});
+      const cards=el('div',{style:'display:flex;flex-wrap:wrap;gap:8px;justify-content:center'}),ctr=el('div',{class:'btnrow',style:'justify-content:center'});
+      const slot=v=>`<span style="display:inline-block;min-width:4.2em;border-bottom:3px solid #1971c2;color:#1971c2;font-weight:900;text-align:center;padding:0 4px">${v?esc(v):'&nbsp;'}</span>`;
+      const draw=()=>{if(q.k==='ord'){area.innerHTML=fill.length?fill.map(x=>`<b style="color:#1971c2">${esc(x)}</b>`).join(' '):'<span style="color:#adb5bd">\uc544\ub798 \ub0b1\ub9d0\uc744 \ucc28\ub840\ub300\ub85c \ub20c\ub7ec\uc694</span>'}
+        else if(q.k==='w1'){area.innerHTML=esc(q.line).replace('(    )',slot(fill[0]))}
+        else{area.innerHTML=q.d.map(l=>esc(l).replace('( \u3260 )','\u3260'+slot(fill[0])).replace('( \u3261 )','\u3261'+slot(fill[1]))).join('<br>')}
+        cards.querySelectorAll('button').forEach(b=>{const used=q.k==='ord'?fill.filter(x=>x===b.dataset.w).length>=q.w.filter(x=>x===b.dataset.w).length:fill.includes(b.dataset.w);b.disabled=used;b.style.opacity=used?.35:1});
+        done.disabled=fill.length<need;done.style.opacity=fill.length<need?.5:1};
+      const pool=q.k==='ord'?q.w:q.b;pool.forEach(x=>cards.append(el('button',{class:'tab en','data-w':x,style:'font-size:20px;padding:10px 16px;border-radius:12px;background:#fff;border:2px solid #74c0fc',onclick:()=>{if(fill.length>=need)return;fill.push(x);SFX.click();draw()}},x)));
+      const undo=el('button',{class:'big gray',onclick:()=>{fill.pop();draw()}},'\u21a9 \uc9c0\uc6b0\uae30'),done=el('button',{class:'big blue',onclick:()=>{if(fill.length<need)return;ans[i]=fill.slice();next()}},'\ub2e4\uc74c \u25b6');
+      ctr.append(undo,done);
+      if(q.k==='ord')w.append(el('div',{style:'font-size:18px'},el('b',{},'\uc6b0\ub9ac\ub9d0: '),q.ko));
+      if(q.p)w.append(el('div',{style:'display:flex;justify-content:center'},el('img',{src:I(q.p),style:`height:${PORT?'16vh':'min(20vh,140px)'};max-width:90%;object-fit:contain`})));
+      if(q.k!=='ord')w.append(el('div',{style:'font-size:14px;color:#6b7a90;text-align:center'},'<\ubcf4\uae30>\uc5d0\uc11c \uace8\ub77c \ub20c\ub7ec\uc694'));
+      w.append(area,cards,ctr);draw()}
+    if(i>0)w.append(el('div',{style:'text-align:center'},el('button',{class:'tbtn',style:'font-size:15px',onclick:()=>{i--;ans[i]=null;ask()}},'\u25c0 \uc55e \ubb38\uc81c')))};
+  const finish=async()=>{const sec=Math.max(1,Math.round((Date.now()-t0)/1000));const ok=E.q.map((q,k)=>Array.isArray(q.a)?JSON.stringify(ans[k])===JSON.stringify(q.a):ans[k]===q.a-1);
+    const sc=ok.filter(Boolean).length*10,r=exRec(n),first=!tries(n),prevBest=r.best||0;r.t=r.t||{};r.t[String(Date.now())]=`${sc}|${sec}|${ok.map(x=>x?1:0).join('')}`;r.best=Math.max(prevBest,sc);
+    let c=0;if(first){c=15;S.coin+=c}
+    save();sync();if(window.LOGD)LOGD('game',`\ud83d\udcdd Lesson ${n} \ub2e8\uc6d0\ud3c9\uac00 ${sc}\uc810 (${mmss(sec)})`);SFX.win();if(sc===100&&typeof confettiE==='function')confettiE(30);
+    showExamResult(n,ans,ok,sc,sec,{first,c,newBest:sc>prevBest&&!first})};
+  ask()}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function ansText(q,a){if(a==null)return '-';if(Array.isArray(q.a))return Array.isArray(a)?a.join(q.k==='ord'?' ':', '):'-';return NUM[a]+(q.o?' '+q.o[a]:'')}
+function showExamResult(n,ans,ok,sc,sec,info){BACK=[()=>showExamHome(n),'\ub2e8\uc6d0\ud3c9\uac00'];TB_STEP=false;ACTIVE=++RUNID;topBar('\ud83d\udcdd \uacb0\uacfc',el('span',{class:'chip'},'Lesson '+n));const s=stageNew();const E=EX[n];
+  const w=el('div',{class:'card',style:'width:100%;max-width:680px;margin:0 auto'});s.append(w);
+  w.append(el('div',{style:'text-align:center'},el('div',{style:'font-size:60px'},sc>=90?'\ud83c\udfc6':sc>=70?'\ud83c\udf1f':'\ud83d\udcaa'),el('div',{style:'font-size:34px;font-weight:900'},`${sc}\uc810`),
+    el('div',{style:'font-size:16px;color:#495057;margin:4px 0'},`\uac78\ub9b0 \uc2dc\uac04 ${mmss(sec)} \u00b7 \ucd5c\uace0 \uc810\uc218 ${exRec(n).best}\uc810`),
+    info.first?el('div',{style:'font-size:17px;color:#2b8a3e;font-weight:800'},`\ucc98\uc74c \ubcf8 \ud3c9\uac00! \ud83e\ude99 +${info.c}`):info.newBest?el('div',{style:'font-size:17px;color:#1971c2;font-weight:800'},'\ucd5c\uace0 \uc810\uc218\ub97c \uc0c8\ub85c \uc138\uc6e0\uc5b4\uc694!'):''));
+  const t=el('div',{style:'display:flex;flex-direction:column;gap:6px;margin-top:10px'});
+  E.q.forEach((q,k)=>t.append(el('div',{style:`border-radius:10px;padding:8px 10px;background:${ok[k]?'#ebfbee':'#fff5f5'};font-size:15px;line-height:1.5`},
+    el('b',{},`${ok[k]?'\u2b55':'\u274c'} ${k+1}\ubc88 (${AREA[k]}) `),q.say?el('span',{class:'en',style:'color:#495057'},` \ud83d\udd0a ${q.say}`):'',
+    ok[k]?'':el('div',{},'\ub0b4 \ub2f5: ',el('span',{class:'en'},ansText(q,ans[k])),' \u2192 \uc815\ub2f5: ',el('b',{class:'en'},ansText(q,Array.isArray(q.a)?q.a:q.a-1))))));
+  w.append(t,el('div',{class:'btnrow',style:'justify-content:center;margin-top:12px'},el('button',{class:'big',onclick:()=>showMap()},'\ud83d\uddfa \uc9c0\ub3c4\ub85c'),cfg().examRe!==false?el('button',{class:'big orange',onclick:()=>runExam(n)},'\ud83d\udd01 \ub2e4\uc2dc \ubcf4\uae30'):''))}
+
+/* ---------- \uc9c0\ub3c4: \uc5f4\ub9b0 \ub2e8\uc6d0\uc5d0 \u300c\ud83d\udcdd \ud3c9\uac00\u300d ---------- */
+const _smE=showMap;showMap=function(first){_smE(first);if(!S.name||(typeof isT==='function'&&isT()))return;const n=window.UNITS_UI&&UNITS_UI.cur();if(!isOpen(n)||!EX[n])return;const strip=document.querySelector('.ustrip');if(!strip)return;
+  const k=tries(n),cur=strip.querySelector('.utab.on')||strip.querySelector('.lcur');(cur?(x=>cur.before(x)):(x=>strip.prepend(x)))(el('button',{class:'utab today'+(k?' done':''),onclick:()=>{SFX.click();showExamHome(n)}},el('div',{class:'uc'},el('b',{},'\ud83d\udcdd \ud3c9\uac00'),el('small',{},k?`\ucd5c\uace0 ${exRec(n).best}\uc810`:'\ub2e8\uc6d0\ud3c9\uac00'))))};
+
+/* ---------- \uc120\uc0dd\ub2d8: \ud83d\udcdd \ud3c9\uac00 \uacb0\uacfc ---------- */
+let EXU=7;
+function resultHtml(r,n){const E=EX[n],th='border:1px solid #888;padding:4px 6px;background:#eee;font-weight:bold',td='border:1px solid #888;padding:4px 6px;text-align:center';
+  const rows=r.list.map(o=>{const x=(o.ex||{})[n],T=x&&x.t?Object.keys(x.t).sort():[];const last=T.length?x.t[T[T.length-1]].split('|'):null;
+    return `<tr><td style="${td};text-align:left">${esc(o.name)}</td><td style="${td}">${T.length||'-'}</td><td style="${td}">${x&&T.length?x.best:'-'}</td><td style="${td}">${last?last[0]:'-'}</td><td style="${td}">${last?mmss(+last[1]):'-'}</td><td style="${td}">${T.length?stamp(new Date(+T[T.length-1])):'-'}</td><td style="${td};text-align:left">${T.map(k=>{const v=x.t[k].split('|');return v[0]+'\uc810('+Math.round(v[1]/60)+'\ubd84)'}).join(', ')}</td></tr>`}).join('');
+  const rate=itemRate(r,n);
+  return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>\ub2e8\uc6d0\ud3c9\uac00 \uacb0\uacfc</title></head><body style="font-family:'\ub9d1\uc740 \uace0\ub515',sans-serif;font-size:11pt"><h2 style="text-align:center">Lesson ${n}. ${esc(E.t)} \ub2e8\uc6d0\ud3c9\uac00 \uacb0\uacfc</h2><p>${esc(r.cls||'')}</p>
+<table style="border-collapse:collapse;width:100%"><tr><td style="${th}">\ubc88\ud638\u00b7\uc774\ub984</td><td style="${th}">\ubcf8 \ud69f\uc218</td><td style="${th}">\ucd5c\uace0 \uc810\uc218</td><td style="${th}">\ub9c8\uc9c0\ub9c9 \uc810\uc218</td><td style="${th}">\ub9c8\uc9c0\ub9c9 \uac78\ub9b0 \uc2dc\uac04</td><td style="${th}">\ub9c8\uc9c0\ub9c9 \ubcf8 \ub54c</td><td style="${th}">\ubaa8\ub4e0 \uae30\ub85d</td></tr>${rows}</table>
+<h3>\ubb38\ud56d\ubcc4 \uc815\ub2f5\ub960 (\ud559\uc0dd\ub9c8\ub2e4 \ub9c8\uc9c0\ub9c9\uc5d0 \ubcf8 \ud3c9\uac00 \uae30\uc900)</h3><table style="border-collapse:collapse;width:100%"><tr>${E.q.map((q,k)=>`<td style="${th};text-align:center">${k+1}\ubc88<br>${AREA[k]}</td>`).join('')}</tr><tr>${rate.map(v=>`<td style="${td}">${v==null?'-':v+'%'}</td>`).join('')}</tr></table></body></html>`}
+function itemRate(r,n){const c=Array(10).fill(0);let m=0;r.list.forEach(o=>{const x=(o.ex||{})[n];if(!x||!x.t)return;const T=Object.keys(x.t).sort();if(!T.length)return;const b=(x.t[T[T.length-1]].split('|')[2]||'');m++;for(let k=0;k<10;k++)if(b[k]==='1')c[k]++});return c.map(v=>m?Math.round(v/m*100):null)}
+function saveFile(name,text){try{const b=new Blob([text],{type:'text/html;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;document.body.append(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500);return true}catch(e){toast('\uc774 \ud654\uba74\uc5d0\uc11c\ub294 \ub0b4\ub824\ubc1b\uc744 \uc218 \uc5c6\uc5b4\uc694. \uc571\uc5d0\uc11c \ud574 \uc8fc\uc138\uc694',3000);return false}}
+function printHtml(html){const f=document.createElement('iframe');f.style.cssText='position:fixed;right:0;bottom:0;width:0;height:0;border:0';document.body.append(f);const d=f.contentWindow.document;d.open();d.write(html);d.close();setTimeout(()=>{try{f.contentWindow.focus();f.contentWindow.print()}catch(e){}setTimeout(()=>f.remove(),60000)},400)}
+const _dTE=drawT;drawT=function(s,my){_dTE(s,my);const tabs=s.querySelector('.tabs'),box=s.querySelector('.card');if(!tabs||!box||!TPIN)return;
+  tabs.insertBefore(el('button',{class:'tab'+(TTAB==='exam'?' on':''),onclick:()=>{TTAB='exam';SFX.click();drawT(s,my)}},'\ud83d\udcdd \ud3c9\uac00 \uacb0\uacfc'),tabs.children[1]||null);
+  if(TTAB!=='exam')return;box.innerHTML='';const area=el('div',{},el('p',{style:'font-size:17px'},'\ud83d\udcdd \ud3c9\uac00 \uae30\ub85d\uc744 \ubaa8\uc73c\uace0 \uc788\uc5b4\uc694\u2026'));box.append(area);
+  (async()=>{const r=await tCall('adminExam',TPIN);if(ACTIVE!==my)return;area.innerHTML='';
+    if(!r||!r.ok){area.append(el('p',{style:'font-size:17px;color:#c92a2a'},'\ubd88\ub7ec\uc624\uc9c0 \ubabb\ud588\uc5b4\uc694. Code.gs\ub97c \uc0c8 \ubc84\uc804\uc73c\ub85c \ubc14\uafe8\ub294\uc9c0 \ud655\uc778\ud574 \uc8fc\uc138\uc694.'));return}
+    const n=EXU,E=EX[n];
+    area.append(el('div',{class:'btnrow',style:'flex-wrap:wrap;gap:6px;margin-bottom:8px'},...[7,8,9,10,11,12].map(u=>el('button',{class:'tab'+(u===n?' on':''),style:'font-size:16px',onclick:()=>{EXU=u;drawT(s,my)}},`L${u}${isOpen(u)?' \ud83d\udfe2':''}`))),
+      el('div',{style:'font-size:15px;color:#495057;margin-bottom:6px'},`Lesson ${n}. ${E.t} \u00b7 \ud83d\udfe2\ub294 \ud559\uc0dd\uc5d0\uac8c \uc5f4\ub9b0 \ub2e8\uc6d0 (\u2699 \uc124\uc815 \ud0ed\uc5d0\uc11c \uc5f4\uace0 \ub2eb\uc544\uc694)`));
+    const html=resultHtml(r,n);
+    area.append(el('div',{class:'btnrow',style:'margin-bottom:8px'},el('button',{class:'big blue',onclick:()=>printHtml(html)},'\ud83d\udda8 \uc778\uc1c4'),el('button',{class:'big',onclick:()=>{if(saveFile(`\ub2e8\uc6d0\ud3c9\uac00_L${n}_${stamp(new Date()).slice(0,10)}.html`,html))toast('\ub0b4\ub824\ubc1b\uc558\uc5b4\uc694. \ud55c\uae00\uc5d0\uc11c [\ud30c\uc77c \u2192 \ubd88\ub7ec\uc624\uae30]\ub85c \uc5f4 \uc218 \uc788\uc5b4\uc694',3500)}},'\ud83d\udcbe \ud55c\uae00 \ud30c\uc77c\ub85c \ubc1b\uae30')));
+    const t=el('table',{class:'ttab',style:'width:100%;font-size:15px'});t.append(el('tr',{},...['\ubc88\ud638\u00b7\uc774\ub984','\ud69f\uc218','\ucd5c\uace0','\ub9c8\uc9c0\ub9c9','\uc2dc\uac04','\ubcf8 \ub54c'].map(h=>el('th',{},h))));
+    let took=0;r.list.forEach(o=>{const x=(o.ex||{})[n],T=x&&x.t?Object.keys(x.t).sort():[];if(T.length)took++;const last=T.length?x.t[T[T.length-1]].split('|'):null;
+      const tr=el('tr',{style:T.length?'cursor:pointer':'background:#f8f9fa;color:#adb5bd'},el('td',{},o.name),el('td',{},T.length?String(T.length):'-'),el('td',{style:'font-weight:900'},T.length?String(x.best):'-'),el('td',{},last?last[0]:'-'),el('td',{},last?mmss(+last[1]):'-'),el('td',{},T.length?stamp(new Date(+T[T.length-1])).slice(5):'-'));
+      if(T.length)tr.onclick=()=>modal(`<h2>${esc(o.name)} \u00b7 Lesson ${n}</h2><div style="text-align:left;font-size:16px;line-height:1.8;max-height:60vh;overflow:auto">${T.map((k,j)=>{const v=x.t[k].split('|');return `${j+1}\ud68c ${stamp(new Date(+k))} \u00b7 <b>${v[0]}\uc810</b> \u00b7 ${mmss(+v[1])}<br><span style="color:#868e96;font-size:14px">${(v[2]||'').split('').map((b,q)=>(q+1)+(b==='1'?'\u2b55':'\u274c')).join(' ')}</span>`}).join('<br>')}</div>`,[['\ub2eb\uae30','',1]]);
+      t.append(tr)});
+    area.append(el('div',{style:'font-weight:900;margin:6px 0 4px'},`\ud83d\udc67 \ud559\uc0dd\ubcc4 \uae30\ub85d (\ubcf8 \ud559\uc0dd ${took}\uba85 / ${r.list.length}\uba85) \u00b7 \uc774\ub984\uc744 \ub204\ub974\uba74 \ubaa8\ub4e0 \uae30\ub85d\uc774 \ubcf4\uc5ec\uc694`),el('div',{style:'overflow-x:auto'},t));
+    const rate=itemRate(r,n),g=el('div',{style:'display:grid;grid-template-columns:repeat(5,1fr);gap:6px'});
+    rate.forEach((v,k)=>g.append(el('div',{style:`border-radius:10px;padding:6px;text-align:center;background:${v==null?'#f1f3f5':v<50?'#ffe3e3':v<80?'#fff3bf':'#d3f9d8'}`},el('div',{style:'font-size:13px'},`${k+1}\ubc88 ${AREA[k]}`),el('div',{style:'font-size:18px;font-weight:900'},v==null?'-':v+'%'))));
+    area.append(el('div',{style:'font-weight:900;margin:12px 0 4px'},'\ud83d\udcca \ubb38\ud56d\ubcc4 \uc815\ub2f5\ub960 (\ub9c8\uc9c0\ub9c9\uc5d0 \ubcf8 \ud3c9\uac00 \uae30\uc900)'),g)})()};
+window.EXAM={EX,showExamHome,runExam,clipOf};Object.assign(window.G||{},{showMap,showExamHome});
 })();
 
 /* ===================== \u26a1 \ube60\ub974\uac8c \uc5f4\uae30: \ud55c \ubc88 \ubc1b\uc740 \uadf8\ub9bc\u00b7\uc18c\ub9ac\ub294 \uae30\uae30\uc5d0 \uc800\uc7a5 ===================== */
