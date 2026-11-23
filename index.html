@@ -4,7 +4,7 @@
 /* ===== app connect block (GitHub app) =====
    GAME_API: Apps Script web app address (deploy > manage deployments). Change only this line if the address changes. */
 var GAME_API = 'https://script.google.com/macros/s/AKfycbzqoouTfjwKWxpLjmvbFm7Tkk10Vyw0rGIzImp2MVfq1WyvL68fUg2QJCKVyIZC1_Jdew/exec';
-var APP_BUILD = '13';
+var APP_BUILD = '14';
 /* google.script.run stand-in: every call goes to Code.gs doPost as JSON, without Google sign-in cookies */
 (function(){
   function call(fn, args, ok, bad, tries){
@@ -6372,10 +6372,11 @@ const stOpen=g=>{if(isTN(S.name)||g.ix===0)return true;const t=TRACKS.find(t=>t.
 function showBasic(){BACK=[showPetHome,'\ub3cc\ubcf4\uae30'];TB_STEP=false;ACTIVE=++RUNID;Snd.stop();topBar('\ud83d\udd24 \uae30\ucd08 \uc12c',coinChip());const s=stageNew();
   help(s,`\ub2e8\uacc4\ub97c \ub9c8\uce58\uba74 \u2b50 \uac1c\uc218\ub9cc\ud07c \ud83c\udf9f \ud65c\ub3d9\uad8c\uc744 \uc5bb\uc5b4\uc694. \u2b503\uac1c\uba74 \ud83d\udd25 \ub3c4\uc804 \ubb38\uc81c\uac00 \uc5f4\ub824\uc694! (\u2b50 ${bStars()}/${NSTG*3} \u00b7 \ud83c\udfc5 ${nBadge()}/${NSTG})`);
   const wrap=el('div',{class:'bwrap'});s.append(wrap);
-  TRACKS.forEach(t=>{const box=el('div',{class:'btrack'},el('div',{class:'bt'},t.name,el('small',{},t.sub)));const g=el('div',{class:'bstages'});box.append(g);wrap.append(box);
+  const ABCOFF=typeof CFG!=='undefined'&&CFG&&CFG.abc===false,VT=TRACKS.filter(t=>!(ABCOFF&&t.id==='s'));
+  VT.forEach(t=>{const box=el('div',{class:'btrack'},el('div',{class:'bt'},t.name,el('small',{},t.sub)));const g=el('div',{class:'bstages'});box.append(g);wrap.append(box);
     let nextShown=false;
     t.stages.forEach(st=>{const v=BS()[st.id]||0,open=stOpen(st);const isNext=open&&!v&&!nextShown;if(isNext)nextShown=true;
-      const b=el('button',{class:'bst'+(v?' done':isNext?' next':'')+(open?'':' lock')},isNext&&t.id===TRACKS[0].id&&!v&&st.ix===0?el('span',{class:'here'},'\uc5ec\uae30\ubd80\ud130!'):'',
+      const b=el('button',{class:'bst'+(v?' done':isNext?' next':'')+(open?'':' lock')},isNext&&t.id===VT[0].id&&!v&&st.ix===0?el('span',{class:'here'},'\uc5ec\uae30\ubd80\ud130!'):'',
         el('div',{class:'ic',style:/^[A-Z]$/.test(st.ic)?'font-family:Arial;color:#1971c2;font-weight:900':''},open?st.ic:'\ud83d\udd12'),el('div',{},st.n),el('div',{class:'ss'},v?'\u2b50'.repeat(v)+'\u2606'.repeat(3-v):open?'\uc2dc\uc791!':'\uc55e \ub2e8\uacc4 \uba3c\uc800'),BCH()[st.id]?el('span',{class:'bdgc'},'\ud83c\udfc5'):v===3?el('span',{class:'bdgc fire'},'\ud83d\udd25'):'');
       b.onclick=()=>{if(!open){SFX.no();toast('\uc55e \ub2e8\uacc4\ub97c \uba3c\uc800 \ud574\uc694 \ud83d\udd12');return}SFX.click();learn(st)};g.append(b)})})}
 const BCH=()=>S.bch||(S.bch={});const nBadge=()=>Object.keys(BCH()).length;
@@ -6790,7 +6791,7 @@ Object.assign(window.G||{},{showCredits});
 
 /* ===================== \ud83e\udded \ud654\uba74 \ubc30\uce58 \uc815\ub9ac: \ub2e8\uc6d0 \ud0ed \u00b7 \uacb9\uce68 \uc5c6\ub294 \uc9c0\ub3c4 \u00b7 \uc544\ub798 \uba54\ub274 ===================== */
 (function(){
-const APPV='2026.11.25';window.APPV=APPV;
+const APPV='2026.11.26';window.APPV=APPV;
 const U=window.UNITS_UI;if(!U)return;
 const LCOL={7:'#12b886',8:'#fab005',9:'#f76707',10:'#d6336c',11:'#1c7ed6',12:'#2f9e44',4:'#7950f2',5:'#7950f2',6:'#7950f2'};
 const css=`
@@ -7204,7 +7205,7 @@ async function enter(nm){window.ENTERING=1;if(isTN(nm)){if(GAS&&!TPIN){teacherPi
   const wait=el('div',{class:'overlay'},el('div',{class:'modal'},el('div',{style:'font-size:40px'},'\ud83d\udd0d'),el('h2',{},'\ud655\uc778\ud558\uace0 \uc788\uc5b4\uc694\u2026')));document.body.append(wait);
   const h=await call('hasPw',nm);wait.remove();HASPW=!!(h&&h.has);
   if(!h){window.PW='';login(nm);return}  // \uc11c\ubc84 \ud655\uc778\uc774 \uc548 \ub418\uba74 \uc77c\ub2e8 \ub4e4\uc5b4\uac00\uc694 (\uc800\uc7a5\uc740 \uae30\ub85d \uc9c0\ud0b4\uc774\uac00 \uc9c0\ucf1c\uc694)
-  if(!HASPW){  // \ud83d\udd12 \ube44\ubc00\ubc88\ud638\uac00 \uc5c6\uc73c\uba74 \uba3c\uc800 \ub9cc\ub4e4\uc5b4\uc694
+  if(!HASPW&&h.req){  // \ud83d\udd12 \uc120\uc0dd\ub2d8\uc774 \u300c\ud544\uc218\u300d\ub85c \uc815\ud588\uc744 \ub54c\ub9cc \uba3c\uc800 \ub9cc\ub4e4\uc5b4\uc694 (\u2699 \uc124\uc815)
     const a=await pad('\ube44\ubc00\ubc88\ud638 \ub9cc\ub4e4\uae30','\ub0b4 \uae30\ub85d\uc744 \uc9c0\ud0a4\ub294 \uc22b\uc790 4\uc790\ub9ac\ub97c \uc815\ud574\uc11c \ub20c\ub7ec\uc694. \ub2e4\uc74c\ubd80\ud130 \ub4e4\uc5b4\uc62c \ub54c \ud544\uc694\ud574\uc694!');
     if(!a){window.ENTERING=0;if(window.KLPEND){window.KLPEND=0;showStart()}return}
     const b=await pad('\ud55c \ubc88 \ub354','\ub611\uac19\uc774 \ud55c \ubc88 \ub354 \ub20c\ub7ec\uc694',v=>v===a?true:'\ucc98\uc74c\uacfc \ub2ec\ub77c\uc694. \ub2e4\uc2dc \ub20c\ub7ec \uc8fc\uc138\uc694');
@@ -7212,6 +7213,7 @@ async function enter(nm){window.ENTERING=1;if(isTN(nm)){if(GAS&&!TPIN){teacherPi
     const r=await call('setMyPw',nm,'',a);
     if(r&&r.ok){window.PW=a;HASPW=true;await modal(`<div style="font-size:56px">\ud83d\udd12</div><h2>\ube44\ubc00\ubc88\ud638\ub97c \ub9cc\ub4e4\uc5c8\uc5b4\uc694!</h2><p style="font-size:18px">\ub2e4\uc74c\ubd80\ud130 \ub4e4\uc5b4\uc62c \ub54c <b>${a.split('').join(' ')}</b>\uc744 \ub20c\ub7ec\uc694.<br>\uce5c\uad6c\uc5d0\uac8c \uc54c\ub824 \uc8fc\uc9c0 \uc54a\uc544\uc694. \uc78a\uc73c\uba74 \uc120\uc0dd\ub2d8\uaed8 \ub9d0\uc500\ub4dc\ub824\uc694.</p>`,[['\uc2dc\uc791\ud558\uae30 \u25b6','',1]]);login(nm);return}
     toast('\ube44\ubc00\ubc88\ud638\ub97c \uc800\uc7a5\ud558\uc9c0 \ubabb\ud588\uc5b4\uc694. \ub2e4\uc74c\uc5d0 \ub4e4\uc5b4\uc62c \ub54c \ub2e4\uc2dc \ub9cc\ub4e4\uc5b4\uc694',3000);window.PW='';login(nm);return}
+  if(!HASPW){window.PW='';login(nm);return}  // \ube44\ubc00\ubc88\ud638\uac00 \uc5c6\uace0 \u300c\uc120\ud0dd\u300d\uc774\uba74 \ubc14\ub85c \ub4e4\uc5b4\uac00\uc694
   keepPw(nm,'');  // \ube44\ubc00\ubc88\ud638\ub294 \uae30\uae30\uc5d0 \uae30\uc5b5\ud574 \ub450\uc9c0 \uc54a\uace0, \ub4e4\uc5b4\uc62c \ub54c\ub9c8\ub2e4 \ubb3c\uc5b4\uc694
   let tries=0;const p=await pad(nm,'\ube44\ubc00\ubc88\ud638 4\uc790\ub9ac\ub97c \ub20c\ub7ec \uc8fc\uc138\uc694',async v=>{const c=await call('pwCheck',nm,v);if(c&&c.ok)return true;tries++;return tries>=3?'\ube44\ubc00\ubc88\ud638\ub97c \uc78a\uc5c8\uc73c\uba74 \uc120\uc0dd\ub2d8\uaed8 \ub9d0\uc500\ub4dc\ub824\uc694':'\ube44\ubc00\ubc88\ud638\uac00 \ub2ec\ub77c\uc694'});
   if(!p){window.ENTERING=0;if(window.KLPEND){window.KLPEND=0;showStart()}return}window.PW=p;keepPw(nm,p);login(nm)}
@@ -7276,7 +7278,7 @@ window.isGuest=()=>/^\uc190\ub2d8/.test(String(S.name||''));
 const _sync=sync;sync=function(ev){if(window.isGuest())return;return _sync(ev)};
 async function teacherEnter(name,pin){const nm='0\ubc88 '+name.replace(/\s+/g,'');if(!GAS){window.PW='';login(nm);return}
   const r=await call('teacherCheck',pin);if(!r||!r.ok){SFX.no();toast('\ube44\ubc00\ubc88\ud638\uac00 \ub9de\uc9c0 \uc54a\uc544\uc694');return}TPIN=pin;try{sessionStorage.setItem('momo_tname',name)}catch(e){}window.PW='';login(nm)}
-window.APPN='13';
+window.APPN='14';
 window.VERTXT=()=>'v'+(window.APPV||'')+(/^\d+$/.test(APPN)?' \u00b7 \uc571 '+APPN:'');
 document.head.append(el('style',{},'.verpill{position:fixed;top:6px;right:8px;z-index:30;font-size:12px;font-weight:800;color:#fff;background:#0005;border-radius:12px;padding:3px 9px;pointer-events:none;letter-spacing:.2px}.gpanel .gver{font-size:12px;color:#8592a6;text-align:center;margin-top:6px}'));
 showStart=function(){RUNID++;TPIN='';window.TMAIN=false;Snd.stop();document.querySelectorAll('.overlay,.gpanel,.moresheet,.moreov,.utip,.giftbal,.goldmomo,.toast,.inbsheet').forEach(x=>x.remove());$('#top').style.display='none';const m=$('#main');m.innerHTML='';
@@ -7334,7 +7336,8 @@ const _sm=showMap;let askedPw=false;showMap=function(first){_sm(first);if(!S.nam
 const _dc=dailyCheck;dailyCheck=async function(){while(document.querySelector('.storyov'))await sleep(500);return _dc()};
 /* \u2699 \uc124\uc815\uc5d0 \ube44\ubc00\ubc88\ud638 */
 const _tb=topBar;topBar=function(...a){_tb(...a);document.querySelectorAll('.utip').forEach(x=>x.remove());const g=document.querySelector('#top .gear');if(!g||!GAS)return;const old=g.onclick;g.onclick=()=>{old&&old();setTimeout(()=>{const p=document.querySelector('.gpanel');if(!p||p.querySelector('.pwb')||!S.name||isTN(S.name))return;
-  const ver=p.querySelector('.verline');const b1=el('button',{class:'tbtn pwb','data-close':1,onclick:makePw},HASPW?'\ud83d\udd12 \ube44\ubc00\ubc88\ud638 \ubc14\uafb8\uae30':'\ud83d\udd12 \ube44\ubc00\ubc88\ud638 \ub9cc\ub4e4\uae30');p.insertBefore(b1,ver||null);},20)}};
+  const ver=p.querySelector('.verline');const b1=el('button',{class:'tbtn pwb','data-close':1,onclick:makePw},HASPW?'\ud83d\udd12 \ube44\ubc00\ubc88\ud638 \ubc14\uafb8\uae30':'\ud83d\udd12 \ube44\ubc00\ubc88\ud638 \ub9cc\ub4e4\uae30');p.insertBefore(b1,ver||null);
+  const req=typeof CFG!=='undefined'&&CFG&&CFG.pwReq;if(HASPW&&!req)p.insertBefore(el('button',{class:'tbtn','data-close':1,onclick:clearPw},'\ud83d\udd13 \ube44\ubc00\ubc88\ud638 \uc5c6\uc560\uae30'),ver||null)},20)}};
 /* \uc120\uc0dd\ub2d8 \ud654\uba74: \ud83d\udd12 \ube44\ubc00\ubc88\ud638 \ud0ed */
 const _dT=drawT;drawT=function(s,my){_dT(s,my);const tabs=s.querySelector('.tabs'),box=s.querySelector('.card');if(!tabs||!box)return;
   tabs.insertBefore(el('button',{class:'tab'+(TTAB==='pw'?' on':''),onclick:()=>{TTAB='pw';SFX.click();drawT(s,my)}},'\ud83d\udd12 \ube44\ubc00\ubc88\ud638'),tabs.children[3]||null);
@@ -8061,14 +8064,17 @@ const _smV=showMap;showMap=function(first){_smV(first);if(!inVac()||!S.name||(ty
 /* ---------- \u2699 \uc124\uc815 \ud0ed: \ubc29\ud559 \u00b7 \ub2e8\uc6d0\ud3c9\uac00 (\ub2f4\uc784 \uc120\uc0dd\ub2d8\uc774 \uc5b8\uc81c\ub4e0 \uace0\uccd0\uc694) ---------- */
 const _dTS=drawT;drawT=function(s,my){_dTS(s,my);const box=s.querySelector('.card');if(!box||!TPIN||TTAB!=='set'||typeof TDATA==='undefined'||!TDATA||!TDATA.cfg)return;const c=TDATA.cfg;
   const save=async x=>{const r=await tCall('adminSet',TPIN,x);if(r&&r.ok){TDATA.cfg=r.cfg;CFG=r.cfg;SFX.win();toast('\uc800\uc7a5\ud588\uc5b4\uc694. \ud559\uc0dd \ud654\uba74\uc5d0\ub294 \ub2e4\uc2dc \ub4e4\uc5b4\uc624\uba74 \ubc14\ub00c\uc5b4\uc694',3000);drawT(s,my)}else toast('\uc800\uc7a5\ud558\uc9c0 \ubabb\ud588\uc5b4\uc694. Code.gs\ub97c \uc0c8 \ubc84\uc804\uc73c\ub85c \ubc30\ud3ec\ud588\ub294\uc9c0 \ud655\uc778\ud574 \uc8fc\uc138\uc694',3500)};
-  const sec=el('div',{class:'achi',style:'display:block;border-color:#a5d8ff;background:#e7f5ff;margin-top:14px'},el('div',{style:'font-weight:900;font-size:18px;margin-bottom:6px'},'\u26c4 \uaca8\uc6b8\ubc29\ud559 \u00b7 \ud83d\udcdd \ub2e8\uc6d0\ud3c9\uac00'));
+  const sec=el('div',{class:'achi',style:'display:block;border-color:#a5d8ff;background:#e7f5ff;margin-top:14px'},el('div',{style:'font-weight:900;font-size:18px;margin-bottom:2px'},'\ud83d\udd27 \uae30\ub2a5 \ucf1c\uace0 \ub044\uae30'),el('small',{style:'display:block;margin-bottom:8px'},'\uc6b0\ub9ac \ubc18\uc5d0\ub9cc \uc801\uc6a9\ub3fc\uc694. \uc5b8\uc81c\ub4e0 \ubc14\uafc0 \uc218 \uc788\uc5b4\uc694.'));
+  const two=(label,key,on,a,b,help)=>[el('div',{class:'trow'},el('div',{class:'tl'},label),el('button',{class:'tab'+(on?' on':''),style:'font-size:16px',onclick:()=>save({[key]:true})},a),el('button',{class:'tab'+(!on?' on':''),style:'font-size:16px',onclick:()=>save({[key]:false})},b)),el('small',{style:'display:block;margin:2px 0 8px'},help)];
+  sec.append(...two('\ud559\uc0dd \ube44\ubc00\ubc88\ud638','pwReq',!!c.pwReq,'\ud544\uc218','\uc120\ud0dd','\u300c\ud544\uc218\u300d\uba74 \ube44\ubc00\ubc88\ud638\uac00 \uc5c6\ub294 \ud559\uc0dd\uc740 \ucc98\uc74c \ub4e4\uc5b4\uc62c \ub54c \uaf2d \ub9cc\ub4e4\uc5b4\uc694. \u300c\uc120\ud0dd\u300d\uc774\uba74 \uc5c6\uc774\ub3c4 \ub4e4\uc5b4\uc640\uc694.'),
+    ...two('\uc54c\ud30c\ubcb3 \uccab\uac78\uc74c','abc',c.abc!==false,'\ucf1c\uae30','\ub044\uae30','\uae30\ucd08 \uc12c \ub9e8 \uc55e\uc758 \ud83c\udf31 \uc54c\ud30c\ubcb3 \uccab\uac78\uc74c \uae38\uc744 \ubcf4\uc774\uac70\ub098 \uc228\uaca8\uc694.'));
   const f=el('input',{type:'date',value:c.vacFrom||'2027-01-06',style:'font-size:17px;padding:6px'}),t=el('input',{type:'date',value:c.vacTo||'2027-03-01',style:'font-size:17px;padding:6px'});
   sec.append(el('div',{class:'trow',style:'flex-wrap:wrap;gap:6px'},el('div',{class:'tl'},'\ubc29\ud559 \uae30\uac04'),f,el('span',{},'~'),t,el('button',{class:'tab on',style:'font-size:16px',onclick:()=>{if(!f.value||!t.value||f.value>t.value){toast('\ub0a0\uc9dc\ub97c \ub2e4\uc2dc \ud655\uc778\ud574 \uc8fc\uc138\uc694');return}save({vacFrom:f.value,vacTo:t.value})}},'\uc800\uc7a5')),
     el('small',{style:'display:block;margin:2px 0 8px'},'\ubc29\ud559 \ubcf5\uc2b5 \ub3c4\uc7a5\uc744 \ucc0d\ub294 \uae30\uac04\uc774\uc5d0\uc694. \ub9c8\uc9c0\ub9c9 \ub0a0\uc740 \uac1c\ud559 \uc804\ub0a0\ub85c \ud574 \uc8fc\uc138\uc694.'),
     el('div',{class:'trow'},el('div',{class:'tl'},'\ubc29\ud559 \ubcf5\uc2b5'),el('button',{class:'tab'+(c.vac!==false?' on':''),style:'font-size:16px',onclick:()=>save({vac:true})},'\ucf1c\uae30'),el('button',{class:'tab'+(c.vac===false?' on':''),style:'font-size:16px',onclick:()=>save({vac:false})},'\ub044\uae30')));
   const ex=Array.isArray(c.exam)?c.exam:[];
   sec.append(el('div',{class:'trow',style:'flex-wrap:wrap;gap:6px;margin-top:8px'},el('div',{class:'tl'},'\ub2e8\uc6d0\ud3c9\uac00 \uc5f4\uae30'),...[7,8,9,10,11,12].map(u=>el('button',{class:'tab'+(ex.includes(u)?' on':''),style:'font-size:16px',onclick:()=>save({exam:ex.includes(u)?ex.filter(x=>x!==u):ex.concat(u)})},(ex.includes(u)?'\ud83d\udfe2 ':'')+'L'+u))),
-    el('small',{style:'display:block;margin:2px 0 8px'},'\ub204\ub978 \ub2e8\uc6d0\ub9cc \ud559\uc0dd \uc9c0\ub3c4\uc5d0 \u300c\ud83d\udcdd \ud3c9\uac00\u300d\uac00 \ubcf4\uc5ec\uc694. \ud55c \ubc88 \ub354 \ub204\ub974\uba74 \ub2eb\ud600\uc694.'),
+    el('small',{style:'display:block;margin:2px 0 8px'},'\ud83d\udfe2 \ud45c\uc2dc\uac00 \uc788\ub294 \ub2e8\uc6d0\uc774 \uc5f4\ub824 \uc788\uc5b4\uc694(\ucc98\uc74c\uc5d0\ub294 \ubaa8\ub450 \uc5f4\ub9bc). \ub204\ub974\uba74 \ub2eb\ud788\uace0, \ub2e4\uc2dc \ub204\ub974\uba74 \uc5f4\ub824\uc694.'),
     el('div',{class:'trow'},el('div',{class:'tl'},'\ub2e4\uc2dc \ubcf4\uae30'),el('button',{class:'tab'+(c.examRe!==false?' on':''),style:'font-size:16px',onclick:()=>save({examRe:true})},'\ud5c8\uc6a9'),el('button',{class:'tab'+(c.examRe===false?' on':''),style:'font-size:16px',onclick:()=>save({examRe:false})},'\ud55c \ubc88\ub9cc')),
     el('small',{style:'display:block;margin-top:2px'},'\ubcfc \ub54c\ub9c8\ub2e4 \uc810\uc218\uc640 \uac78\ub9b0 \uc2dc\uac04\uc774 \ubaa8\ub450 \uae30\ub85d\ub418\uace0, \ucd5c\uace0 \uc810\uc218\ub294 \ub530\ub85c \ub0a8\uc544\uc694.'));
   box.prepend(sec)};
