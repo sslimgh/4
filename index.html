@@ -4,7 +4,7 @@
 /* ===== app connect block (GitHub app) =====
    GAME_API: Apps Script web app address (deploy > manage deployments). Change only this line if the address changes. */
 var GAME_API = 'https://script.google.com/macros/s/AKfycbzqoouTfjwKWxpLjmvbFm7Tkk10Vyw0rGIzImp2MVfq1WyvL68fUg2QJCKVyIZC1_Jdew/exec';
-var APP_BUILD = '10';
+var APP_BUILD = '12';
 /* google.script.run stand-in: every call goes to Code.gs doPost as JSON, without Google sign-in cookies */
 (function(){
   function call(fn, args, ok, bad, tries){
@@ -5081,7 +5081,7 @@ window.__UNITS={
  * - \ub098\uba38\uc9c0(\uc124\uc815, \ub3d9\ubb3c \uce5c\uad6c \ubc30\uace0\ud514 \ub4f1)\ub294 \ub354 \ub098\uc911\uc5d0 \uc800\uc7a5\ub41c \ucabd */
 var MOMO_MERGE = (function () {
   var UNION = { stk: 1, items: 1, unl: 1, puz: 1, perfect: 1, chars: 1 };
-  var MAXOBJ = { stars: 1, secOf: 1, mgBest: 1, cards: 1, ach: 1, sp: 1, wp: 1, heard: 1, petK: 1, hist: 1, qs: 1, bch: 1 };
+  var MAXOBJ = { stars: 1, secOf: 1, mgBest: 1, cards: 1, ach: 1, sp: 1, wp: 1, heard: 1, petK: 1, hist: 1, qs: 1, bch: 1, vac: 1, bs: 1 };
   var MAXNUM = { listen: 1, rec: 1, sec: 1, visits: 1, days: 1, taBest: 1, towerBest: 1, best: 1, xlv: 1, xpx: 1, lv: 1, bossWins: 1, open: 1, story: 1, cg: 1, classGift: 1, tdCnt: 1 };
   var PERIOD = { D: 1, W: 1, BW: 1, TD: 1, pdy: 1, gst: 1, bxd: 1 };
   var LONGER = { log: 1, logw: 1 };
@@ -6098,7 +6098,11 @@ const BW={
  car:[W_('car','\ud83d\ude97','\uc790\ub3d9\ucc28'),W_('bus','\ud83d\ude8c','\ubc84\uc2a4'),W_('bike','\ud83d\udeb2','\uc790\uc804\uac70'),W_('train','\ud83d\ude86','\uae30\ucc28'),W_('ship','\ud83d\udea2','\ubc30'),W_('airplane','\u2708\ufe0f','\ube44\ud589\uae30'),W_('taxi','\ud83d\ude95','\ud0dd\uc2dc'),W_('truck','\ud83d\ude9a','\ud2b8\ub7ed')]
 };
 const TRACKS=[
- {id:'a',name:'\ud83d\udd24 \uc54c\ud30c\ubcb3',sub:'\uae00\uc790 \uc774\ub984\uacfc \ubaa8\uc591 \u00b7 \uc5ec\uae30\ubd80\ud130 \uc2dc\uc791\ud574\uc694!',stages:[
+ {id:'s',name:'\ud83c\udf31 \uc54c\ud30c\ubcb3 \uccab\uac78\uc74c',sub:'\uc544\uc8fc \uc26c\uc6b4 \ub2e8\uacc4 \u00b7 \uc54c\ud30c\ubcb3\uc774 \uc544\uc9c1 \uc5b4\ub835\ub2e4\uba74 \uc5ec\uae30\ubd80\ud130!',stages:[
+   {id:'s1',ic:'\ud83c\udd70\ufe0f',n:'\ub4e3\uace0 \uace0\ub974\uae30 A~M',L:'ABCDEFGHIJKLM',k:'hear'},{id:'s2',ic:'\ud83c\udd71\ufe0f',n:'\ub4e3\uace0 \uace0\ub974\uae30 N~Z',L:'NOPQRSTUVWXYZ',k:'hear'},
+   {id:'s3',ic:'\ud83d\udd22',n:'\uc54c\ud30c\ubcb3 \uc21c\uc11c',L:'ABCDEFGHIJKLMNOPQRSTUVWXYZ',k:'order'},{id:'s4',ic:'\ud83e\udd14',n:'\ud5f7\uac08\ub9ac\ub294 b d p q',L:'BDPQ',k:'bdpq'},
+   {id:'s5',ic:'\ud83c\udf4e',n:'\uccab \uae00\uc790 \ub458 \uc911 \uace0\ub974\uae30',L:'ABCDEFGHIJKLMNOPRSTUWZ',k:'first'}]},
+ {id:'a',name:'\ud83d\udd24 \uc54c\ud30c\ubcb3',sub:'\uae00\uc790 \uc774\ub984\uacfc \ubaa8\uc591 \u00b7 \uccab\uac78\uc74c \ub2e4\uc74c\uc5d0 \ud574\uc694',stages:[
    {id:'a1',ic:'A',n:'A ~ F',L:'ABCDEF'},{id:'a2',ic:'G',n:'G ~ L',L:'GHIJKL'},{id:'a3',ic:'M',n:'M ~ R',L:'MNOPQR'},{id:'a4',ic:'S',n:'S ~ Z',L:'STUVWXYZ'},{id:'a5',ic:'\ud83d\udd20',n:'A ~ Z \ubcf5\uc2b5',L:'ABCDEFGHIJKLMNOPQRSTUVWXYZ',rv:1}]},
  {id:'f',name:'\ud83c\udf4e \uccab\uc18c\ub9ac',sub:'\ub0b1\ub9d0\uc774 \ubb34\uc2a8 \uae00\uc790\ub85c \uc2dc\uc791\ud560\uae4c\uc694?',stages:[
    {id:'f1',ic:'\ud83c\udf4e',n:'A ~ M',L:'ABCDEFGHIJKLM'},{id:'f2',ic:'\ud83e\udd93',n:'N ~ Z',L:'NOPQRSTUVWYZ'}]},
@@ -6371,30 +6375,31 @@ function showBasic(){BACK=[showPetHome,'\ub3cc\ubcf4\uae30'];TB_STEP=false;ACTIV
   TRACKS.forEach(t=>{const box=el('div',{class:'btrack'},el('div',{class:'bt'},t.name,el('small',{},t.sub)));const g=el('div',{class:'bstages'});box.append(g);wrap.append(box);
     let nextShown=false;
     t.stages.forEach(st=>{const v=BS()[st.id]||0,open=stOpen(st);const isNext=open&&!v&&!nextShown;if(isNext)nextShown=true;
-      const b=el('button',{class:'bst'+(v?' done':isNext?' next':'')+(open?'':' lock')},isNext&&t.id==='a'&&!v&&st.ix===0?el('span',{class:'here'},'\uc5ec\uae30\ubd80\ud130!'):'',
+      const b=el('button',{class:'bst'+(v?' done':isNext?' next':'')+(open?'':' lock')},isNext&&t.id===TRACKS[0].id&&!v&&st.ix===0?el('span',{class:'here'},'\uc5ec\uae30\ubd80\ud130!'):'',
         el('div',{class:'ic',style:/^[A-Z]$/.test(st.ic)?'font-family:Arial;color:#1971c2;font-weight:900':''},open?st.ic:'\ud83d\udd12'),el('div',{},st.n),el('div',{class:'ss'},v?'\u2b50'.repeat(v)+'\u2606'.repeat(3-v):open?'\uc2dc\uc791!':'\uc55e \ub2e8\uacc4 \uba3c\uc800'),BCH()[st.id]?el('span',{class:'bdgc'},'\ud83c\udfc5'):v===3?el('span',{class:'bdgc fire'},'\ud83d\udd25'):'');
       b.onclick=()=>{if(!open){SFX.no();toast('\uc55e \ub2e8\uacc4\ub97c \uba3c\uc800 \ud574\uc694 \ud83d\udd12');return}SFX.click();learn(st)};g.append(b)})})}
 const BCH=()=>S.bch||(S.bch={});const nBadge=()=>Object.keys(BCH()).length;
-function stageItems(st){if(st.tr==='a'){const L=st.rv?shuffle(st.L.split('')).slice(0,10):st.L.split('');return L.map(c=>{const a=ABof(c);return{L:c,w:a[1],p:typeof a[2]==='string'?{e:a[2]}:a[2],ko:a[3]}})}
+function stageItems(st){if(st.tr==='s'){const L=st.k==='first'?shuffle(st.L.split('')).slice(0,8):st.L.split('');return L.map(c=>{const a=ABof(c);return{L:c,w:a[1],p:typeof a[2]==='string'?{e:a[2]}:a[2],ko:a[3]}})}
+  if(st.tr==='a'){const L=st.rv?shuffle(st.L.split('')).slice(0,10):st.L.split('');return L.map(c=>{const a=ABof(c);return{L:c,w:a[1],p:typeof a[2]==='string'?{e:a[2]}:a[2],ko:a[3]}})}
   if(st.tr==='f')return st.L.split('').map(c=>{const a=ABof(c);return{L:c,w:a[1],p:typeof a[2]==='string'?{e:a[2]}:a[2],ko:a[3]}});
   return BW[st.id].map(x=>Object.assign({},x))}
-const sayItem=(st,it)=>st.tr==='a'?sayP(it.L==='X'?'X. fox.':`${it.L}. ${it.L} is for ${it.w}.`):st.tr==='f'?sayP(`${it.w}. ${it.L}, ${it.w}.`):sayP(it.w);
+const sayItem=(st,it)=>(st.tr==='a'||st.tr==='s')?sayP(it.L==='X'?'X. fox.':`${it.L}. ${it.L} is for ${it.w}.`):st.tr==='f'?sayP(`${it.w}. ${it.L}, ${it.w}.`):sayP(it.w);
 async function learn(st){BACK=[showBasic,'\uae30\ucd08 \uc12c'];TB_STEP=false;ACTIVE=++RUNID;const my=ACTIVE;Snd.stop();topBar('\ud83d\udd24 '+st.n+' \u00b7 \ubc30\uc6b0\uae30',coinChip());const s=stageNew();
-  const items=stageItems(st);help(s,st.tr==='a'?'\uce74\ub4dc\ub97c \ub20c\ub7ec \uae00\uc790 \uc774\ub984\uc744 \ub4e4\uc5b4 \ubcf4\uc138\uc694. \ud070 \uae00\uc790\uc640 \uc791\uc740 \uae00\uc790\uac00 \uc9dd\uc774\uc5d0\uc694!':st.tr==='f'?'\ub0b1\ub9d0\uc758 \uccab \uae00\uc790\ub97c \uc798 \ubcf4\uace0 \ub4e4\uc5b4 \ubcf4\uc138\uc694.':'\uce74\ub4dc\ub97c \ub20c\ub7ec \ub4e3\uace0 \ub530\ub77c \ub9d0\ud574 \ubcf4\uc138\uc694.');
+  const items=stageItems(st);help(s,st.tr==='s'?(st.k==='order'?'A\ubd80\ud130 Z\uae4c\uc9c0 \ucc28\ub840\ub300\ub85c \ub4e4\uc5b4 \ubcf4\uc138\uc694. \ub2e4\uc74c\uc5d0 \uc62c \uae00\uc790\ub97c \ub9de\ud600\uc694!':st.k==='bdpq'?'b d p q\ub294 \ubaa8\uc591\uc774 \ube44\uc2b7\ud574\uc694. \ub3d9\uadf8\ub77c\ubbf8\uac00 \uc5b4\ub290 \ucabd\uc5d0 \uc788\ub294\uc9c0 \uc798 \ubcf4\uc138\uc694!':'\uce74\ub4dc\ub97c \ub20c\ub7ec \uae00\uc790 \uc774\ub984\uc744 \ub4e4\uc5b4 \ubcf4\uc138\uc694. \ubb38\uc81c\ub294 \ub458 \uc911 \ud558\ub098\ub9cc \uace0\ub974\uba74 \ub3fc\uc694!'):st.tr==='a'?'\uce74\ub4dc\ub97c \ub20c\ub7ec \uae00\uc790 \uc774\ub984\uc744 \ub4e4\uc5b4 \ubcf4\uc138\uc694. \ud070 \uae00\uc790\uc640 \uc791\uc740 \uae00\uc790\uac00 \uc9dd\uc774\uc5d0\uc694!':st.tr==='f'?'\ub0b1\ub9d0\uc758 \uccab \uae00\uc790\ub97c \uc798 \ubcf4\uace0 \ub4e4\uc5b4 \ubcf4\uc138\uc694.':'\uce74\ub4dc\ub97c \ub20c\ub7ec \ub4e3\uace0 \ub530\ub77c \ub9d0\ud574 \ubcf4\uc138\uc694.');
   const n=items.length,cols=n<=6?n:n<=8?4:n<=10?5:7;const ps=n>10?46:60;const g=el('div',{class:'lgrid',style:`grid-template-columns:repeat(${cols},1fr)`});s.append(g);
-  const cards=items.map(it=>{let c;if(st.tr==='a')c=el('button',{class:'lcard'},el('div',{class:'L en'},it.L+' '+it.L.toLowerCase()),bpic(it.p,44),el('div',{class:'w en',style:'font-size:16px'},it.w));
+  const cards=items.map(it=>{let c;if(st.tr==='a'||st.tr==='s')c=el('button',{class:'lcard'},el('div',{class:'L en'},it.L+' '+it.L.toLowerCase()),bpic(it.p,44),el('div',{class:'w en',style:'font-size:16px'},it.w));
     else if(st.tr==='f')c=el('button',{class:'lcard'},bpic(it.p,ps),el('div',{class:'w en'},el('b',{style:'color:#e8590c;font-size:28px'},it.w[0]),it.w.slice(1)),el('div',{class:'k'},it.ko));
     else c=el('button',{class:'lcard'},bpic(it.p,66),el('div',{class:'w en'},it.w),el('div',{class:'k'},it.ko));
     c.onclick=()=>{cards.forEach(x=>x.classList.remove('on'));c.classList.add('on','heard');sayItem(st,it)};g.append(c);return c});
   let auto=false;const playAll=async()=>{if(auto)return;auto=true;for(let i=0;i<n;i++){if(ACTIVE!==my)return;cards.forEach(x=>x.classList.remove('on'));cards[i].classList.add('on','heard');await sayItem(st,items[i]);await sleep(250)}cards.forEach(x=>x.classList.remove('on'));auto=false};
   s.append(el('div',{class:'btnrow',style:'margin-top:8px'},el('button',{class:'big blue',onclick:playAll},'\ud83d\udd0a \ucc28\ub840\ub85c \ub4e3\uae30'),el('button',{class:'big go',onclick:()=>{Snd.stop();try{speechSynthesis.cancel()}catch(e){}quizB(st,items)}},'\ubb38\uc81c \ud480\uae30 \u25b6'),BS()[st.id]===3||isTN(S.name)?el('button',{class:'big',style:'background:linear-gradient(#ff6b6b,#e03131);box-shadow:0 4px 0 #a61e1e',onclick:()=>{Snd.stop();try{speechSynthesis.cancel()}catch(e){}quizB(st,items,true)}},BCH()[st.id]?'\ud83c\udfc5 \ub3c4\uc804 \ubb38\uc81c':'\ud83d\udd25 \ub3c4\uc804 \ubb38\uc81c'):''));
   if(!BS()[st.id])setTimeout(()=>{if(ACTIVE===my)playAll()},500)}
-function mkQs(st,items){const T8=()=>{let T=shuffle(items);while(T.length<8)T=T.concat(shuffle(items));return T.slice(0,8)};const Q=[],pickO=(ans,pool,k,key)=>shuffle([ans,...shuffle(pool.filter(x=>x[key]!==ans[key])).slice(0,k-1)]);
+function mkQs(st,items){if(st.tr==='s')return mkS(st,items,2);const T8=()=>{let T=shuffle(items);while(T.length<8)T=T.concat(shuffle(items));return T.slice(0,8)};const Q=[],pickO=(ans,pool,k,key)=>shuffle([ans,...shuffle(pool.filter(x=>x[key]!==ans[key])).slice(0,k-1)]);
   if(st.tr==='a'){const pool=st.rv?AB.map(a=>({L:a[0]})):items;const T=T8();
     T.forEach((it,i)=>{const k=i<3?2:3;let ty=st.rv?['hear','case','hear','case','first','hear','case','first'][i]:['hear','hear','case','hear','case','case','first','first'][i];if(ty==='first'&&it.L==='X')ty='case';
       if(ty==='hear')Q.push({ty,say:()=>sayL(it.L),prompt:null,opts:pickO(it,pool,k,'L').map(o=>({t:o.L,ok:o.L===it.L})),then:()=>sayL(it.L),h:'\uc798 \ub4e3\uace0 \uc54c\ub9de\uc740 \uae00\uc790\ub97c \uace8\ub77c\uc694'});
       if(ty==='case')Q.push({ty,say:()=>sayL(it.L),prompt:el('div',{class:'en',style:'font-size:72px;font-weight:900;color:#1971c2;font-family:Arial'},it.L),opts:pickO(it,pool,k,'L').map(o=>({t:o.L.toLowerCase(),ok:o.L===it.L})),then:()=>sayL(it.L),h:'\ud070 \uae00\uc790\uc640 \uc9dd\uc778 \uc791\uc740 \uae00\uc790\ub97c \uace8\ub77c\uc694'});
-      if(ty==='first'){const a=ABof(it.L);const pp=typeof a[2]==='string'?{e:a[2]}:a[2];Q.push({ty,say:()=>sayP(a[1]),prompt:bpic(pp,92),opts:pickO(it,pool,k,'L').map(o=>({t:o.L+o.L.toLowerCase(),ok:o.L===it.L})),then:()=>sayP(`${it.L}, ${a[1]}`),h:`\u300c${a[1]}\u300d\uc740 \ubb34\uc2a8 \uae00\uc790\ub85c \uc2dc\uc791\ud560\uae4c\uc694?`})}});return Q}
+      if(ty==='first'){const a=ABof(it.L);const pp=typeof a[2]==='string'?{e:a[2]}:a[2];Q.push({ty,say:()=>sayP(a[1]),prompt:bpic(pp,92),opts:pickO(it,pool,k,'L').map(o=>({t:o.L+o.L.toLowerCase(),ok:o.L===it.L})),then:()=>sayP(`${it.L}, ${a[1]}`),h:`\u300c${a[1]}\u300d\uc758 \uccab \uae00\uc790\ub97c \uace8\ub77c\uc694`})}});return Q}
   if(st.tr==='f'){const T=T8();const extra=ALLW.filter(w=>/^[a-z]/.test(w.w));
     T.forEach((it,i)=>{const k=i<3?2:3;
       if(i%3!==2){const letters=shuffle(st.L.split('').filter(c=>c!==it.L)).slice(0,k-1).concat(it.L);Q.push({say:()=>sayP(it.w),prompt:bpic(it.p,92),opts:shuffle(letters).map(c=>({t:c.toLowerCase(),ok:c===it.L})),then:()=>sayP(`${it.L}, ${it.w}`),h:'\uadf8\ub9bc \ub0b1\ub9d0\uc758 \uccab \uae00\uc790\ub97c \uace8\ub77c\uc694'})}
@@ -6405,19 +6410,32 @@ function mkQs(st,items){const T8=()=>{let T=shuffle(items);while(T.length<8)T=T.
     else if(i===6)Q.push({say:()=>sayP(it.w),prompt:bpic(it.p,92),opts:os.map(o=>({t:o.w,sm:1,ok:o.w===it.w,sp:o.w})),then:()=>sayP(it.w),h:'\uadf8\ub9bc\uc5d0 \ub9de\ub294 \ub0b1\ub9d0\uc744 \uace8\ub77c\uc694 (\ud83d\udd0a\ub85c \ub4e4\uc5b4 \ubd10\ub3c4 \ub3fc\uc694)'});
     else{const c=it.w[0];const ls=shuffle(['b','c','d','f','g','h','m','p','r','s','t'].filter(x=>x!==c)).slice(0,2).concat(c);Q.push({say:()=>sayP(it.w),prompt:el('div',{style:'display:flex;align-items:center;gap:10px'},bpic(it.p,80),el('span',{class:'en',style:'font-size:46px;font-weight:900'},'_'+it.w.slice(1))),opts:shuffle(ls).map(x=>({t:x,ok:x===c})),then:()=>sayP(it.w),h:'\ube48\uce78\uc5d0 \ub4e4\uc5b4\uac08 \uccab \uae00\uc790\ub97c \uace8\ub77c\uc694'})}});
   return Q}
-function mkChal(st,items){const Q=[],four=(ans,pool,key)=>shuffle([ans,...shuffle(pool.filter(x=>x[key]!==ans[key])).slice(0,3)]);let T=shuffle(items);while(T.length<6)T=T.concat(shuffle(items));T=T.slice(0,6);
+function mkChal(st,items){if(st.tr==='s')return mkS(st,items,3).slice(0,6);const Q=[],four=(ans,pool,key)=>shuffle([ans,...shuffle(pool.filter(x=>x[key]!==ans[key])).slice(0,3)]);let T=shuffle(items);while(T.length<6)T=T.concat(shuffle(items));T=T.slice(0,6);
   if(st.tr==='a'){const pool=AB.map(a=>({L:a[0]}));T.forEach((it,i)=>{if(i%2===0)Q.push({say:()=>sayL(it.L),opts:four(it,pool,'L').map(o=>({t:o.L.toLowerCase(),ok:o.L===it.L})),then:()=>sayL(it.L),h:'\uc798 \ub4e3\uace0 \uc54c\ub9de\uc740 \uc791\uc740 \uae00\uc790\ub97c \uace8\ub77c\uc694'});
     else Q.push({say:null,prompt:el('div',{class:'en',style:'font-size:72px;font-weight:900;color:#1971c2;font-family:Arial'},it.L.toLowerCase()),opts:four(it,pool,'L').map(o=>({t:o.L,ok:o.L===it.L})),then:()=>sayL(it.L),h:'\uc18c\ub9ac \uc5c6\uc774! \uc791\uc740 \uae00\uc790\uc640 \uc9dd\uc778 \ud070 \uae00\uc790\ub97c \uace8\ub77c\uc694'})});return Q}
   if(st.tr==='f'){const pool=st.L.split('').map(c=>({L:c}));T.forEach((it,i)=>{if(i%2===0)Q.push({say:()=>sayP(it.w),opts:four(it,pool,'L').map(o=>({t:o.L.toLowerCase(),ok:o.L===it.L})),then:()=>sayP(`${it.L}, ${it.w}`),h:'\uadf8\ub9bc \uc5c6\uc774! \ub4e3\uace0 \uccab \uae00\uc790\ub97c \uace8\ub77c\uc694'});
     else Q.push({say:null,prompt:bpic(it.p,92),opts:four(it,items,'w').map(o=>({t:o.w,sm:1,ok:o.w===it.w})),then:()=>sayP(it.w),h:'\uc18c\ub9ac \uc5c6\uc774! \uadf8\ub9bc\uc5d0 \ub9de\ub294 \ub0b1\ub9d0\uc744 \uc77d\uace0 \uace8\ub77c\uc694'})});return Q}
   T.forEach((it,i)=>{if(i%2===0)Q.push({say:()=>sayP(it.w),opts:four(it,items,'w').map(o=>({t:o.w,sm:1,ok:o.w===it.w})),then:()=>sayP(it.w),h:'\uadf8\ub9bc \uc5c6\uc774! \ub4e3\uace0 \uc54c\ub9de\uc740 \ub0b1\ub9d0\uc744 \uc77d\uace0 \uace8\ub77c\uc694'});
     else Q.push({say:null,prompt:bpic(it.p,92),opts:four(it,items,'w').map(o=>({t:o.w,sm:1,ok:o.w===it.w})),then:()=>sayP(it.w),h:'\uc18c\ub9ac \uc5c6\uc774! \uadf8\ub9bc\uc5d0 \ub9de\ub294 \ub0b1\ub9d0\uc744 \uace8\ub77c\uc694'})});return Q}
+/* \ud83c\udf31 \uc54c\ud30c\ubcb3 \uccab\uac78\uc74c \ubb38\uc81c: \ubcf4\uae30\ub97c 2\uac1c(\ub3c4\uc804\uc740 3\uac1c)\ub85c \uc904\uc5ec \uc544\uc8fc \uc27d\uac8c */
+function mkS(st,items,k){const Q=[],AZ='ABCDEFGHIJKLMNOPQRSTUVWXYZ',BIG=t=>el('div',{class:'en',style:'font-size:64px;font-weight:900;color:#1971c2;font-family:Arial;letter-spacing:6px'},t);
+  const others=(c,pool,n)=>shuffle(pool.split('').filter(x=>x!==c)).slice(0,n-1);
+  for(let i=0;i<8;i++){
+    if(st.k==='hear'){const c=st.L[Math.random()*st.L.length|0];Q.push({say:()=>sayL(c),prompt:null,opts:shuffle([c,...others(c,st.L,k)]).map(x=>({t:x,ok:x===c,bg:1})),then:()=>sayL(c),h:'\uc798 \ub4e3\uace0 \uc54c\ub9de\uc740 \uae00\uc790\ub97c \uace8\ub77c\uc694'});continue}
+    if(st.k==='order'){const j=1+(Math.random()*23|0),seq=AZ.slice(j-1,j+3),hole=1+(Math.random()*2|0),c=seq[hole],show=seq.split('').map((x,n)=>n===hole?'_':x).join(' ');
+      Q.push({say:()=>sayP(seq.slice(0,hole).split('').join(', ')),prompt:BIG(show),opts:shuffle([c,...others(c,AZ.slice(Math.max(0,j-3),j+6),k)]).map(x=>({t:x,ok:x===c,bg:1})),then:()=>sayP(seq.split('').join(', ')),h:'\ube48\uce78\uc5d0 \ub4e4\uc5b4\uac08 \uae00\uc790\ub97c \uace8\ub77c\uc694 (\uc54c\ud30c\ubcb3 \uc21c\uc11c)'});continue}
+    if(st.k==='bdpq'){const c='BDPQ'[Math.random()*4|0];
+      if(i%2===0)Q.push({say:()=>sayL(c),prompt:null,opts:shuffle([c,...others(c,'BDPQ',k)]).map(x=>({t:x.toLowerCase(),ok:x===c,bg:1})),then:()=>sayL(c),h:'\uc798 \ub4e3\uace0 \uc54c\ub9de\uc740 \uc791\uc740 \uae00\uc790\ub97c \uace8\ub77c\uc694'});
+      else Q.push({say:()=>sayL(c),prompt:BIG(c),opts:shuffle([c,...others(c,'BDPQ',k)]).map(x=>({t:x.toLowerCase(),ok:x===c,bg:1})),then:()=>sayL(c),h:'\ud070 \uae00\uc790\uc640 \uc9dd\uc778 \uc791\uc740 \uae00\uc790\ub97c \uace8\ub77c\uc694'});continue}
+    const it=items[i%items.length],a=ABof(it.L),pool=st.L;
+    Q.push({say:()=>sayP(a[1]),prompt:bpic(it.p,92),opts:shuffle([it.L,...others(it.L,pool,k)]).map(x=>({t:x+x.toLowerCase(),ok:x===it.L,bg:1})),then:()=>sayP(`${it.L}, ${a[1]}`),h:`\u300c${a[1]}\u300d\uc758 \uccab \uae00\uc790\ub97c \uace8\ub77c\uc694`})}
+  return Q}
 async function quizB(st,items,chal){BACK=[showBasic,'\uae30\ucd08 \uc12c'];TB_STEP=false;ACTIVE=++RUNID;const my=ACTIVE;const t0=Date.now();topBar('\ud83d\udd24 '+st.n+(chal?' \u00b7 \ud83d\udd25 \ub3c4\uc804':' \u00b7 \ubb38\uc81c'),coinChip());
   const Q=chal?mkChal(st,items):mkQs(st,items);let qi=0,miss=0;
   const ask=()=>{if(ACTIVE!==my)return;if(qi>=Q.length)return done();const q=Q[qi];const s=stageNew();help(s,`${chal?'\ud83d\udd25 ':''}${q.h} (${qi+1}/${Q.length})`);let wrong=0,locked=false,cool=false;
     const box=el('div',{class:'bq'});s.append(box);const pr=el('div',{class:'bqp'},q.say?earBtn(q.say):'');if(q.prompt)pr.append(el('div',{class:'bqbig'},q.prompt));box.append(pr);
     const g=el('div',{class:'bopts',style:`grid-template-columns:repeat(${q.opts.length},1fr)`});box.append(g);
-    const bs=q.opts.map(o=>{const b=el('button',{class:'bopt'});if(o.t)b.append(el('div',{class:'tx en'+(o.sm?' sm':''),style:'font-family:Arial'},o.t));if(o.p)b.append(bpic(o.p,o.p.n?110:100));
+    const bs=q.opts.map(o=>{const b=el('button',{class:'bopt'});if(o.t)b.append(el('div',{class:'tx en'+(o.sm?' sm':''),style:'font-family:Arial'+(o.bg?';font-size:min(80px,18vw)':'')},o.t));if(o.p)b.append(bpic(o.p,o.p.n?110:100));
       if(o.sp){const sp=el('span',{class:'sp',onclick:e=>{e.stopPropagation();sayP(o.sp)}},'\ud83d\udd0a');b.append(sp)}
       b.onclick=async e=>{if(locked||cool)return;if(o.ok){locked=true;b.classList.add('ok');tone([[660,.12],[880,.2]]);fx('\u2b50',e.clientX,e.clientY);addListen();saveSoon();await q.then();await sleep(350);qi++;ask()}
         else{wrong++;miss++;tone([[220,.25,'square',.08]]);b.classList.add('no');cool=true;g.classList.add('cool');setTimeout(()=>{b.classList.remove('no');cool=false;g.classList.remove('cool')},1000);
@@ -6571,7 +6589,7 @@ const _pl=payload;payload=function(ev){const p=_pl(ev);const c=S.pets?CP():null;
 const _drawT=drawT;drawT=function(s,my){_drawT(s,my);if(TTAB!=='prog')return;const t=s.querySelector('.ttab');if(!t)return;const rows=[...t.querySelectorAll('tr')];if(!rows.length)return;
   rows[0].append(el('th',{},'\ud83d\udc3e \ub3d9\ubb3c \uce5c\uad6c'),el('th',{},'\ud83d\udd24 \uae30\ucd08 \uc12c'));const st=TDATA.students.slice().sort((a,b)=>(parseInt(a.name)||0)-(parseInt(b.name)||0));
   st.forEach((r,i)=>{const tr=rows[i+1];if(tr)tr.append(el('td',{style:'font-size:13px'},r.pet||'-'),el('td',{style:'font-size:13px'},r.basic||'-'))})};
-window.PETX={earn,checkEvo,CP,tsel:()=>TSEL,AB,adoptQuick:k=>{if(!KINDS[k]||CP())return;PS()[k]=newPet(k);S.petCur=k;const T=TKS();T.meal=Math.max(T.meal,2);T.bath=Math.max(T.bath,1);save()},KINDS,RAR:{momo:0,dog:0,cat:0,rabbit:1,chick:1,sea:2,dino:2,uni:3}};
+window.PETX={showBasic,earn,checkEvo,CP,tsel:()=>TSEL,AB,adoptQuick:k=>{if(!KINDS[k]||CP())return;PS()[k]=newPet(k);S.petCur=k;const T=TKS();T.meal=Math.max(T.meal,2);T.bath=Math.max(T.bath,1);save()},KINDS,RAR:{momo:0,dog:0,cat:0,rabbit:1,chick:1,sea:2,dino:2,uni:3}};
 Object.assign(window.G||{},{showMap,showPetHome,showPetDex,showBasic,showFish,showMole,learn:id=>learn(STG[id])});
 })();
 
@@ -6772,7 +6790,7 @@ Object.assign(window.G||{},{showCredits});
 
 /* ===================== \ud83e\udded \ud654\uba74 \ubc30\uce58 \uc815\ub9ac: \ub2e8\uc6d0 \ud0ed \u00b7 \uacb9\uce68 \uc5c6\ub294 \uc9c0\ub3c4 \u00b7 \uc544\ub798 \uba54\ub274 ===================== */
 (function(){
-const APPV='2026.11.19';window.APPV=APPV;
+const APPV='2026.11.24';window.APPV=APPV;
 const U=window.UNITS_UI;if(!U)return;
 const LCOL={7:'#12b886',8:'#fab005',9:'#f76707',10:'#d6336c',11:'#1c7ed6',12:'#2f9e44',4:'#7950f2',5:'#7950f2',6:'#7950f2'};
 const css=`
@@ -6852,7 +6870,7 @@ function moreSheet(items){document.querySelectorAll('.moresheet,.moreov').forEac
   sh.append(el('h3',{},'\u2630 \ub354\ubcf4\uae30'),el('div',{class:'moregrid'},...items.map(([ic,t,fn,cls,bd])=>el('button',{class:cls||'',onclick:()=>{close();fn()}},el('span',{class:'ic'},ic),el('span',{},t),bd?el('span',{class:'bd'},bd):''))),
     el('div',{class:'verline'+(CFG.appv&&CFG.appv!==APPV?' bad':'')},verText()));
   document.body.append(ov,sh)}
-function verText(){const sv=CFG.appv;return 'v'+APPV+(sv?(sv===APPV?' \u00b7 \uc11c\ubc84\uc640 \uac19\uc740 \ucd5c\uc2e0 \ubc84\uc804\uc774\uc5d0\uc694':' \u00b7 \u26a0\ufe0f \uc11c\ubc84 v'+sv+' (Code.gs \uc0c8 \ubc84\uc804 \ubc30\ud3ec\uac00 \ud544\uc694\ud574\uc694)'):'')}
+function verText(){const sv=CFG.appv;return 'v'+APPV+(/^\d+$/.test(window.APPN||'')?' \u00b7 \uc571 '+APPN:'')+(sv?(sv===APPV?' \u00b7 \uc11c\ubc84\uc640 \uac19\uc740 \ucd5c\uc2e0 \ubc84\uc804\uc774\uc5d0\uc694':' \u00b7 \u26a0\ufe0f \uc11c\ubc84 v'+sv+' (Code.gs \uc0c8 \ubc84\uc804 \ubc30\ud3ec\uac00 \ud544\uc694\ud574\uc694)'):'')}
 function tip(target,txt,flag){if(S[flag])return;S[flag]=1;save();setTimeout(()=>{if(!document.body.contains(target)||document.querySelector('.overlay')){S[flag]=0;return}
   const r=target.getBoundingClientRect(),t=el('div',{class:'utip '+(PORT?'dn':'rt')},txt);
   if(PORT){t.style.left=Math.max(8,r.left+8)+'px';t.style.top=(r.bottom+12)+'px'}else{t.style.left=(r.right+12)+'px';t.style.top=Math.max(8,r.top+8)+'px'}
@@ -7185,7 +7203,15 @@ async function enter(nm){window.ENTERING=1;if(isTN(nm)){if(GAS&&!TPIN){teacherPi
   if(!GAS){window.PW='';HASPW=false;login(nm);return}
   const wait=el('div',{class:'overlay'},el('div',{class:'modal'},el('div',{style:'font-size:40px'},'\ud83d\udd0d'),el('h2',{},'\ud655\uc778\ud558\uace0 \uc788\uc5b4\uc694\u2026')));document.body.append(wait);
   const h=await call('hasPw',nm);wait.remove();HASPW=!!(h&&h.has);
-  if(!HASPW){window.PW='';login(nm);return}
+  if(!h){window.PW='';login(nm);return}  // \uc11c\ubc84 \ud655\uc778\uc774 \uc548 \ub418\uba74 \uc77c\ub2e8 \ub4e4\uc5b4\uac00\uc694 (\uc800\uc7a5\uc740 \uae30\ub85d \uc9c0\ud0b4\uc774\uac00 \uc9c0\ucf1c\uc694)
+  if(!HASPW){  // \ud83d\udd12 \ube44\ubc00\ubc88\ud638\uac00 \uc5c6\uc73c\uba74 \uba3c\uc800 \ub9cc\ub4e4\uc5b4\uc694
+    const a=await pad('\ube44\ubc00\ubc88\ud638 \ub9cc\ub4e4\uae30','\ub0b4 \uae30\ub85d\uc744 \uc9c0\ud0a4\ub294 \uc22b\uc790 4\uc790\ub9ac\ub97c \uc815\ud574\uc11c \ub20c\ub7ec\uc694. \ub2e4\uc74c\ubd80\ud130 \ub4e4\uc5b4\uc62c \ub54c \ud544\uc694\ud574\uc694!');
+    if(!a){window.ENTERING=0;if(window.KLPEND){window.KLPEND=0;showStart()}return}
+    const b=await pad('\ud55c \ubc88 \ub354','\ub611\uac19\uc774 \ud55c \ubc88 \ub354 \ub20c\ub7ec\uc694',v=>v===a?true:'\ucc98\uc74c\uacfc \ub2ec\ub77c\uc694. \ub2e4\uc2dc \ub20c\ub7ec \uc8fc\uc138\uc694');
+    if(!b){window.ENTERING=0;return}
+    const r=await call('setMyPw',nm,'',a);
+    if(r&&r.ok){window.PW=a;HASPW=true;await modal(`<div style="font-size:56px">\ud83d\udd12</div><h2>\ube44\ubc00\ubc88\ud638\ub97c \ub9cc\ub4e4\uc5c8\uc5b4\uc694!</h2><p style="font-size:18px">\ub2e4\uc74c\ubd80\ud130 \ub4e4\uc5b4\uc62c \ub54c <b>${a.split('').join(' ')}</b>\uc744 \ub20c\ub7ec\uc694.<br>\uce5c\uad6c\uc5d0\uac8c \uc54c\ub824 \uc8fc\uc9c0 \uc54a\uc544\uc694. \uc78a\uc73c\uba74 \uc120\uc0dd\ub2d8\uaed8 \ub9d0\uc500\ub4dc\ub824\uc694.</p>`,[['\uc2dc\uc791\ud558\uae30 \u25b6','',1]]);login(nm);return}
+    toast('\ube44\ubc00\ubc88\ud638\ub97c \uc800\uc7a5\ud558\uc9c0 \ubabb\ud588\uc5b4\uc694. \ub2e4\uc74c\uc5d0 \ub4e4\uc5b4\uc62c \ub54c \ub2e4\uc2dc \ub9cc\ub4e4\uc5b4\uc694',3000);window.PW='';login(nm);return}
   keepPw(nm,'');  // \ube44\ubc00\ubc88\ud638\ub294 \uae30\uae30\uc5d0 \uae30\uc5b5\ud574 \ub450\uc9c0 \uc54a\uace0, \ub4e4\uc5b4\uc62c \ub54c\ub9c8\ub2e4 \ubb3c\uc5b4\uc694
   let tries=0;const p=await pad(nm,'\ube44\ubc00\ubc88\ud638 4\uc790\ub9ac\ub97c \ub20c\ub7ec \uc8fc\uc138\uc694',async v=>{const c=await call('pwCheck',nm,v);if(c&&c.ok)return true;tries++;return tries>=3?'\ube44\ubc00\ubc88\ud638\ub97c \uc78a\uc5c8\uc73c\uba74 \uc120\uc0dd\ub2d8\uaed8 \ub9d0\uc500\ub4dc\ub824\uc694':'\ube44\ubc00\ubc88\ud638\uac00 \ub2ec\ub77c\uc694'});
   if(!p){window.ENTERING=0;if(window.KLPEND){window.KLPEND=0;showStart()}return}window.PW=p;keepPw(nm,p);login(nm)}
@@ -7250,11 +7276,14 @@ window.isGuest=()=>/^\uc190\ub2d8/.test(String(S.name||''));
 const _sync=sync;sync=function(ev){if(window.isGuest())return;return _sync(ev)};
 async function teacherEnter(name,pin){const nm='0\ubc88 '+name.replace(/\s+/g,'');if(!GAS){window.PW='';login(nm);return}
   const r=await call('teacherCheck',pin);if(!r||!r.ok){SFX.no();toast('\ube44\ubc00\ubc88\ud638\uac00 \ub9de\uc9c0 \uc54a\uc544\uc694');return}TPIN=pin;try{sessionStorage.setItem('momo_tname',name)}catch(e){}window.PW='';login(nm)}
+window.APPN='12';
+window.VERTXT=()=>'v'+(window.APPV||'')+(/^\d+$/.test(APPN)?' \u00b7 \uc571 '+APPN:'');
+document.head.append(el('style',{},'.verpill{position:fixed;top:6px;right:8px;z-index:30;font-size:12px;font-weight:800;color:#fff;background:#0005;border-radius:12px;padding:3px 9px;pointer-events:none;letter-spacing:.2px}.gpanel .gver{font-size:12px;color:#8592a6;text-align:center;margin-top:6px}'));
 showStart=function(){RUNID++;TPIN='';window.TMAIN=false;Snd.stop();document.querySelectorAll('.overlay,.gpanel,.moresheet,.moreov,.utip,.giftbal,.goldmomo,.toast,.inbsheet').forEach(x=>x.remove());$('#top').style.display='none';const m=$('#main');m.innerHTML='';
   if(!GAS&&!KL)KL=['4\ud559\ub144 2\ubc18'];if(KL&&KL.length===1&&!MCLS)MCLS=KL[0];if(MCLS)loadRoster();
   if(GAS&&!KLdone){KLdone=1;const was=JSON.stringify(KL);loadKL().then(L=>{if(!L){const w=document.getElementById('kwarn');if(w)w.textContent='\u26a0\ufe0f \ubc18 \ubaa9\ub85d\uc744 \ubd88\ub7ec\uc624\uc9c0 \ubabb\ud588\uc5b4\uc694. \uc120\uc0dd\ub2d8: Apps Script\uc5d0 \uc0c8 Code.gs\ub97c \ubd99\uc5ec \ub123\uace0 \u300c\uc0c8 \ubc84\uc804\u300d\uc73c\ub85c \ubc30\ud3ec\ud588\ub294\uc9c0 \ud655\uc778\ud574 \uc8fc\uc138\uc694.';return}if(JSON.stringify(L)!==was&&document.querySelector('.st2')){if(window.ENTERING)window.KLPEND=1;else showStart()}})}
   const myK=S.klass||mMain(),me=S.name&&!window.isGuest()?S.name:'';
-  const W=el('div',{class:'st2'}),sc=el('div',{class:'scene2',html:skySVG()});W.append(sc);
+  const W=el('div',{class:'st2'}),sc=el('div',{class:'scene2',html:skySVG()});W.append(sc);W.append(el('div',{class:'verpill'},VERTXT()));
   sc.append(el('div',{class:'hd',html:LOGO},el('div',{class:'rib2'},el('span',{class:'w'},'\uc601\uc5b4 4 \u00b7 \ucc9c\uc7ac\uad50\uc721 \u00b7 2\ud559\uae30 7~12\ub2e8\uc6d0'))));
   ISL.forEach(([e,l,x,y],k)=>sc.append(el('div',{class:'isl',style:`left:${x}%;--y:${y}%;animation-delay:${-k*.6}s`},el('div',{class:'itop'},e),el('div',{class:'land'}),el('small',{},l))));
   const momo=el('div',{class:'momo2'},el('img',{src:I('momo')}));const thief=el('div',{class:'thief',html:THIEF});sc.append(momo,thief);
@@ -7305,8 +7334,7 @@ const _sm=showMap;let askedPw=false;showMap=function(first){_sm(first);if(!S.nam
 const _dc=dailyCheck;dailyCheck=async function(){while(document.querySelector('.storyov'))await sleep(500);return _dc()};
 /* \u2699 \uc124\uc815\uc5d0 \ube44\ubc00\ubc88\ud638 */
 const _tb=topBar;topBar=function(...a){_tb(...a);document.querySelectorAll('.utip').forEach(x=>x.remove());const g=document.querySelector('#top .gear');if(!g||!GAS)return;const old=g.onclick;g.onclick=()=>{old&&old();setTimeout(()=>{const p=document.querySelector('.gpanel');if(!p||p.querySelector('.pwb')||!S.name||isTN(S.name))return;
-  const ver=p.querySelector('.verline');const b1=el('button',{class:'tbtn pwb','data-close':1,onclick:makePw},HASPW?'\ud83d\udd12 \ube44\ubc00\ubc88\ud638 \ubc14\uafb8\uae30':'\ud83d\udd12 \ube44\ubc00\ubc88\ud638 \ub9cc\ub4e4\uae30');p.insertBefore(b1,ver||null);
-  if(HASPW)p.insertBefore(el('button',{class:'tbtn','data-close':1,onclick:clearPw},'\ud83d\udd13 \ube44\ubc00\ubc88\ud638 \uc5c6\uc560\uae30'),ver||null)},20)}};
+  const ver=p.querySelector('.verline');const b1=el('button',{class:'tbtn pwb','data-close':1,onclick:makePw},HASPW?'\ud83d\udd12 \ube44\ubc00\ubc88\ud638 \ubc14\uafb8\uae30':'\ud83d\udd12 \ube44\ubc00\ubc88\ud638 \ub9cc\ub4e4\uae30');p.insertBefore(b1,ver||null);},20)}};
 /* \uc120\uc0dd\ub2d8 \ud654\uba74: \ud83d\udd12 \ube44\ubc00\ubc88\ud638 \ud0ed */
 const _dT=drawT;drawT=function(s,my){_dT(s,my);const tabs=s.querySelector('.tabs'),box=s.querySelector('.card');if(!tabs||!box)return;
   tabs.insertBefore(el('button',{class:'tab'+(TTAB==='pw'?' on':''),onclick:()=>{TTAB='pw';SFX.click();drawT(s,my)}},'\ud83d\udd12 \ube44\ubc00\ubc88\ud638'),tabs.children[3]||null);
@@ -7929,6 +7957,108 @@ Object.assign(window.G||{},{showMap,showPlay,showRain,showPuzzle,guestVisit});
       const L=el('table',{class:'ttab',style:'width:100%;font-size:14px'});L.append(el('tr',{},...['\ub54c','\ubc88\ud638\u00b7\uc774\ub984','\ubb34\uc5c7','\uc11c\ubc84 \uae30\ub85d','\ub4e4\uc5b4\uc628 \uae30\ub85d','\ucc98\ub9ac'].map(h=>el('th',{},h))));
       r.log.forEach(g=>L.append(el('tr',{},...g.map(v=>el('td',{style:'white-space:normal'},v)))));area.append(el('div',{style:'overflow-x:auto'},L),el('div',{style:'font-size:13px;color:#6b7a90;margin-top:4px'},'\uc608\uc804 \uae30\uae30\ub098 \uc624\ub798 \ucf1c \ub454 \ud654\uba74\uc5d0\uc11c \uc608\uc804 \uae30\ub85d\uc774 \ub4e4\uc5b4\uc624\uba74 \uc5ec\uae30\uc5d0 \ub0a8\uc544\uc694. \uae30\ub85d\uc740 \uc904\uc9c0 \uc54a\uace0 \ud070 \ucabd\uc73c\ub85c \ud569\uccd0\uc838\uc694.'))}};
   run()}})();
+
+/* ===== \ud83d\udcca \uc8fc\uac04 \ub9ac\ud3ec\ud2b8 \u00b7 \ud83d\udcbe \uae30\ub85d \ud30c\uc77c \u00b7 \u26c4 \uaca8\uc6b8\ubc29\ud559 \ubcf5\uc2b5 ===== */
+(function(){
+const z2=n=>String(n).padStart(2,'0'),ymd=d=>d.getFullYear()+'-'+z2(d.getMonth()+1)+'-'+z2(d.getDate()),today=()=>ymd(new Date());
+const VAC_FROM='2026-12-24',VAC_TO='2027-02-28';
+const inVac=()=>{const t=today();return t>=VAC_FROM&&t<=VAC_TO};
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function saveFile(name,text,type){try{const b=new Blob([text],{type:type||'text/html;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;document.body.append(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500);return true}catch(e){toast('\uc774 \ud654\uba74\uc5d0\uc11c\ub294 \ud30c\uc77c\uc744 \ub0b4\ub824\ubc1b\uc744 \uc218 \uc5c6\uc5b4\uc694. \uc571(sslimgh.github.io/4)\uc5d0\uc11c \ud574 \uc8fc\uc138\uc694',3500);return false}}
+function printHtml(html){const f=document.createElement('iframe');f.style.cssText='position:fixed;right:0;bottom:0;width:0;height:0;border:0';document.body.append(f);const d=f.contentWindow.document;d.open();d.write(html);d.close();setTimeout(()=>{try{f.contentWindow.focus();f.contentWindow.print()}catch(e){toast('\uc778\uc1c4\ud558\uc9c0 \ubabb\ud588\uc5b4\uc694. \u300c\ud55c\uae00 \ud30c\uc77c\u300d\ub85c \ub0b4\ub824\ubc1b\uc544 \uc778\uc1c4\ud574 \uc8fc\uc138\uc694',3000)}setTimeout(()=>f.remove(),60000)},400)}
+
+/* ---------- \ud83d\udcca \uc8fc\uac04 \ub9ac\ud3ec\ud2b8 (\uc120\uc0dd\ub2d8) ---------- */
+function reportHtml(r){
+  const th='border:1px solid #888;padding:4px 6px;background:#eee;font-weight:bold',td='border:1px solid #888;padding:4px 6px';
+  const rows=r.list.map(o=>`<tr><td style="${td}">${esc(o.name)}</td><td style="${td}">${esc(o.last||'-')}</td><td style="${td};text-align:center">${o.acts}</td><td style="${td};text-align:center">${o.weekMin}</td><td style="${td};text-align:center">${o.weekStars}</td><td style="${td};text-align:center">${o.stars}</td><td style="${td};text-align:center">${o.vac}</td></tr>`).join('');
+  const hard=r.hard.length?r.hard.map((h,i)=>`<tr><td style="${td};text-align:center">${i+1}</td><td style="${td}">${esc(h.ct||'-')}</td><td style="${td}">${esc(h.t)}</td><td style="${td}">${esc(h.s)}</td><td style="${td};text-align:center">${h.n}\uba85</td><td style="${td};text-align:center">${h.w}\ubc88</td></tr>`).join(''):`<tr><td colspan="6" style="${td}">\uc544\uc9c1 \ud2c0\ub9b0 \ubb38\uc81c \uae30\ub85d\uc774 \uc5c6\uc5b4\uc694.</td></tr>`;
+  return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>\ud5ec\ub85c \ubaa8\ubaa8 \uc544\uc77c\ub79c\ub4dc \uc8fc\uac04 \ub9ac\ud3ec\ud2b8</title></head><body style="font-family:'\ub9d1\uc740 \uace0\ub515',sans-serif;font-size:11pt">
+<h2 style="text-align:center">\ud5ec\ub85c \ubaa8\ubaa8 \uc544\uc77c\ub79c\ub4dc \uc8fc\uac04 \ub9ac\ud3ec\ud2b8</h2>
+<p>${esc(r.cls||'')} \u00b7 \uae30\uac04 ${esc(r.from)} ~ ${esc(r.to)} (\ucd5c\uadfc 7\uc77c)</p>
+<h3>1. \uc774\ubc88 \uc8fc\uc5d0 \ub4e4\uc5b4\uc624\uc9c0 \uc54a\uc740 \ud559\uc0dd (${r.absent.length}\uba85)</h3><p>${r.absent.length?esc(r.absent.join(', ')):'\ubaa8\ub450 \ud55c \ubc88 \uc774\uc0c1 \ub4e4\uc5b4\uc654\uc5b4\uc694.'}</p>
+<h3>2. \ud559\uc0dd\ubcc4 \ud65c\ub3d9</h3>
+<table style="border-collapse:collapse;width:100%"><tr><td style="${th}">\ubc88\ud638\u00b7\uc774\ub984</td><td style="${th}">\ub9c8\uc9c0\ub9c9 \uc811\uc18d</td><td style="${th}">\uc774\ubc88 \uc8fc \ud65c\ub3d9</td><td style="${th}">\uc774\ubc88 \uc8fc \uc2dc\uac04(\ubd84)</td><td style="${th}">\uc774\ubc88 \uc8fc \ubcc4</td><td style="${th}">\ucd1d \ubcc4</td><td style="${th}">\ubc29\ud559 \ub3c4\uc7a5</td></tr>${rows}</table>
+<h3>3. \ub9ce\uc774 \ud2c0\ub9b0 \ub0b1\ub9d0\u00b7\ubb38\uc7a5 TOP 10</h3>
+<table style="border-collapse:collapse;width:100%"><tr><td style="${th}">\uc21c\uc704</td><td style="${th}">\uc601\uc5b4</td><td style="${th}">\ubb38\uc81c</td><td style="${th}">\ud65c\ub3d9</td><td style="${th}">\ud2c0\ub9b0 \ud559\uc0dd</td><td style="${th}">\ud2c0\ub9b0 \ud69f\uc218</td></tr>${hard}</table>
+<p style="font-size:9pt;color:#555">\ud2c0\ub9b0 \ud559\uc0dd \uc218\uac00 \ub9ce\uc740 \uc21c\uc11c\uc608\uc694. \uc218\uc5c5 \uc2dc\uc791 5\ubd84 \ubcf5\uc2b5 \uac70\ub9ac\ub85c \uc368 \ubcf4\uc138\uc694.</p></body></html>`}
+const _dTR=drawT;drawT=function(s,my){_dTR(s,my);const tabs=s.querySelector('.tabs'),box=s.querySelector('.card');if(!tabs||!box||!TPIN)return;
+  tabs.insertBefore(el('button',{class:'tab'+(TTAB==='report'?' on':''),onclick:()=>{TTAB='report';SFX.click();drawT(s,my)}},'\ud83d\udcca \uc8fc\uac04 \ub9ac\ud3ec\ud2b8'),tabs.children[1]||null);
+  if(TTAB!=='report')return;box.innerHTML='';const area=el('div',{},el('p',{style:'font-size:17px'},'\ud83d\udcca \uc774\ubc88 \uc8fc \uae30\ub85d\uc744 \ubaa8\uc73c\uace0 \uc788\uc5b4\uc694\u2026'));box.append(area);
+  (async()=>{const r=await tCall('adminReport',TPIN);if(ACTIVE!==my)return;area.innerHTML='';
+    if(!r||!r.ok){area.append(el('p',{style:'font-size:17px;color:#c92a2a'},'\ub9ac\ud3ec\ud2b8\ub97c \ub9cc\ub4e4\uc9c0 \ubabb\ud588\uc5b4\uc694. Code.gs\ub97c \uc0c8 \ubc84\uc804\uc73c\ub85c \ubc14\uafe8\ub294\uc9c0 \ud655\uc778\ud574 \uc8fc\uc138\uc694.'));return}
+    const html=reportHtml(r);
+    area.append(el('div',{style:'font-size:15px;color:#495057;margin-bottom:8px'},`\uae30\uac04 ${r.from} ~ ${r.to} (\ucd5c\uadfc 7\uc77c)`),
+      el('div',{class:'btnrow',style:'margin-bottom:10px'},el('button',{class:'big blue',onclick:()=>printHtml(html)},'\ud83d\udda8 \uc778\uc1c4'),el('button',{class:'big',onclick:()=>{if(saveFile(`\uc8fc\uac04\ub9ac\ud3ec\ud2b8_${today()}.html`,html))toast('\ub0b4\ub824\ubc1b\uc558\uc5b4\uc694. \ud55c\uae00\uc5d0\uc11c [\ud30c\uc77c \u2192 \ubd88\ub7ec\uc624\uae30]\ub85c \uc5f4\uba74 \uace0\uce60 \uc218 \uc788\uc5b4\uc694',3500)}},'\ud83d\udcbe \ud55c\uae00 \ud30c\uc77c\ub85c \ubc1b\uae30')),
+      el('div',{style:`font-size:18px;font-weight:900;margin:6px 0;color:${r.absent.length?'#c92a2a':'#2b8a3e'}`},r.absent.length?`\ud83d\ude34 \uc774\ubc88 \uc8fc\uc5d0 \uc548 \ub4e4\uc5b4\uc628 \ud559\uc0dd ${r.absent.length}\uba85`:'\u2705 \ubaa8\ub450 \ud55c \ubc88 \uc774\uc0c1 \ub4e4\uc5b4\uc654\uc5b4\uc694'),
+      r.absent.length?el('div',{style:'font-size:16px;margin-bottom:10px;line-height:1.6'},r.absent.join(', ')):'');
+    const t=el('table',{class:'ttab',style:'width:100%;font-size:15px'});t.append(el('tr',{},...['\ubc88\ud638\u00b7\uc774\ub984','\ub9c8\uc9c0\ub9c9 \uc811\uc18d','\ud65c\ub3d9','\ubd84','\u2b50 \uc774\ubc88 \uc8fc','\u2b50 \uc804\uccb4','\u26c4 \ub3c4\uc7a5'].map(h=>el('th',{},h))));
+    r.list.forEach(o=>t.append(el('tr',{style:o.acts?'':'background:#fff5f5'},el('td',{},o.name),el('td',{},o.last||'-'),el('td',{},String(o.acts)),el('td',{},String(o.weekMin)),el('td',{},String(o.weekStars)),el('td',{},String(o.stars)),el('td',{},String(o.vac)))));
+    area.append(el('div',{style:'font-weight:900;margin:12px 0 4px'},'\ud83d\udc67 \ud559\uc0dd\ubcc4 \uc774\ubc88 \uc8fc \ud65c\ub3d9'),el('div',{style:'overflow-x:auto'},t));
+    const h=el('table',{class:'ttab',style:'width:100%;font-size:15px'});h.append(el('tr',{},...['','\uc601\uc5b4','\ubb38\uc81c','\ud2c0\ub9b0 \ud559\uc0dd'].map(x=>el('th',{},x))));
+    r.hard.forEach((x,i)=>h.append(el('tr',{},el('td',{},String(i+1)),el('td',{class:'en',style:'white-space:normal'},x.ct||'-'),el('td',{style:'white-space:normal'},x.t),el('td',{},x.n+'\uba85 \u00b7 '+x.w+'\ubc88'))));
+    if(!r.hard.length)h.append(el('tr',{},el('td',{colspan:4},'\uc544\uc9c1 \ud2c0\ub9b0 \ubb38\uc81c \uae30\ub85d\uc774 \uc5c6\uc5b4\uc694.')));
+    area.append(el('div',{style:'font-weight:900;margin:14px 0 4px'},'\u2757 \ub9ce\uc774 \ud2c0\ub9b0 \ub0b1\ub9d0\u00b7\ubb38\uc7a5 TOP 10'),el('div',{style:'overflow-x:auto'},h))})()};
+
+/* ---------- \ud83d\udcbe \uae30\ub85d \ud30c\uc77c \ub0b4\ub824\ubc1b\uae30 \u00b7 \uc62c\ub9ac\uae30 (\uae30\ub85d \uc9c0\ud0b4\uc774 \ud0ed \uc544\ub798) ---------- */
+const _dTF=drawT;drawT=function(s,my){_dTF(s,my);const box=s.querySelector('.card');if(!box||!TPIN||TTAB!=='guard')return;
+  const csv=(head,rows)=>'\ufeff'+[head,...rows].map(r=>r.map(v=>{v=String(v==null?'':v).replace(/^'/,'');return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v}).join(',')).join('\r\n');
+  const sec=el('div',{class:'achi',style:'border-color:#b2f2bb;background:#ebfbee;margin-top:16px;display:block'},
+    el('div',{style:'font-weight:900;font-size:18px'},'\ud83d\udcbe \uae30\ub85d \ud30c\uc77c'),
+    el('div',{style:'font-size:14px;color:#495057;line-height:1.5;margin:4px 0 8px'},'\ud559\uae30 \ub05d\uc774\ub098 \ubc29\ud559 \uc804\uc5d0 \ud55c \ubc88 \ubc1b\uc544 \ub450\uba74 \uc548\uc2ec\uc774\uc5d0\uc694. \uc62c\ub9ac\uae30\ub294 \ubc1b\uc740 \ud30c\uc77c\uc744 \uc9c0\uae08 \uae30\ub85d\uacfc \ud569\uccd0\uc694. \uadf8\ub798\uc11c \uc9c0\uae08 \uae30\ub85d\uc774 \uc904\uc5b4\ub4e4\uc9c0 \uc54a\uc544\uc694.'));
+  const bt=el('div',{class:'btnrow'});sec.append(bt);
+  bt.append(el('button',{class:'big blue',onclick:async()=>{toast('\uae30\ub85d\uc744 \ubaa8\uc73c\uace0 \uc788\uc5b4\uc694\u2026');const r=await tCall('adminExport',TPIN);if(!r||!r.ok){toast('\ubc1b\uc9c0 \ubabb\ud588\uc5b4\uc694. \ub2e4\uc2dc \ub20c\ub7ec \uc8fc\uc138\uc694');return}
+    const tag=(r.cls||'').replace(/[\\/:*?"<>|\s]/g,'')||'\uc6b0\ub9ac\ubc18';
+    saveFile(`\ubaa8\ubaa8\uae30\ub85d_${tag}_${today()}.json`,JSON.stringify(r),'application/json');setTimeout(()=>saveFile(`\uc9c4\ub3c4\ud45c_${tag}_${today()}.csv`,csv(r.head,r.rows),'text/csv;charset=utf-8'),800);toast('\uae30\ub85d \ud30c\uc77c(JSON)\uacfc \uc9c4\ub3c4\ud45c(CSV)\ub97c \ubc1b\uc558\uc5b4\uc694',3000)}},'\u2b07 \uae30\ub85d \ubc1b\uae30'));
+  const inp=el('input',{type:'file',accept:'.json,application/json',style:'display:none'});sec.append(inp);
+  inp.onchange=async()=>{const f=inp.files&&inp.files[0];inp.value='';if(!f)return;let d=null;try{d=JSON.parse(await f.text())}catch(e){}
+    if(!d||!d.states||d.app!=='momo-english'){await modal('<h2>\ud83d\udcc4 \uc774 \ud30c\uc77c\uc740 \uc4f8 \uc218 \uc5c6\uc5b4\uc694</h2><p style="font-size:17px">\u300c\u2b07 \uae30\ub85d \ubc1b\uae30\u300d\ub85c \ubc1b\uc740 \ubaa8\ubaa8\uae30\ub85d \ud30c\uc77c(.json)\uc744 \uace8\ub77c \uc8fc\uc138\uc694.</p>',[['\ud655\uc778','',1]]);return}
+    const n=Object.keys(d.states).length;if(!await modal(`<h2>\u2b06 \ud30c\uc77c\uc5d0\uc11c \ub418\uc0b4\ub9b4\uae4c\uc694?</h2><p style="font-size:17px">${esc(d.cls||'')} \u00b7 ${esc(d.at||'')}\uc5d0 \ubc1b\uc740 \ud30c\uc77c (\ud559\uc0dd ${n}\uba85)<br>\uc9c0\uae08 \uae30\ub85d\uacfc \ud569\uccd0\uc11c \ub354 \uc88b\uc740 \ucabd\uc744 \ub0a8\uaca8\uc694. \uc9c0\uae08 \uae30\ub85d\uc740 \uc904\uc9c0 \uc54a\uc544\uc694.</p>`,[['\ucde8\uc18c','gray',0],['\ud569\uce58\uae30','',1]]))return;
+    toast('\ud569\uce58\uace0 \uc788\uc5b4\uc694\u2026',4000);const r=await tCall('adminImport',TPIN,d);if(r&&r.ok){SFX.win();await modal(`<h2>\u2705 \ub05d\ub0ac\uc5b4\uc694</h2><p style="font-size:17px">${r.n?r.n+'\uba85\uc758 \uae30\ub85d\uc744 \ud30c\uc77c\uacfc \ud569\ucce4\uc5b4\uc694.':'\ubc14\ub010 \uae30\ub85d\uc774 \uc5c6\uc5b4\uc694. \uc9c0\uae08 \uae30\ub85d\uc774 \uc774\ubbf8 \ub354 \uc88b\uc544\uc694.'}</p>`,[['\ud655\uc778','',1]]);drawT(s,my)}else toast('\ud569\uce58\uc9c0 \ubabb\ud588\uc5b4\uc694. \ub2e4\uc2dc \ud574 \uc8fc\uc138\uc694',3000)};
+  bt.append(el('button',{class:'big',onclick:()=>inp.click()},'\u2b06 \ud30c\uc77c\uc5d0\uc11c \ub418\uc0b4\ub9ac\uae30'));
+  box.append(sec)};
+
+/* ---------- \u26c4 \uaca8\uc6b8\ubc29\ud559 \ubcf5\uc2b5 ---------- */
+function vacPool(){const U=window.UNITS_UI,L=[];if(!U)return L;[7,8,9,10,11,12].forEach(n=>{let D;try{D=U.DATA(n)}catch(e){return}Object.keys(D&&D.act||{}).forEach(k=>{const v=D.act[k],c=v.qz||v.a;if(!c||!CM[c]||!v.img||/_(yes|no)$/.test(v.img))return;if(L.some(x=>x.c===c))return;L.push({c,img:v.img,t:CM[c].t,n})})});return L}
+function stamps(){S.vac=S.vac||{};return S.vac}
+function showVacCal(){BACK=[showPlay,'\ub180\uc774\ud130'];TB_STEP=false;ACTIVE=++RUNID;Snd.stop();topBar('\u26c4 \uaca8\uc6b8\ubc29\ud559 \ubcf5\uc2b5',el('span',{class:'chip'},'\ub3c4\uc7a5 '+Object.keys(stamps()).length+'\uac1c'));const s=stageNew();
+  const V=stamps(),done=!!V[today()];
+  help(s,done?'\uc624\ub298 \ub3c4\uc7a5\uc744 \ubc1b\uc558\uc5b4\uc694! \ud55c \ubc88 \ub354 \ud574\ub3c4 \uc88b\uc544\uc694.':'\ud558\ub8e8 10\ubb38\uc81c(\uc57d 10\ubd84)! 7~12\ub2e8\uc6d0\uc744 \uc11e\uc5b4\uc11c \ubcf5\uc2b5\ud574\uc694.');
+  const w=el('div',{style:'width:100%;max-width:640px;margin:0 auto'});s.append(w);
+  w.append(el('div',{class:'btnrow',style:'justify-content:center;margin:6px 0 12px'},el('button',{class:'big orange',style:'font-size:22px',onclick:()=>{SFX.click();vacRun()}},done?'\ud83d\udd01 \ud55c \ubc88 \ub354 \ud558\uae30':'\u25b6 \uc624\ub298\uc758 10\ubb38\uc81c')));
+  const months=[[2026,11],[2027,0],[2027,1]];
+  months.forEach(([y,m])=>{const first=new Date(y,m,1),days=new Date(y,m+1,0).getDate(),g=el('div',{style:'display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:12px'});
+    w.append(el('div',{style:'font-weight:900;font-size:18px;margin:4px 0'},`${y}\ub144 ${m+1}\uc6d4`));
+    '\uc77c\uc6d4\ud654\uc218\ubaa9\uae08\ud1a0'.split('').forEach((d,i)=>g.append(el('div',{style:`text-align:center;font-size:13px;font-weight:800;color:${i===0?'#e03131':i===6?'#1971c2':'#6b7a90'}`},d)));
+    for(let i=0;i<first.getDay();i++)g.append(el('div',{}));
+    for(let d=1;d<=days;d++){const k=y+'-'+z2(m+1)+'-'+z2(d),v=V[k],isT=k===today(),off=k<VAC_FROM||k>VAC_TO;
+      g.append(el('div',{style:`aspect-ratio:1;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:12px;background:${v!=null?'#fff3bf':off?'#f1f3f5':'#fff'};border:${isT?'3px solid #f76707':'1px solid #dee2e6'};color:${off?'#adb5bd':'#343a40'}`},el('span',{},String(d)),v!=null?el('span',{style:'font-size:20px;line-height:1'},v>=10?'\ud83c\udf1f':'\u26c4'):''))}
+    w.append(g)});
+  w.append(el('div',{style:'font-size:14px;color:#6b7a90;text-align:center'},'\u26c4 \ubcf5\uc2b5\ud55c \ub0a0 \u00b7 \ud83c\udf1f 10\ubb38\uc81c \ubaa8\ub450 \ub9de\ud78c \ub0a0 \u00b7 \ubc29\ud559 \uae30\uac04 12/24 ~ 2/28'))}
+function vacRun(){BACK=[showVacCal,'\ubc29\ud559 \ubcf5\uc2b5'];TB_STEP=false;ACTIVE=++RUNID;const my=ACTIVE;Snd.stop();const P=vacPool();
+  if(P.length<4){toast('\ubcf5\uc2b5 \ubb38\uc81c\ub97c \uc900\ube44\ud558\uc9c0 \ubabb\ud588\uc5b4\uc694');showPlay();return}
+  const Q=shuffle(P).slice(0,10);let i=0,ok=0;
+  const ask=()=>{if(ACTIVE!==my)return;if(i>=Q.length)return end();const x=Q[i],txt=i>=6;topBar('\u26c4 \ubc29\ud559 \ubcf5\uc2b5',el('span',{class:'chip'},`${i+1} / ${Q.length}`));const s=stageNew();
+    help(s,txt?'\uc798 \ub4e3\uace0 \uc54c\ub9de\uc740 \ubb38\uc7a5\uc744 \uace8\ub77c\uc694.':'\uc798 \ub4e3\uace0 \uc54c\ub9de\uc740 \uadf8\ub9bc\uc744 \uace8\ub77c\uc694.');
+    const q=el('div',{class:'twq card',style:'width:100%;max-width:640px;margin:0 auto'});s.append(q);const play=()=>Snd.play(x.c);q.append(earBtn(play));
+    q.append(el('div',{style:'font-size:14px;color:#6b7a90;margin:4px 0'},`Lesson ${x.n}`));
+    let lock=false,miss=false;const others=shuffle(P.filter(y=>y.c!==x.c&&y.img!==x.img&&y.t!==x.t)).slice(0,2),opts=shuffle([x,...others]);
+    const right=async(b,e)=>{lock=true;b.classList.add('ok');SFX.ok();fx('\u2b50',e.clientX,e.clientY);if(!miss)ok++;i++;await sleep(650);ask()};
+    const wrong=b=>{if(miss){/* \ub450 \ubc88\uc9f8\ubd80\ud130\ub294 \uc815\ub2f5\uc744 \ubcf4\uc5ec \uc918\uc694 */}miss=true;SFX.no();b.classList.remove('no');b.offsetWidth;b.classList.add('no');b.disabled=true};
+    if(txt){const g=el('div',{class:'tdtxt'});q.append(g);opts.forEach(o=>{const b=el('button',{class:'opt txtopt en',style:'font-size:20px'},o.t);b.onclick=e=>{if(lock)return;o===x?right(b,e):wrong(b)};g.append(b)})}
+    else{const g=el('div',{class:'opts',style:`grid-template-columns:repeat(${PORT?2:3},1fr);width:100%;flex:none`});q.append(g);opts.forEach(o=>{const b=el('button',{class:'opt'},el('img',{src:I(o.img),style:'height:'+(PORT?'15vh':'min(18vh,110px)')+';object-fit:contain'}));b.onclick=e=>{if(lock)return;o===x?right(b,e):wrong(b)};g.append(b)})}
+    setTimeout(()=>{if(ACTIVE===my)play()},350)};
+  const end=async()=>{if(ACTIVE!==my)return;const V=stamps(),k=today(),first=V[k]==null;let c=0;
+    if(first){c=10+(ok>=10?5:0);S.coin+=c;if(window.addXP)addXP(20)}
+    V[k]=Math.max(V[k]||0,ok);save();sync();if(window.LOGD)LOGD('game',`\u26c4 \ubc29\ud559 \ubcf5\uc2b5 ${ok}/10${first?' (\ub3c4\uc7a5!)':''}`);SFX.win();if(ok>=10&&typeof confettiE==='function')confettiE(25);
+    await modal(`<div style="font-size:64px">${ok>=10?'\ud83c\udf1f':'\u26c4'}</div><h2>${ok} / 10 \ud55c \ubc88\uc5d0 \ub9de\ud614\uc5b4\uc694!</h2><p style="font-size:18px">${first?`\uc624\ub298\uc758 \ub3c4\uc7a5\uc744 \ucc0d\uc5c8\uc5b4\uc694!<br>\ud83e\ude99 +${c} \u00b7 \uacbd\ud5d8\uce58 +20`:'\uc624\ub298 \ub3c4\uc7a5\uc740 \uc774\ubbf8 \ubc1b\uc558\uc5b4\uc694. \ubcf5\uc2b5\uc740 \uc5b8\uc81c\ub098 \uc88b\uc544\uc694!'}</p>`,[['\ub2ec\ub825 \ubcf4\uae30','',1]]);if(ACTIVE===my)showVacCal()};
+  ask()}
+const _spV=showPlay;showPlay=function(){_spV();const g=document.querySelector('.playgrid');if(!g||!S.name)return;
+  const n=Object.keys(stamps()).length,dn=!!stamps()[today()];
+  g.prepend(el('button',{class:'playi new',onclick:()=>{SFX.click();showVacCal()}},el('div',{style:'font-size:64px'},'\u26c4'),el('div',{style:'font-size:24px;font-weight:900'},'\uaca8\uc6b8\ubc29\ud559 \ubcf5\uc2b5'),el('div',{style:'font-size:15px;color:#6b7a90'},'\ud558\ub8e8 10\ubb38\uc81c\ub85c 7~12\ub2e8\uc6d0\uc744 \ub2e4\uc2dc \ub9cc\ub098\uc694.'),el('div',{class:'chip',style:'margin-top:6px'},dn?'\u2705 \uc624\ub298 \ub3c4\uc7a5':'\ub3c4\uc7a5 '+n+'\uac1c')))};
+const _smV=showMap;showMap=function(first){_smV(first);if(!inVac()||!S.name||(typeof isT==='function'&&isT()))return;const strip=document.querySelector('.ustrip');if(!strip)return;const dn=!!stamps()[today()];
+  strip.prepend(el('button',{class:'utab today'+(dn?' done':''),onclick:()=>{SFX.click();showVacCal()}},el('div',{class:'uc'},el('b',{},dn?'\u2705 \ubc29\ud559':'\u26c4 \ubc29\ud559'),el('small',{},dn?'\ub3c4\uc7a5 \ubc1b\uc558\uc5b4\uc694':'10\ubb38\uc81c \ubcf5\uc2b5'))))};
+Object.assign(window.G||{},{showVacCal,vacRun,showPlay,showMap});
+})();
 
 /* ===================== \u26a1 \ube60\ub974\uac8c \uc5f4\uae30: \ud55c \ubc88 \ubc1b\uc740 \uadf8\ub9bc\u00b7\uc18c\ub9ac\ub294 \uae30\uae30\uc5d0 \uc800\uc7a5 ===================== */
 (function(){
