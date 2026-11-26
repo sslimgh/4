@@ -4,7 +4,7 @@
 /* ===== app connect block (GitHub app) =====
    GAME_API: Apps Script web app address (deploy > manage deployments). Change only this line if the address changes. */
 var GAME_API = 'https://script.google.com/macros/s/AKfycbzqoouTfjwKWxpLjmvbFm7Tkk10Vyw0rGIzImp2MVfq1WyvL68fUg2QJCKVyIZC1_Jdew/exec';
-var APP_BUILD = '15';
+var APP_BUILD = '16';
 /* google.script.run stand-in: every call goes to Code.gs doPost as JSON, without Google sign-in cookies */
 (function(){
   function call(fn, args, ok, bad, tries){
@@ -814,17 +814,17 @@ R.rhythm=(st)=>new Promise(res=>{const s=stageNew();
   const lyr=el('div',{class:'lyric en'},'');const bar=el('div',{class:'bar'},el('i'));
   const opts=st.opts.map(k=>k==='help'?{k,img:'ph_help',t:'Can I help you?'}:{k,img:ACT[k].img,t:ACT[k].t});
   const g=el('div',{class:'opts',style:`grid-template-columns:repeat(${st.cols||opts.length},1fr);flex:1`});
-  const score=el('span',{class:'chip'},'\ud83c\udfaf 0');
+  const score=el('span',{class:'chip',style:'font-size:18px;font-weight:900'},'\ud83c\udfaf 0 / '+st.ev.length);
   s.append(el('div',{class:'card',style:'padding:12px 16px;margin-bottom:10px;flex:none'},lyr,el('div',{style:'height:8px'}),bar));
   s.append(g);
   const startB=el('button',{class:'big',onclick:()=>go(true)},'\u25b6 \uac8c\uc784 \uc2dc\uc791');const lisB=el('button',{class:'big blue',onclick:()=>go(false)},'\ud83c\udfb5 \uba3c\uc800 \ub4e3\uace0 \ub530\ub77c \ubd80\ub974\uae30');
   const done=el('button',{class:'big orange',style:'display:none',onclick:()=>{Snd.stop();res(lastStars)}},'\uc644\ub8cc \u25b6');
-  s.append(el('div',{class:'btnrow',style:'margin-top:10px'},lisB,startB,score,done));
+  s.append(el('div',{class:'btnrow',style:'margin-top:10px'},lisB,startB,score,done));if(new Set(st.ev.map(v=>v[2])).size<st.ev.length)s.append(el('div',{style:'margin-top:8px;padding:8px 12px;border-radius:12px;background:#fff3bf;color:#7a5a00;font-size:17px;font-weight:900;text-align:center'},`\ud83d\udca1 \uac19\uc740 \uadf8\ub9bc\uc744 \ub450 \ubc88 \ub204\ub974\ub294 \uacf3\ub3c4 \uc788\uc5b4\uc694! (\ubaa8\ub450 ${st.ev.length}\ubc88)`));
   const btns=opts.map(o=>{const b=el('button',{class:'opt'},el('img',{src:I(o.img)}),el('div',{class:'en',style:'font-size:16px'},o.t));g.append(b);return b});
   let lastStars=1,raf=0;
   async function go(game){Snd.stop();cancelAnimationFrame(raf);const a=Snd.get(st.song);Snd.cur=a;a.playbackRate=Math.max(0.7,S.rate);a.preservesPitch=true;try{a.currentTime=st.start-0.3}catch(e){}
-    const hit=new Array(st.ev.length).fill(0);let pts=0,wrong=0;score.textContent='\ud83c\udfaf 0';btns.forEach(b=>b.classList.remove('ok','no','glow'));
-    const handlers=btns.map((b,i)=>{const f=e=>{if(!game){Snd.cur===a;return}const t=a.currentTime;const ei=st.ev.findIndex(v=>t>=v[0]-0.2&&t<=v[1]);
+    const hit=new Array(st.ev.length).fill(0);let pts=0,wrong=0;score.textContent='\ud83c\udfaf 0 / '+st.ev.length;btns.forEach(b=>b.classList.remove('ok','no','glow'));
+    const handlers=btns.map((b,i)=>{const f=e=>{if(!game){Snd.cur===a;return}const t=a.currentTime;const ei=st.ev.findIndex((v,x)=>!hit[x]&&v[2]===opts[i].k&&t>=v[0]-0.4&&t<=v[1]+1.5);/* \ub4e3\uace0 \uc870\uae08 \ub2a6\uac8c \ub20c\ub7ec\ub3c4 \ub9de\uc544\uc694 */
         if(ei>=0&&!hit[ei]&&st.ev[ei][2]===opts[i].k){hit[ei]=1;pts++;if(opts[i].k==='help')cardHit('help');else actCard(opts[i].k);b.classList.add('ok');SFX.pop();reward(e.clientX,e.clientY);setTimeout(()=>b.classList.remove('ok'),600);score.textContent='\ud83c\udfaf '+pts+' / '+st.ev.length}
         else{wrong++;b.classList.remove('no');b.offsetWidth;b.classList.add('no');setTimeout(()=>b.classList.remove('no'),400)}};b.onclick=f;return f});
     bub.textContent=game?'\ubc18\uc9dd\uc774\ub294 \uadf8\ub9bc\uc774 \uc544\ub2c8\ub77c, \ub4e4\ub9ac\ub294 \ub9d0\uc744 \ub4e3\uace0 \ub20c\ub7ec\uc57c \ud574\uc694! \ud83c\udfa7':'\ub178\ub798\ub97c \ub4e4\uc73c\uba70 \ub530\ub77c \ubd88\ub7ec \ubcf4\uc138\uc694 \ud83c\udfb5 (\uadf8\ub9bc\uc774 \ubc18\uc9dd\uc774\uba74 \uadf8 \ub3d9\uc791\uc774\uc5d0\uc694)';
@@ -834,7 +834,7 @@ R.rhythm=(st)=>new Promise(res=>{const s=stageNew();
       bar.firstChild.style.width=Math.min(100,(t-st.start)/(st.end-st.start)*100)+'%';
       const ei=st.ev.findIndex(v=>t>=v[0]&&t<=v[1]);btns.forEach((b,i)=>b.classList.toggle('glow',!game&&ei>=0&&st.ev[ei][2]===opts[i].k));
       if(game){/* \ub193\uce5c \ubc15\uc790 \ud45c\uc2dc */}
-      if(t>=st.end||a.ended||Snd.cur!==a){a.pause();finish();return}raf=requestAnimationFrame(tick)};raf=requestAnimationFrame(tick);
+      if(t>=Math.max(st.end,st.ev[st.ev.length-1][1]+1.6)||a.ended||Snd.cur!==a){a.pause();finish();return}raf=requestAnimationFrame(tick)};raf=requestAnimationFrame(tick);
     function finish(){cancelAnimationFrame(raf);btns.forEach(b=>b.classList.remove('glow'));lyr.textContent='';
       if(!game){bub.textContent='\uc798 \ub530\ub77c \ubd88\ub800\uc5b4\uc694! \uc774\uc81c \u300c\uac8c\uc784 \uc2dc\uc791\u300d\uc744 \ub20c\ub7ec \ubd10\uc694.';return}
       const r=pts/st.ev.length;lastStars=r>=.99&&wrong<=2?3:r>=.6?2:1;done.style.display='';
@@ -6791,7 +6791,7 @@ Object.assign(window.G||{},{showCredits});
 
 /* ===================== \ud83e\udded \ud654\uba74 \ubc30\uce58 \uc815\ub9ac: \ub2e8\uc6d0 \ud0ed \u00b7 \uacb9\uce68 \uc5c6\ub294 \uc9c0\ub3c4 \u00b7 \uc544\ub798 \uba54\ub274 ===================== */
 (function(){
-const APPV='2026.11.27';window.APPV=APPV;
+const APPV='2026.11.28';window.APPV=APPV;
 const U=window.UNITS_UI;if(!U)return;
 const LCOL={7:'#12b886',8:'#fab005',9:'#f76707',10:'#d6336c',11:'#1c7ed6',12:'#2f9e44',4:'#7950f2',5:'#7950f2',6:'#7950f2'};
 const css=`
@@ -7278,7 +7278,7 @@ window.isGuest=()=>/^\uc190\ub2d8/.test(String(S.name||''));
 const _sync=sync;sync=function(ev){if(window.isGuest())return;return _sync(ev)};
 async function teacherEnter(name,pin){const nm='0\ubc88 '+name.replace(/\s+/g,'');if(!GAS){window.PW='';login(nm);return}
   const r=await call('teacherCheck',pin);if(!r||!r.ok){SFX.no();toast('\ube44\ubc00\ubc88\ud638\uac00 \ub9de\uc9c0 \uc54a\uc544\uc694');return}TPIN=pin;try{sessionStorage.setItem('momo_tname',name)}catch(e){}window.PW='';login(nm)}
-window.APPN='15';
+window.APPN='16';
 window.VERTXT=()=>'v'+(window.APPV||'')+(/^\d+$/.test(APPN)?' \u00b7 \uc571 '+APPN:'');
 document.head.append(el('style',{},'.verpill{position:fixed;top:6px;right:8px;z-index:30;font-size:12px;font-weight:800;color:#fff;background:#0005;border-radius:12px;padding:3px 9px;pointer-events:none;letter-spacing:.2px}.gpanel .gver{font-size:12px;color:#8592a6;text-align:center;margin-top:6px}'));
 showStart=function(){RUNID++;TPIN='';window.TMAIN=false;Snd.stop();document.querySelectorAll('.overlay,.gpanel,.moresheet,.moreov,.utip,.giftbal,.goldmomo,.toast,.inbsheet').forEach(x=>x.remove());$('#top').style.display='none';const m=$('#main');m.innerHTML='';
